@@ -1,0 +1,9 @@
+study_id_clean,study_label,analysis_set,comparison_type,intervention_name,comparator,events_intervention,n_intervention,events_control,n_control,rr,rr_ci_low,rr_ci_high
+CRAIG_2014,Craig 2014,excluded_addon,IPS plus adjunct vs IPS (RCT; add-on question),IPS + Motivational Interviewing (MI),IPS,29,68,12,66,2.3455882352941178,1.3115933919802214,4.194733065286089
+DUDLEY_2014,Dudley 2014,other_comparison,Non-randomised comparison,IPS + EIP,EIP,18,104,12,90,1.298076923076923,0.6617540210160175,2.546268922760451
+EACK_2011,Eack 2011,non_vocational_rct,Non-vocational intervention RCT,Cognitive Enhancement Therapy (CET),Enriched Supportive Therapy (EST),13,24,4,22,2.9791666666666665,1.1409258420681117,7.779150669152717
+FOWLER_2019,Fowler 2019,non_vocational_rct,Non-vocational intervention RCT,SRT + TAU,TAU,5,20,0,24,13.095238095238095,0.7678694468798526,223.32606339239734
+HEGELSTAD_2019,Hegelstad 2019,other_comparison,Non-randomised comparison,Job- and SchoolPrescription (IPS adaptation),Generic employment/educational services,14,30,2,27,6.300000000000001,1.5732672777764485,25.22775408899066
+MAJOR_2010,Major 2010,other_comparison,Non-randomised comparison,VIBE (Specialist vocational intervention),TAU (EIS without VIBE),16,44,13,70,1.958041958041958,1.045728815390865,3.6662739450473745
+ROSENHECK_2017,Rosenheck 2017,other_comparison,NAVIGATE vs community care (cluster-randomised RAISE-ETP),NAVIGATE,Community Care,30,144,21,83,0.8234126984126985,0.5055161225472764,1.3412202730366398
+VANDUIN_2021,van Duin 2021,excluded_addon,IPS plus adjunct vs IPS (RCT; add-on question),IPS + Cognitive Remediation (CR),IPS + control (computer games),18,29,7,27,2.3940886699507393,1.1910209198270936,4.812392850680233
