@@ -137,7 +137,7 @@ For citing this repository, please use:
 <summary>BibTeX</summary>
 <pre><code>@article{kaplankiran2026,
   title={Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis},
-  author={Kaplankiran, Hazal; Li; Yanan; Trotta; Giulia; Twumasi, Ricardo; and Georgiades, Anna},
+  author={Kaplankiran, Hazal and Li, Yanan and Trotta, Giulia and Twumasi, Ricardo and Georgiades, Anna},
   journal={tbc},
   year={2026},
   publisher={tbc},
@@ -147,7 +147,7 @@ For citing this repository, please use:
 </details>
 <details>
 <summary>APA</summary>
-<pre><code>Kaplankiran, H., Li, Y., Trotta, G., Twumasi, R., & Georgiades, A (2026). Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis. tbc.</code></pre>
+<pre><code>Kaplankiran, H., Li, Y., Trotta, G., Twumasi, R., & Georgiades, A. (2026). Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis. tbc.</code></pre>
 </details>
 <details>
 <summary>Vancouver</summary>

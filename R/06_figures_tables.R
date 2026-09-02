@@ -60,6 +60,28 @@ di_cmp     <- read_csv(file.path(tab_dir, "dienes_bf_quadrature_vs_bridge.csv"),
 diag_all   <- bind_rows(read_csv(file.path(bay_dir, "prevalence_diagnostics.csv"), show_col_types = FALSE),
                         read_csv(file.path(bay_dir, "trials_diagnostics.csv"), show_col_types = FALSE),
                         read_csv(file.path(bay_dir, "metaregression_diagnostics.csv"), show_col_types = FALSE))
+
+# Fit inventory: every model the pipeline fits must have passed through the
+# convergence gate in 02, 03 or 04 and appear here exactly once. A model that
+# was re-run at adapt_delta = 0.999 carries the suffix _ad999 and still counts.
+expected_fits <- c(
+  "primary_strict_point_hn1", "secondary_period_hn1", "sens_prior_hn05", "sens_prior_hn2",
+  "sens_point_relaxed_k14", "sens_legacy_k23", "sens_strict_excl_weak", "sens_strict_excl_exposed",
+  "sens_strict_missing_not_employed_bound", "sens_strict_normal_normal_hn1",
+  paste0("loo_", c("ABDELBAKI_2013", "ANDERSEN_2024", "CRAIG_2014", "DUDLEY_2014", "EACK_2011",
+                   "HEGELSTAD_2019", "POTHIER_2019", "RINALDI_2010", "ROSENHECK_2017", "VANDUIN_2021")),
+  "primary_k3_hn05", "sens_prior_hn025", "sens_prior_hn1", "sens_k4_hn05",
+  "sens_k3_missing_not_employed", "sens_k4_missing_not_employed",
+  paste0("loo_", c("ERICKSON_2021", "KILLACKEY_2008", "KILLACKEY_2019")),
+  "exact_binomial_k3", "exact_binomial_k4",
+  "bf_h0_hn05", paste0("bf_h1_", c("primary_log2", "frederick_published", "bond2015", "bond2016", "modini2016")),
+  paste0("mr_", c("design", "timepoint", "exposure", "attrition", "outcome_basis"))
+)
+fitted_models <- sub("_ad999$", "", diag_all$model)
+check(setequal(fitted_models, expected_fits) && !anyDuplicated(fitted_models),
+      paste0("fit inventory mismatch; missing: ", paste(setdiff(expected_fits, fitted_models), collapse = ", "),
+             "; unexpected: ", paste(setdiff(fitted_models, expected_fits), collapse = ", ")))
+check(all(diag_all$passes_gate), "a fit in the inventory failed the convergence gate")
 recovery   <- read_csv(root_path("data", "derived", "recovery.csv"), show_col_types = FALSE)
 external   <- read_csv(file.path(tab_dir, "external_frederick2019_reanalysis.csv"), show_col_types = FALSE)
 
@@ -375,10 +397,14 @@ write_tex(mr_tab, "tableS_metaregression.tex")
 other_tab <- tr_other %>%
   transmute(Study = study_label, Comparison = comparison_type, Intervention = intervention_name,
             Comparator = comparator,
-            `Intervention` = paste0(events_intervention, "/", n_intervention),
-            `Control` = paste0(events_control, "/", n_control),
-            `RR (95% CI)` = ci(rr, rr_ci_low, rr_ci_high), .name_repair = "minimal")
-names(other_tab) <- c("Study", "Comparison", "Intervention", "Comparator", "Events/n intervention", "Events/n control", "RR (95% CI)")
+            `Events/n intervention` = paste0(events_intervention, "/", n_intervention),
+            `Events/n control` = paste0(events_control, "/", n_control),
+            `RR (95% CI)` = ci(rr, rr_ci_low, rr_ci_high))
+check(identical(names(other_tab), c("Study", "Comparison", "Intervention", "Comparator",
+                                    "Events/n intervention", "Events/n control", "RR (95% CI)")),
+      "tableS_other_comparisons: unexpected column names")
+check(!any(grepl("minimal", unlist(other_tab), fixed = TRUE)),
+      "tableS_other_comparisons: a name-repair token leaked into the table")
 write_csv(other_tab, file.path(tab_dir, "tableS_other_comparisons.csv"))
 write_tex(other_tab %>% select(-Intervention, -Comparator), "tableS_other_comparisons.tex", col_spec = "lp{5.5cm}llp{2.6cm}")
 

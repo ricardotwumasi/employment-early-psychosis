@@ -102,10 +102,12 @@ nn_summary <- summarise_effect(nn_dr$mu, plogis, "sens_strict_normal_normal_hn1"
 # -------------------------------
 # 3. Leave-one-out on the primary set
 # -------------------------------
-loo_rows <- bind_rows(lapply(strict$study_id_clean, function(s) {
+loo_res <- lapply(strict$study_id_clean, function(s) {
   r <- run_prev(filter(strict, study_id_clean != s), paste0("loo_", s), 1)
-  r$summary %>% mutate(left_out = s)
-}))
+  r$summary <- r$summary %>% mutate(left_out = s)
+  r
+})
+loo_rows <- bind_rows(lapply(loo_res, `[[`, "summary"))
 write_csv(loo_rows, file.path(out_dir, "prevalence_leave_one_out.csv"))
 
 # -------------------------------
@@ -131,7 +133,7 @@ write_csv(study_effects, file.path(out_dir, "prevalence_primary_study_effects.cs
 # 5. Write summaries, diagnostics and primary draws
 # -------------------------------
 summary_table <- bind_rows(c(lapply(results, `[[`, "summary"), list(nn_summary)))
-diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), list(nn_res$diag)))
+diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), list(nn_res$diag), lapply(loo_res, `[[`, "diag")))
 write_csv(summary_table, file.path(out_dir, "prevalence_summary.csv"))
 write_csv(diag_table,    file.path(out_dir, "prevalence_diagnostics.csv"))
 write_csv(data.frame(mu = results$primary_strict_point_hn1$draws$mu,

@@ -143,31 +143,36 @@ write_csv(bind_rows(lapply(exact_results, `[[`, "summary")), file.path(out_dir, 
 # H0: mu = 0. Both with tau ~ Half-Normal(0, 0.5), matching the quadrature.
 s_values <- c(primary_log2 = log(2), frederick_published = log(1.63), bond2015 = log(1.69),
               bond2016 = log(1.96), modini2016 = log(2.40))
-h0_fit <- fit_cached(bf(yi | se(sei) ~ 0 + (1 | study_id_clean)), input_sets$primary_k3,
-                     prior(normal(0, 0.5), class = "sd"), gaussian(), "bf_h0_hn05",
-                     save_all_pars = TRUE)
-h0_bridge <- bridgesampling::bridge_sampler(h0_fit, silent = TRUE)
-bridge_rows <- bind_rows(lapply(names(s_values), function(nm) {
+# The H0 and H1 fits pass through the same convergence gate as every other model,
+# because marginal likelihoods are sensitive to poorly explored posterior tails.
+h0_res <- fit_gated(bf(yi | se(sei) ~ 0 + (1 | study_id_clean)), input_sets$primary_k3,
+                    prior(normal(0, 0.5), class = "sd"), gaussian(), "bf_h0_hn05",
+                    save_all_pars = TRUE)
+h0_bridge <- bridgesampling::bridge_sampler(h0_res$fit, silent = TRUE)
+bridge_out <- lapply(names(s_values), function(nm) {
   s <- s_values[[nm]]
-  h1_fit <- fit_cached(bf(yi | se(sei) ~ 0 + Intercept + (1 | study_id_clean)), input_sets$primary_k3,
-                       c(set_prior(paste0("normal(0, ", s, ")"), class = "b", lb = 0),
-                         prior(normal(0, 0.5), class = "sd")),
-                       gaussian(), paste0("bf_h1_", nm), save_all_pars = TRUE)
-  h1_bridge <- bridgesampling::bridge_sampler(h1_fit, silent = TRUE)
+  h1_res <- fit_gated(bf(yi | se(sei) ~ 0 + Intercept + (1 | study_id_clean)), input_sets$primary_k3,
+                      c(set_prior(paste0("normal(0, ", s, ")"), class = "b", lb = 0),
+                        prior(normal(0, 0.5), class = "sd")),
+                      gaussian(), paste0("bf_h1_", nm), save_all_pars = TRUE)
+  h1_bridge <- bridgesampling::bridge_sampler(h1_res$fit, silent = TRUE)
   bf <- bridgesampling::bf(h1_bridge, h0_bridge)
-  data.frame(h1_scale_label = nm, s = s, rr_scale = exp(s), tau_scale = 0.5,
-             bf_bridge = as.numeric(bf$bf),
-             h1_error_pct = bridgesampling::error_measures(h1_bridge)$percentage,
-             h0_error_pct = bridgesampling::error_measures(h0_bridge)$percentage,
-             stringsAsFactors = FALSE)
-}))
+  list(row = data.frame(h1_scale_label = nm, s = s, rr_scale = exp(s), tau_scale = 0.5,
+                        bf_bridge = as.numeric(bf$bf),
+                        h1_error_pct = bridgesampling::error_measures(h1_bridge)$percentage,
+                        h0_error_pct = bridgesampling::error_measures(h0_bridge)$percentage,
+                        stringsAsFactors = FALSE),
+       diag = h1_res$diag)
+})
+bridge_rows <- bind_rows(lapply(bridge_out, `[[`, "row"))
+bridge_diag <- c(list(h0_res$diag), lapply(bridge_out, `[[`, "diag"))
 write_csv(bridge_rows, file.path(out_dir, "trials_bridge_bf.csv"))
 
 # -------------------------------
 # Write summaries, diagnostics and primary draws
 # -------------------------------
 summary_table <- bind_rows(lapply(results, `[[`, "summary"))
-diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), lapply(exact_results, `[[`, "diag")))
+diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), lapply(exact_results, `[[`, "diag"), bridge_diag))
 write_csv(summary_table, file.path(out_dir, "trials_summary.csv"))
 write_csv(diag_table,    file.path(out_dir, "trials_diagnostics.csv"))
 write_csv(data.frame(mu = results$primary_k3_hn05$draws$mu, tau = results$primary_k3_hn05$draws$tau),

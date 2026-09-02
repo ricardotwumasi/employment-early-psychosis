@@ -1,5 +1,5 @@
-Run completed: 2026-09-02 03:48:13 BST
-Elapsed: 2.5 minutes
+Run completed: 2026-09-02 09:01:45 BST
+Elapsed: 3.5 minutes
 CmdStan: 2.36.0
 
 R version 4.4.2 (2024-10-31)
