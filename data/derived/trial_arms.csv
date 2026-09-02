@@ -1,0 +1,9 @@
+study_id_clean,study_label,analysis_set,arm,arm_ips,events,n_analysed,n_full
+ERICKSON_2021,Erickson 2021,primary,intervention,1,34,47,56
+ERICKSON_2021,Erickson 2021,primary,control,0,25,50,53
+KILLACKEY_2008,Killackey 2008,primary,intervention,1,13,20,20
+KILLACKEY_2008,Killackey 2008,primary,control,0,2,21,21
+KILLACKEY_2019,Killackey 2019,primary,intervention,1,47,66,73
+KILLACKEY_2019,Killackey 2019,primary,control,0,29,60,73
+NUECHTERLEIN_2020,Nuechterlein 2020,sensitivity_k4,intervention,1,25,36,46
+NUECHTERLEIN_2020,Nuechterlein 2020,sensitivity_k4,control,0,5,15,23

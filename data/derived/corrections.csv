@@ -1,0 +1,15 @@
+study_id_clean,effect_type,field,raw,corrected,source,reason
+KILLACKEY_2019,proportion,timepoint_months,12,6,"Killackey et al. 2019, Br J Psychiatry 214(2):76-82, Results",76/126 equals the pooled 0-6 month arm counts (47+29 over 66+60); the paper gives no 12-month per-arm counts and 126 cannot be a 12-month denominator given 20.5% and 28.8% missing at 12 months
+KILLACKEY_2019,proportion,follow_up_months,12,18,"Killackey et al. 2019, Methods",Trial follow-up was 18 months; aligns the proportion row with the trial row
+KILLACKEY_2019,proportion,outcome_definition,Worked at least 1 day in paid employment during 6_12 month follow-up period,Worked at least 1 day in paid employment during 0_6 month follow-up period (arms pooled),"Killackey et al. 2019, Results",Label corrected to match the counts
+CRAIG_2014,proportion,n_assessed,159,134,"Craig et al. 2014, Br J Psychiatry 205(2):145-150, Table 2 (68 + 66 assessed)","Available-case rule: the prevalence denominator is the number assessed, consistent with the trial row"
+HEGELSTAD_2019,proportion,n_assessed,60,57,"Hegelstad et al. 2019, Early Interv Psychiatry 13(4):859-866, Results (30 completers; 3 controls lacked employment data at 1 year)",Available-case rule: 14/30 intervention plus 2/27 controls
+HEGELSTAD_2019,trial_binary,n_control,30,27,"Hegelstad et al. 2019, Results",Three matched controls lacked employment status at 1 year
+EACK_2011,proportion,outcome_definition,Paid competitive employment at 12-month follow-up,Paid competitive employment at 24-month follow-up (end of treatment),"Eack et al. 2011, Res Soc Work Pract 21(1):32-42, Table 1 (PMC3718562)",Employment outcomes are reported for the 46 two-year completers; label corrected to the 24-month timepoint
+EACK_2011,proportion,events,12,17,"Eack et al. 2011, Table 1 (PMC3718562): competitively employed CET 13 of 24 (54%), EST 4 of 22 (18%)",The extracted 9 and 3 do not appear in any row of Table 1; counts replaced by the published end-of-treatment figures
+EACK_2011,trial_binary,events_intervention,9,13,"Eack et al. 2011, Table 1 (PMC3718562)",As above
+EACK_2011,trial_binary,events_control,3,4,"Eack et al. 2011, Table 1 (PMC3718562)",As above
+TURNER_2019,proportion,notes,,"Follow-up was a mean of 19 months (range 2 to 44), not a fixed 18 months","Turner et al. 2019, Ir J Occup Ther 47(2):114-123",Table 1 footnote
+ERICKSON_2021,trial_binary,notes,,"Denominators 47 and 50 reconstructed from the printed counts and percentages (34, 72.3%; 25, 50.0%) in Table 2; randomised 56 vs 53","Erickson et al. 2021, Early Interv Psychiatry 15(3):662-668, Table 2",Extraction note
+NUECHTERLEIN_2020,trial_binary,notes,,"Competitive employment during months 7 to 18, available case (36 of 41 and 15 of 22 with outcome data); randomised 46 vs 23","Nuechterlein et al. 2020, Psychol Med 50(1):20-28, Results",Extraction note
+FOWLER_2019,trial_binary,notes,,Non-affective subgroup of the ISREP 24-month follow-up (77 randomised),"Fowler et al. 2019, Schizophr Res 203:99-104",Extraction note

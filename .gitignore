@@ -1,0 +1,12 @@
+# Cached brms/CmdStan fits are large and machine-specific; summary CSVs are committed instead
+output/bayesian/fits/
+output/bayesian/log_*.txt
+
+# R session artefacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Operating system files
+.DS_Store
