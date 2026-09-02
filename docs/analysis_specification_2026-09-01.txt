@@ -1,0 +1,386 @@
+# Plan: Bayesian meta-analysis of employment in first-episode psychosis
+
+## Context
+
+The MSc dissertation (7PCSERES_K25020435) ran a frequentist metafor synthesis of employment in
+first-episode psychosis (FEP). The marker's feedback established that the quantitative core
+reproduces, but the write-up misdescribed the model (logit, not double arcsine), silently used a
+Knapp-Hartung adjustment for the three-trial synthesis, misread trim-and-fill, contradicted its own
+Table 1 (quality 8/6/9 not 5/7/11; region 10/7/4/2 not 9/7/5/2; Erickson 109 vs 97) and had an
+unreliable reference list. The marker recommended a Bayesian random-effects model with a weakly
+informative half-normal prior on tau for the trials, and a binomial-normal hierarchical model for
+prevalence.
+
+Goal: a reproducible, publishable Bayesian re-analysis of `data/yanan_data_280826.csv` for
+Schizophrenia Research, reported to Dienes (2020/2021) standards, with code and data pushed to
+github.com/ricardotwumasi/employment-early-psychosis and a LaTeX manuscript kept locally.
+
+The dissertation results are known and PROSPERO CRD420261402841 registered a frequentist analysis,
+so the Bayesian analysis is post hoc. The manuscript declares this, keeps the registered REML
+analysis prominent in the main text, and every estimand, prior, threshold, missing-data rule and
+sensitivity analysis below is frozen before any new model is fitted.
+
+## Decisions already taken with the user
+
+- Package: brms 2.23.0 on CmdStan 2.36.0; metafor 4.6.0 for the registered analysis.
+- Dienes null interval for the trials: |log RR| < log(1.25), i.e. RR in [0.80, 1.25]. The upper
+  limit is GRADE's rough guide for appreciable benefit (Guyatt et al. 2011, verbatim quote to be
+  cited); the lower limit 0.80 is our log-symmetry convention and is labelled as such. RR 1.25 is
+  described as a provisional generic decision threshold, adopted because no validated
+  employment-specific minimally important effect exists, not as an established minimal clinically
+  important effect. Report P(RR < 0.80), P(0.80 <= RR <= 1.25), P(RR > 1.25).
+- Bayes factor H1 scale s is specified independently of the null-interval m and of the observed
+  effect (no double counting). Modini et al. 2016 (log 2.40) is one external sensitivity value,
+  not the sole H1 model, because its population (severe mental illness) and comparator
+  (traditional vocational rehabilitation) differ from IPS plus TAU versus TAU in FEP.
+- Trial set: primary estimand IPS added to TAU versus TAU, k = 3 (Erickson 2021, Killackey 2008,
+  Killackey 2019; RRs 1.45, 6.83, 1.47; registered pooled RR 1.52, Wald 1.22 to 1.90, KH 0.72 to
+  3.22). Separately labelled k = 4 sensitivity adds Nuechterlein 2020, described as a broader
+  intervention package (IPS plus Workplace Fundamentals Module) versus an active vocational package
+  (brokered vocational rehabilitation plus social skills training), months 7 to 18, available-case
+  (randomised 46 vs 23, analysed 36 vs 15; source-verified). Non-randomised and other comparisons
+  are tabulated descriptively, never pooled.
+- Repo receives code, data and outputs. Manuscript stays in `manuscript/` in this project folder.
+
+## Environment facts (verified 1 Sep 2026)
+
+- `gh api user` returns ricardotwumasi; token scopes include `repo`; pushes will work.
+- Clone at `employment-early-psychosis/` (made before plan mode) has local `user.email`
+  40059457+ricardotwumasi@users.noreply.github.com, which overrides the global gmail address for
+  that repo only. Global config untouched. The project folder itself stays non-versioned.
+- bayesmeta not installed and not needed. `bridgesampling` and `here` availability to be checked
+  at execution (bridgesampling is a brms import).
+- Agent outputs held in `~/.claude/plans/abundant-gathering-pancake-agent-*.md` (plan mode blocked
+  scratchpad writes): included-study .bib and log with trial arm sizes; journal guide. Methods .bib
+  with prior-source effect sizes still pending at the time of writing.
+
+## Frozen analysis specification
+
+### Data layer (`R/00_clean_data.R`)
+
+Read the raw CSV unchanged (re-encode Windows-1252 artefacts to UTF-8, trim whitespace, treat
+"", "NA", "N/A", "/" as missing). Add `study_id_clean` (one per study, author plus print year,
+resolving the three raw collisions KILLACKEY_001, KILLACKEY_002, RINALDI_001), `report_id` (raw
+row order) and `result_id`.
+
+Derived tables in `data/derived/`:
+- `prevalence.csv` (23 rows) with added columns `outcome_basis`, `definition_class`
+  (competitive_or_paid / composite / retention), `vocational_exposure` (all / part / none, plus
+  `exposure_verified` yes/no from the source notes), `attrition = 1 - n_assessed / n_total`,
+  `year_online`.
+- `trials.csv` (12 rows) with `analysis_set` in {primary, sensitivity_k4, other_comparison,
+  excluded_addon, non_vocational_rct}; every row gets exactly one label (Eack and Fowler are
+  non_vocational_rct; Rosenheck is other_comparison because RAISE-ETP was cluster-randomised;
+  Craig and van Duin are excluded_addon; Dudley, Hegelstad, Major other_comparison).
+- `trial_arms.csv`: arm-level long table (6 rows for k = 3, 8 for k = 4) with numeric `arm_ips`
+  0/1, `events`, `n_analysed`, `n_randomised`.
+- `recovery.csv`: correlation and SMD rows, descriptive only.
+- `reconciliation.csv`: computed versus `reported_es` discrepancies (tolerance 0.02 for RR, 0.01
+  for proportions; Killackey 2008 computes 6.825 vs reported 6.84; Craig's reported 2.39 with CI
+  1.5 to 16.6 is not an RR CI and is not reproduced).
+
+Source-verified corrections, applied through an explicit `corrections` table (raw value,
+corrected value, source, reason), never by editing the CSV:
+1. Killackey 2019 prevalence row: `timepoint_months` 12 -> 6 (76/126 is the pooled 6-month
+   figure, 47 + 29 over 66 + 60; no 12-month per-arm counts exist in the paper and 126 cannot be
+   a 12-month denominator given the reported attrition).
+2. Craig 2014 prevalence: denominator 159 (randomised) -> 134 (assessed, 68 + 66), 41/134 = 0.306,
+   under the available-case rule; confirmed against the verified arm counts.
+3. Print years for the citable record: Dudley 2014, Hegelstad 2019, Tapfumaneyi 2015.
+4. Turner: follow-up mean 19 months (range 2 to 44); timepoint 18 kept for the window rule with a
+   Table 1 footnote.
+5. Nuechterlein: months 7 to 18, available-case; Fowler: non-affective subgroup of ISREP 24-month
+   follow-up. Labels only.
+6. Eack: prevalence row says "12-month" in `outcome_definition` but `timepoint_months` = 24 and the
+   counts equal the 24-month arm totals; timepoint resolved from the paper at execution, default 24.
+7. Rinaldi 2004 and 2010 (same South West London service): overlap checked from the sources at
+   execution; if the 2010 cohort contains the 2004 participants, the primary set keeps 2010 only
+   and 2004 moves to a sensitivity. Rule frozen now, fact verified later.
+8. Erickson 2021 (PDF in `literature/Erickson 2020.pdf`, user-verified): randomised IPS 56, TAU
+   53; months 6 to 12, 34 employed (72.3%) vs 25 (50.0%), so available-case denominators 47 and
+   50 are reconstructed from the printed count and percentage (recorded in the extraction notes).
+   Available-case 34/47 vs 25/50; missing-as-not-employed 34/56 vs 25/53. Prevalence row 59/97
+   unchanged.
+9. Hegelstad 2019 (PDF in `literature/Hegelstad et al 2018.pdf`, user-verified): 33 intervention
+   and 33 matched historical controls; 30 remained in each group at one year; employment status
+   missing for three controls. Available-case 14/30 vs 2/27; missing-as-not-employed 14/30 vs
+   2/30. Prevalence row corrected from 16/60 to 16/57 under the available-case rule. Remains an
+   `other_comparison` (non-randomised historical matched), never in the primary RCT synthesis.
+   Nuechterlein PDF (`literature/Nuechterlein et al.pdf`) is used to confirm 46 vs 23 and 36 vs 15.
+
+Assertions (stop on failure): 23 prevalence rows, one per study; 14 point and 9 period; quality
+8/6/9; region 10/7/4/2; design 8 RCT / 15 cohort (dissertation coding); `events <= n_assessed`;
+`n_assessed <= n_total`; `n_intervention + n_control <= n_total`; for any study with a proportion
+row and a trial row at the same timepoint and definition, events and denominators sum
+(Craig after correction); `follow_up_months` constant within study; timepoint stated in
+`outcome_definition` matches `timepoint_months` (regex); no `Job retention` row in any
+competitive-employment set; categorical fields trimmed and within allowed sets; `parse_number`
+introduces NA only for empty, "NA" or "/"; no non-ASCII bytes in identifier, numeric or moderator
+columns; the raw `study_id` collision set equals exactly {KILLACKEY_001, KILLACKEY_002,
+RINALDI_001}; the three primary RRs reproduce 1.45, 6.83, 1.47 to two decimals.
+
+### Prevalence estimands
+
+- Outcome: proportion in competitive or paid employment; denominator `n_assessed` (available
+  case). One estimate per study, closest to 12 months within 6 to 24 months.
+- Definitional eligibility (user decision): the primary set uses only
+  `definition_class == competitive_or_paid` in the target FEP population. Chua 2019 does not
+  isolate employment from an age-appropriate-role composite; Williams 2016 estimates retention
+  conditional on being employed initially; Lin 2026 does not represent the target FEP cohort.
+  These are substantive population or outcome mismatches, not quality differences.
+- Primary outcome basis: POINT PREVALENCE (employed at assessment). Period prevalence (any
+  employment during follow-up, k = 9) is a separately reported secondary estimand.
+- Strict primary set, k = 11: Europe 6 (Craig, Dudley, Hegelstad, Rinaldi 2004, Rinaldi 2010,
+  van Duin), North America 4 (Abdel-Baki, Eack, Pothier, Rosenheck), Oceania 1 (Andersen),
+  Asia 0. Consequently no inferential regional meta-regression is fitted on the primary set;
+  region is tabulated descriptively. (If the Rinaldi overlap check removes 2004, k = 10 and this
+  is reported.)
+- Dissertation-compatible analyses, each clearly labelled: (1) point-prevalence
+  construct-relaxed sensitivity reinstating Chua, Williams and Lin, k = 14; (2) legacy
+  dissertation reproduction combining point and period prevalence, k = 23 (the registered
+  analysis in script 01 and its Bayesian counterpart with outcome basis as a covariate).
+- Primary model (brms): `events | trials(n_assessed) ~ 1 + (1 | study_id_clean)`, binomial,
+  logit link. Priors: `Intercept ~ normal(0, 1.5)` (near-uniform on the proportion scale);
+  `sd ~ half-normal(0, 1)` (weakly informative; observed tau on the logit scale is about 0.75).
+- Reported (all equal-tailed, medians, transformation-invariant; no HDI): pooled proportion with
+  95% CrI; posterior mean and SD on the logit scale; tau posterior with its prior overlaid;
+  95% prediction interval for a new study computed per draw as
+  `theta_new_j = b_j + sd_j * z_j`, z ~ N(0, 1), fixed R seed, then `plogis`;
+  P(pooled proportion < 0.50) as a descriptive quantity (estimation only; no existential claim).
+- Sensitivity (each separately labelled): tau ~ HN(0.5) and HN(2); dissertation set (all 14 point
+  rows; all 23 with basis covariate); exclude EPHPP Weak; drop samples where all participants were
+  offered a vocational intervention (`vocational_exposure == all`: Craig, Nuechterlein, van Duin,
+  Rinaldi 2004, Rinaldi 2010, plus Williams if in set); missing-as-not-employed lower bound
+  (`events / n_total`), labelled as a bound; normal-normal logit approximation
+  (`yi | se(sei)`) to show what the registered analysis assumes; leave-one-out.
+
+### Trial estimands
+
+- Primary: k = 3, competitive employment, RR on the log scale, 2x2 counts as extracted
+  (available-case; matches the marker's reproduction; no zero cells).
+- Primary model: `yi | se(sei) ~ 1 + (1 | study_id_clean)`, `Intercept ~ normal(0, 1)` (95% prior
+  mass RR 0.14 to 7.4; shrinkage under 6%), `sd ~ half-normal(0, 0.5)` (Rover et al. 2021 scale
+  for log ratio measures; noted as informative relative to k = 3, so the tau posterior is shown
+  against its prior).
+- Reported: posterior median RR and 95% CrI; posterior mean and SD of log RR; tau posterior;
+  P(RR > 1); null-interval probabilities P(RR < 0.80), P(0.80 <= RR <= 1.25), P(RR > 1.25) for
+  the pooled effect and for `theta_new` (a future trial); Kruschke decision from the 95% CrI
+  [L, U] on log RR against [-m, m] with the robustness region for m: reject if L > m with
+  RR_reject = (0, L]; accept if -m < L and U < m with RR_accept = [max(|L|, |U|), inf); otherwise
+  suspend with RR_suspend = [L, U) if L > 0 or (0, max(|L|, U)) if L < 0 < U; all exponentiated.
+- Bayes factors (Dienes), directional H1 (IPS increases employment) versus point null log RR = 0:
+  - Closed-form conditional half-normal BF:
+    `B_HN(d, se; s) = 2 * N(d | 0, se^2 + s^2) * Phi(d * s / (se * sqrt(se^2 + s^2))) / N(d | 0, se^2)`.
+    Unit test: Dienes (2020) footnote 4, d = 1, se = 2, s = 5 gives 0.5615 (paper: 0.56).
+  - Fixed-effect BF from the Wald summary (d = 0.42, se = 0.11).
+  - Exact random-effects BF: with `v_i = s_i^2 + tau^2`, `w_i = 1 / v_i`,
+    `ybar_tau = sum(w_i y_i) / sum(w_i)`, `sig_tau = sqrt(1 / sum(w_i))`,
+    `L0(tau) = prod N(y_i | 0, v_i)`,
+    `B_RE = E_{p(tau | y, H0)}[ B_HN(ybar_tau, sig_tau; s) ]` with
+    `p(tau | y, H0) proportional to L0(tau) * HN(tau | 0, scale)`, by `integrate()` on [0, 5].
+    Reported as a table over tau prior scale {0.25, 0.5, 1} by s {s_primary, log 2.40}. Text
+    frames the result as: per-trial evidence for an increase is strong; evidence for a non-zero
+    average effect under a random-effects null depends on how much heterogeneity the null is
+    allowed.
+  - s_primary = log(2.00) = 0.693 (user decision). Anchor: a corrected reanalysis of Frederick
+    and VanderWeele's (2019) publicly available PLOS ONE supplementary data. Their code passes the
+    total randomised arm sizes as metafor's `bi` and `di`, which are the non-event cells; with
+    events and totals specified correctly the pooled RR becomes 2.04 (95% CI 1.78 to 2.34) instead
+    of the published 1.63. A repo script (`R/07_external_prior_frederick2019.R`) downloads the
+    supplementary dataset, reproduces 1.63 with their cell assignment and 2.04 with the corrected
+    one, and writes both to `output/tables/`. The manuscript labels 2.04 as our reproducible
+    correction of the external dataset, never as their published estimate, and uses the rounded
+    2.00 because s expresses a plausible magnitude rather than a precisely estimated prior mean.
+    If the supplementary files cannot be retrieved at execution, this is reported and s = log 2.00
+    is retained with the anchor described from the user's reanalysis.
+  - Bayes-factor sensitivity values of s: log(1.63) (Frederick and VanderWeele as published),
+    log(1.69) (Bond, Drake and Luciano 2015, 49% vs 29%, mixes controlled and uncontrolled
+    cohorts), log(1.96) (Bond, Drake and Campbell 2016 young-adult counts, not FEP-specific,
+    controls received alternative vocational services), log(2.40) (Modini 2016). Bond et al. 2023
+    is cited but not used for s because it incorporates the trials being synthesised.
+  - Robustness region: `RR_B>3 = [min{s : B(s) > 3}, max{s : B(s) > 3}]` over s in 0.01 to 2.5
+    step 0.01 (contiguity checked), reported in log RR and RR units, primary tau prior only;
+    analogous RR_1/3<B<3 or RR_B<1/3 if the conclusion differs.
+  - Cross-check by bridge sampling from brms: H1 `yi | se(sei) ~ 0 + Intercept + (1 | study)` with
+    `prior(normal(0, s), class = b, coef = Intercept, lb = 0)`; H0 `yi | se(sei) ~ 0 + (1 | study)`;
+    both with `save_pars = save_pars(all = TRUE)`; `bridgesampling::bayes_factor()`. Agreement with
+    the quadrature to two significant figures is the verification. No Savage-Dickey (biased at the
+    boundary of a half-normal prior).
+  - Evidence thresholds 3 and 1/3 (Lee and Wagenmakers 2013), presented as a continuous measure.
+- Sensitivity analyses (each separately labelled): tau ~ HN(0.25) and HN(1); leave-one-out for
+  all three trials; k = 4 with Nuechterlein; missing-as-not-employed with verified randomised
+  denominators (Erickson 56 vs 53; Killackey 2008 20 vs 21, no attrition; Killackey 2019 73 vs
+  73; Nuechterlein 46 vs 23 in the k = 4 version); exact binomial logistic model
+  on `trial_arms.csv`: `events | trials(n_analysed) ~ 0 + trial + arm_ips + (0 + arm_ips | trial)`
+  (Simmonds and Higgins fixed-intercept random-slope form), priors `b ~ normal(0, 2)`,
+  `b[arm_ips] ~ normal(0, 1)`, `sd ~ half-normal(0, 0.5)`; reported as pooled OR = exp(b_arm_ips),
+  P(OR > 1), and an RR-scale summary per draw at the pooled control risk
+  `RR = OR / (1 - p0 + p0 * OR)`, with the caveat that ORs far exceed RRs here (control risks
+  about 0.5).
+- Registered frequentist analysis reported alongside in the main results table: REML with
+  Knapp-Hartung (RR 1.52, 0.72 to 3.22) and conventional Wald (1.22 to 1.90), both declared. The
+  registered prevalence model also used KH (`test = "knha"`); the reproduction target 0.372 (0.298
+  to 0.454) is the KH interval, Wald is 0.298 to 0.447; both stated.
+
+### Meta-regression (exploratory, separate, regularised; 23-row set)
+
+- Each moderator model: `events | trials(n_assessed) ~ 0 + Intercept + outcome_basis + moderator +
+  (1 | study)` so contrasts are within outcome basis; `b[Intercept] ~ normal(0, 1.5)`,
+  other `b ~ normal(0, 1)`, `sd ~ half-normal(0, 1)`. Only the moderator contrast is reported,
+  as 95% CrI and P(contrast > 0), labelled exploratory.
+- Moderators: design (RCT vs cohort); timepoint as `(months - 12) / 12`; `vocational_exposure`
+  (all / part / none); attrition (continuous). No regional model on the primary set (Asia k = 0,
+  Oceania k = 1); on the legacy k = 23 set only the registered four-level region model and its
+  omnibus test are reported from script 01, with the Europe versus Asia coefficient explicitly not
+  interpreted. The Bayesian forest plot shows shrunken study estimates grouped by region.
+
+### Publication bias
+
+Funnel plot, Egger test and trim-and-fill on the registered logit model, with the corrected
+interpretation (adjusted estimate 38.5% is higher, not lower; its p-value tests difference from
+50%, not bias) and the caveat that funnel-based tests are unreliable for proportions (Hunter et
+al. 2014).
+
+### Recovery outcomes
+
+Correlations (Lin, Pothier) and SMDs (Chua) are too sparse to pool; descriptive supplementary
+table with Hedges' g for Chua.
+
+### MCMC settings and gate
+
+4 chains, `warmup = 2000, iter = 6000` (brms `iter` includes warmup), `adapt_delta = 0.99`,
+`seed = 20260901` plus `set.seed()` for prediction draws; non-centred parameterisation (brms
+default). Gate: R-hat < 1.01, bulk and tail ESS > 1000, zero divergences, no max_treedepth
+warnings, E-BFMI > 0.2, `pp_check(type = "intervals")` for every binomial model. A failing model
+is re-run at `adapt_delta = 0.999`; if divergences remain, their count and a pairs plot are
+reported rather than re-seeding.
+
+## Repository layout (clone at `employment-early-psychosis/`)
+
+```
+README.md                      rewritten, no emoji; AI statement "This code was scaffolded with
+                               the assistance of Claude Fable 5.1 (Anthropic, San Francisco: CA)"
+LICENSE, FEP_employment_data_extraction_template.csv   unchanged
+.gitignore                     output/bayesian/*.rds
+data/yanan_data_280826.csv     raw extraction, never edited
+data/derived/                  cleaned tables and reconciliation.csv (committed)
+R/00_clean_data.R              corrections table, derived tables, assertions
+R/01_frequentist_registered.R  metafor reproduction: logit REML with KH and Wald, subgroups,
+                               registered meta-regressions, Egger, trim-and-fill, quality sensitivity
+R/02_bayes_prevalence.R        binomial-normal models and sensitivities
+R/03_bayes_trials.R            log RR model, sensitivities, exact binomial model, bridge sampling
+R/04_bayes_metaregression.R
+R/05_dienes_inference.R        closed-form B_HN, B_RE quadrature, robustness regions, null-interval
+                               probabilities, unit test against Dienes footnote 4
+R/06_figures_tables.R          posterior forest plots, prior-sensitivity plot, funnel, tables
+R/07_external_prior_frederick2019.R   downloads the PLOS ONE supplementary data, reproduces the
+                               published RR 1.63 and the corrected RR 2.04 that anchors s
+R/utils.R                      priors, posterior summaries, prediction draws, BF functions
+run_all.R                      version check (brms 2.23.0, CmdStan 2.36.0, metafor 4.6.0; abort on
+                               mismatch), runs 00 to 06 with source(local = new.env()),
+                               options(warn = 1), refit = TRUE switch, fit cache keyed by a hash of
+                               data + formula + priors, writes output/session_info.txt including
+                               cmdstan_version()
+output/{frequentist,bayesian,figures,tables}/   summary CSVs and figures committed; .rds ignored
+```
+
+The four root scaffold scripts are replaced by `R/`; README says so (history keeps them). A release
+tag is created for the data-availability statement.
+
+## Manuscript (`manuscript/` in this project folder, not committed)
+
+- `manuscript.tex` (elsarticle, elsarticle-harv name-year, line numbers). Journal requirements
+  confirmed from the live guide on 1 Sep 2026: full-length article 4,000 words excluding tables,
+  figures and references; unstructured abstract of at most 250 words, no references; 1 to 7
+  keywords; numbered sections; British English throughout; Highlights not required; required
+  declarations: competing interests, funding, CRediT, generative AI use in the writing process
+  (verbatim section wording from the guide); data sharing encouraged, so a data availability
+  statement points to the tagged GitHub release; PROSPERO registration and the protocol deviation
+  stated in Methods; figures as separate vector PDFs, tables as editable text.
+- `references.bib` assembled only from the two verified .bib files; unverified items left as TODO
+  comments and listed in the final report.
+- Sections: Introduction; Methods (registration and deviation statement, search, eligibility,
+  extraction and source-verified corrections, EPHPP, registered frequentist analysis with KH
+  declared for both models, Bayesian models and priors, Dienes framework with the null-interval
+  justification and the separately specified H1 scale, sensitivity analyses, software); Results
+  (Table 1 with corrected counts and attrition; prevalence Bayesian and registered side by side;
+  trials with 2x2 counts, both frequentist CIs, posterior probabilities, B_HN table and
+  robustness regions; exploratory moderators; bias diagnostics with corrected interpretation;
+  recovery outcomes descriptive); Discussion; Limitations; Conclusion.
+- Author block placeholders (open decision 5). Supplement: prior sensitivity, all sensitivity
+  models, MCMC diagnostics, other-comparison table, reconciliation table.
+- Compiled with pdflatex and bibtex; no undefined citations.
+- Housekeeping at execution: delete the stray 1.2 MB `scratchpad/sd_guide.html`.
+
+## Execution order
+
+1. Copy the agents' .bib, logs and journal guide from `~/.claude/plans/` into the scratchpad.
+2. Write `R/utils.R` and `R/00_clean_data.R`; run; all assertions pass; corrections table printed.
+3. Write and run `R/01_frequentist_registered.R`; confirm 0.372 (KH 0.298 to 0.454; Wald 0.298 to
+   0.447), tau2 0.53, RR 1.52 with both CIs, trim-and-fill adjusted 38.5%.
+4. Write and run 02, 03, 04, 05, then 06.
+5. Fix s_primary from the verified figure; run the k = 4 and missing-as-not-employed sensitivities
+   with the verified arm sizes.
+6. Write the manuscript; compile; statistical-manuscript-reviewer agent reviews manuscript plus
+   output tables; fix findings.
+7. Rewrite README; commit as ricardotwumasi in logical commits (data layer, frequentist, Bayesian,
+   figures, README); push to main; tag release.
+8. Final report with all numbers, unverified references, and open items.
+
+## Verification
+
+- `Rscript run_all.R` completes from a clean clone; a second run reproduces every reported number
+  to the reported precision on the same machine and CmdStan build (bit-identical cross-platform
+  reproduction is not claimed).
+- Data assertions and frequentist reproduction targets pass.
+- Every Bayesian model passes the gate; diagnostics table saved.
+- Dienes checks: `B_HN(1, 2; 5) = 0.5615`; quadrature B_RE agrees with bridge sampling to two
+  significant figures; null-interval probabilities from draws and from the normal approximation
+  are reported side by side (their discrepancy documents the approximation error and does not
+  block the run).
+- `pdflatex` build has no undefined citations; word counts within the journal limit.
+- `git log` shows ricardotwumasi with the noreply email on every new commit; README contains no
+  emoji (`grep -P "[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]" README.md` returns nothing).
+
+## External comparators for the Discussion (verified)
+
+- Ajnakina et al. 2021, Schizophrenia Research 231:122-133: pooled FEP employment 32.5% (95% CI
+  28.5 to 36.9) across 74 studies. Our estimate is compared with this directly.
+- OECD 2024 employment rates: 43.2% (ages 15 to 24), 80.1% (ages 25 to 54); indicator
+  doi 10.1787/084f32c7-en (SDMX query URL in the log). Used descriptively only.
+- GRADE (Guyatt et al. 2011, abstract): "If the 95% CI includes appreciable benefit or harm (we
+  suggest an RR of under 0.75 or over 1.25 as a rough guide) rating down for imprecision may be
+  appropriate even if OIS criteria are met." Cited verbatim for the 1.25 threshold.
+- Lee and Wagenmakers' book carries print year 2014 in the publisher record; cited as 2014.
+- Methods .bib: 57 verified entries at `~/.claude/plans/abundant-gathering-pancake-agent-a0eaf7c9e5ad48f33.md`;
+  the recollected "Rodrigues, Beswick, Anderson" review does not exist and is dropped.
+
+## Bibliography status (agent report, 1 Sep 2026)
+
+All 23 included studies resolved to Crossref or PubMed records. Corrected records: Erickson 2021
+(Early Intervention in Psychiatry 15(3):662-668, doi 10.1111/eip.13005; the dissertation citation
+was fabricated); Killackey 2019 (British Journal of Psychiatry 214(2):76-82); Major 2010 (Social
+Psychiatry and Psychiatric Epidemiology); van Duin 2021 (Schizophrenia Research 236:115-122);
+Tapfumaneyi 2015 (co-authors Johnson, Joyce, Major et al.). Rinaldi 2004, Turner 2019 and Williams
+2016 are not in PubMed but have publisher DOIs. Hegelstad 2019 abstract reports 33 vs 66 (not 30
+vs 30). Erickson 2021 per-arm counts and allocation are not verifiable without the PDF.
+
+## Decisions resolved by the user (1 Sep 2026)
+
+1. Primary prevalence outcome basis: point prevalence.
+2. s_primary = log(2.00), anchored to the corrected Frederick and VanderWeele reanalysis;
+   sensitivity s in {log 1.63, log 1.69, log 1.96, log 2.40}.
+3. Strict k = 11 primary set; construct-relaxed k = 14 and legacy k = 23 as labelled sensitivities;
+   no regional inference on the primary set.
+4. Erickson and Hegelstad counts taken from the PDFs now in `literature/` (corrections 8 and 9).
+
+## Remaining placeholder
+
+- Author list, order and affiliations for the manuscript title page: placeholders (Yanan Li,
+  Hazal Kaplankiran, Anna Georgiades, Ricardo Twumasi) to be confirmed by the user at the
+  manuscript stage; this does not affect any analysis.
+
+## Execution notes
+
+- Use absolute paths in every shell call; the shell working directory persisted inside the clone
+  after an earlier `cd`.

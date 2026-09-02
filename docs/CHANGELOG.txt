@@ -1,0 +1,50 @@
+CHANGELOG for employment-early-psychosis (docs/)
+Plain-text record of archival and governance events. Newest entries at the bottom.
+British English. Times are Europe/London local time.
+
+[2026-09-02 11:28:56 BST] Archived the 1 September 2026 analysis specification.
+  Archive file: docs/analysis_specification_2026-09-01.txt
+  SHA-256: d6928e505182cce9135b1ce6ecef3106f7d0550e36c932a275d90edc5e338fee
+  Source path: ~/.claude/plans/abundant-gathering-pancake.md (a Claude Code plan-mode file on
+    Ricardo Twumasi's machine; outside Git at the time of writing)
+  Source file size: 27702 bytes
+  Original filesystem modification time: 2026-09-01 23:55:04 BST (epoch 1788303304)
+  Archive time: 2026-09-02 11:28:56 BST
+  Copy verified byte-identical with cmp at archive time.
+  Statement of limitation: this archive was created on 2 September 2026, after the Bayesian
+    models had been fitted, and filesystem metadata alone cannot prove that the specification
+    preceded the outputs. The following observations are consistent with, but do not prove,
+    the team's confirmed sequence (specification approved, then fits): the earliest cached
+    Bayesian fit object under output/bayesian/fits/ carries modification time
+    2026-09-02 00:09:40 BST (epoch 1788304180), fourteen minutes after the specification's
+    last modification, and all analysis commits (b51fd6e through abb5558) carry the commit time
+    2026-09-02 03:55:22 +0100. The authors' written confirmation that no Bayesian numerical
+    output was generated before the specification was approved is the governance evidence
+    relied upon; see docs/amendment_2026-09-02.md.
+  Known inaccuracy preserved verbatim: the specification's Context section states that
+    "PROSPERO CRD420261402841 registered a frequentist analysis". Verification of the live
+    record on 2 September 2026 showed that version 1.0 planned a narrative synthesis and
+    specified no pooling model. The archive is not edited; the correction is recorded here and
+    in the amendment (entry A14).
+  Known superseded content preserved verbatim: the specification gives the strict primary
+    prevalence set as k = 11 with the conditional rule "If the Rinaldi overlap check removes
+    2004, k = 10 and this is reported". The overlap check (specification correction item 7)
+    removed Rinaldi 2004 in R/00_clean_data.R before any fit, so the analysed primary set is
+    k = 10 (amendment entry A4).
+  Known withdrawn wording preserved verbatim: the specification's prevalence-estimand section
+    states that Lin 2026 "does not represent the target FEP cohort". The authors replaced this on
+    2 September 2026 with an estimand-based reason (amendment entry A5); the exclusion itself is
+    unchanged.
+  Known inaccurate verification target preserved verbatim: the specification gives the Wald
+    interval of the as-submitted legacy prevalence model as 0.298 to 0.447. The computed Wald
+    interval is 0.301 to 0.449 (output/frequentist/prevalence_registered_models.csv). The
+    Knapp-Hartung target 0.372 (0.298 to 0.454), which is the dissertation's reported result,
+    is reproduced. The manuscript's "reproduced exactly" refers to that Knapp-Hartung result.
+
+[2026-09-02 11:28:56 BST] Archived the PROSPERO major-revision draft as prepared.
+  Archive file: docs/registration/prospero_major_revision_draft_as_prepared_2026-09-02.md
+  SHA-256: 8c1291417c274567e5bbd142dae118d6441264925f094c4cfe8712e269df06c5
+  Source: PROSPERO_MAJOR_REVISION_DRAFT_2026-09-02.md in the workspace root (not in Git)
+  Status: DRAFT AS PREPARED. The exact text submitted to PROSPERO on 2 September 2026, the
+    submission receipt and the public revised record are still to be archived by the review
+    guarantor; see docs/registration/README.md.
