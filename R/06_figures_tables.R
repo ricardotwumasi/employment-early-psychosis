@@ -258,12 +258,14 @@ write_tex(t1, "table1_study_characteristics.tex")
 bay_row <- function(m, label) {
   r <- prev_sum %>% filter(model == m)
   data.frame(Analysis = label, k = r$k, `Estimate (95% CrI)` = cip(r$estimate, r$ci_low, r$ci_high),
+             `Logit mean (SD)` = paste0(fmt(r$link_mean), " (", fmt(r$link_sd), ")"),
              `Prediction interval` = paste0(pct(r$pi_low), " to ", pct(r$pi_high)),
              `tau (95% CrI)` = ci(r$tau_median, r$tau_low, r$tau_high), check.names = FALSE)
 }
 frq_row <- function(m, label) {
   r <- prev_freq %>% filter(model == m, interval == "knha")
   data.frame(Analysis = label, k = r$k, `Estimate (95% CrI)` = paste0(cip(r$estimate, r$ci_low, r$ci_high), " (KH CI)"),
+             `Logit mean (SD)` = "",
              `Prediction interval` = paste0(pct(r$pi_low), " to ", pct(r$pi_high)),
              `tau (95% CrI)` = paste0(fmt(r$tau), " (REML point estimate)"), check.names = FALSE)
 }
@@ -283,7 +285,7 @@ t2 <- bind_rows(
   frq_row("legacy_k23_as_submitted", "Legacy set, registered REML logit model, as submitted")
 )
 write_csv(t2, file.path(tab_dir, "table2_prevalence.csv"))
-write_tex(t2, "table2_prevalence.tex", align = "lrlll")
+write_tex(t2, "table2_prevalence.tex", align = "lrllll")
 
 # -------------------------------
 # Table 3: trials
@@ -292,6 +294,7 @@ trow <- function(m, label) {
   r <- tr_sum %>% filter(model == m)
   data.frame(Analysis = label, k = r$k,
              `RR (95% CrI)` = ci(r$estimate, r$ci_low, r$ci_high),
+             `Log RR mean (SD)` = paste0(fmt(r$link_mean), " (", fmt(r$link_sd), ")"),
              `Prediction interval` = paste0(fmt(r$pi_low), " to ", fmt(r$pi_high)),
              `tau (95% CrI)` = ci(r$tau_median, r$tau_low, r$tau_high),
              `P(RR > 1)` = fmt(r$p_rr_gt_1, 3),
@@ -300,6 +303,7 @@ trow <- function(m, label) {
 frow <- function(m, int, label) {
   r <- tr_freq %>% filter(model == m, measure == "RR", interval == int)
   data.frame(Analysis = label, k = r$k, `RR (95% CrI)` = paste0(ci(r$estimate, r$ci_low, r$ci_high), " (CI)"),
+             `Log RR mean (SD)` = "",
              `Prediction interval` = "", `tau (95% CrI)` = paste0(fmt(sqrt(r$tau2)), " (REML)"),
              `P(RR > 1)` = ifelse(r$p_value < 0.001, "p < 0.001", paste0("p = ", fmt(r$p_value, 3))), `P(RR > 1.25)` = "", check.names = FALSE)
 }
@@ -316,15 +320,17 @@ t3 <- bind_rows(
   trow("sens_k3_missing_not_employed", "Missing counted as not employed (randomised denominators)"),
   trow("sens_k4_hn05", "Sensitivity: adds Nuechterlein 2020 (active vocational comparator)"),
   trow("sens_k4_missing_not_employed", "k = 4, missing counted as not employed"),
-  data.frame(Analysis = "Exact binomial logistic model, k = 3 (odds ratio)", k = 3,
+  data.frame(Analysis = "Exact binomial arm-level model, k = 3 (odds-ratio scale)", k = 3,
              `RR (95% CrI)` = paste0("OR ", ci(ex_k3$or, ex_k3$or_low, ex_k3$or_high)),
-             `Prediction interval` = paste0("RR at control risk ", pct(ex_k3$pooled_control_risk, 0), "%: ",
+             `Log RR mean (SD)` = paste0("log OR ", fmt(ex_k3$link_mean), " (", fmt(ex_k3$link_sd), ")"),
+             `Prediction interval` = paste0("RR at fixed control risk ", pct(ex_k3$pooled_control_risk, 0),
+                                            "% (illustrative): ",
                                             ci(ex_k3$rr_at_p0, ex_k3$rr_at_p0_low, ex_k3$rr_at_p0_high)),
              `tau (95% CrI)` = ci(ex_k3$tau_median, ex_k3$tau_low, ex_k3$tau_high),
              `P(RR > 1)` = paste0("P(OR > 1) = ", fmt(ex_k3$p_or_gt_1, 3)), `P(RR > 1.25)` = "", check.names = FALSE)
 )
 write_csv(t3, file.path(tab_dir, "table3_trials.csv"))
-write_tex(t3, "table3_trials.tex", align = "lrlllll")
+write_tex(t3, "table3_trials.tex", align = "lrllllll")
 
 # -------------------------------
 # Table 4: Dienes hypothesis tests
@@ -408,6 +414,13 @@ rec_tab <- bind_rows(
 )
 write_csv(rec_tab, file.path(tab_dir, "tableS_recovery.csv"))
 write_tex(rec_tab, "tableS_recovery.tex", col_spec = "llp{5cm}p{5.5cm}")
+
+arms <- read_csv(root_path("data", "derived", "trial_arms.csv"), show_col_types = FALSE) %>%
+  transmute(Trial = study_label, Set = ifelse(analysis_set == "primary", "Primary", "k = 4 sensitivity"),
+            Arm = ifelse(arm_ips == 1, "IPS", "Control"), Employed = events,
+            `n analysed` = n_analysed, `n randomised` = n_full)
+write_csv(arms, file.path(tab_dir, "tableS_trial_counts.csv"))
+write_tex(arms, "tableS_trial_counts.tex")
 
 ext_tab <- external %>% transmute(Model = model, k, `RR (95% CI)` = ci(rr, ci_low, ci_high), `tau2` = fmt(tau2, 3), `I2 (%)` = fmt(i2, 1))
 write_tex(ext_tab, "tableS_external_frederick.tex")

@@ -1,0 +1,9 @@
+Trial,Set,Arm,Employed,n analysed,n randomised
+Erickson 2021,Primary,IPS,34,47,56
+Erickson 2021,Primary,Control,25,50,53
+Killackey 2008,Primary,IPS,13,20,20
+Killackey 2008,Primary,Control,2,21,21
+Killackey 2019,Primary,IPS,47,66,73
+Killackey 2019,Primary,Control,29,60,73
+Nuechterlein 2020,k = 4 sensitivity,IPS,25,36,46
+Nuechterlein 2020,k = 4 sensitivity,Control,5,15,23

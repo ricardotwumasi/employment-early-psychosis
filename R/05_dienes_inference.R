@@ -121,10 +121,19 @@ compare <- bf_table %>% filter(tau_scale == 0.5) %>%
   inner_join(bridge %>% select(h1_scale_label, bf_bridge, h1_error_pct, h0_error_pct),
              by = "h1_scale_label") %>%
   mutate(ratio = bf_bridge / bf_random_effects,
-         agrees_2sf = signif(bf_bridge, 2) == signif(bf_random_effects, 2) | abs(ratio - 1) < 0.05)
+         # Pre-specified criterion (agreement to two significant figures) reported
+         # strictly; bridge sampling carries about 1% Monte Carlo error on each
+         # marginal likelihood, so the relative discrepancy is also reported.
+         agrees_2sf = signif(bf_bridge, 2) == signif(bf_random_effects, 2),
+         relative_discrepancy_pct = 100 * abs(ratio - 1))
 write_csv(compare, file.path(tab_dir, "dienes_bf_quadrature_vs_bridge.csv"))
 check(all(abs(compare$ratio - 1) < 0.10),
       "quadrature and bridge-sampling Bayes factors differ by more than 10%")
+if (!all(compare$agrees_2sf)) {
+  message("Note: two-significant-figure agreement met for ", sum(compare$agrees_2sf), " of ",
+          nrow(compare), " anchors; maximum relative discrepancy ",
+          round(max(compare$relative_discrepancy_pct), 1), "%")
+}
 
 # Robustness region for s (primary tau scale 0.5)
 rr_s <- robustness_region_s(function(s) bf_re(y, sei, s, 0.5), log(2))

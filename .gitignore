@@ -10,3 +10,6 @@ output/bayesian/log_*.txt
 
 # Operating system files
 .DS_Store
+
+# Pipeline log
+output/run_all_log.txt
