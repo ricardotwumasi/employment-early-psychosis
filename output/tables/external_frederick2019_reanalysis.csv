@@ -1,0 +1,4 @@
+"model","k","rr","ci_low","ci_high","tau2","i2","note"
+"authors_published",23,1.633,1.462,1.824,0.0137,22.6,"Authors' S2 code: arm totals passed as bi/di (non-event cells); REML"
+"corrected_reml",23,2.04,1.781,2.338,0.0487,55.9,"Arm totals passed as n1i/n2i; REML (same estimator as authors)"
+"corrected_reml_knha",23,2.04,1.756,2.371,0.0487,55.9,"Arm totals passed as n1i/n2i; REML with Knapp-Hartung adjustment"

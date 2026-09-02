@@ -1,0 +1,27 @@
+Model,Max R-hat,Min bulk ESS,Min tail ESS,Divergences,Max tree depth,Min E-BFMI,Gate
+primary_strict_point_hn1,1.001,3144,4043,0,7,0.75,pass
+secondary_period_hn1,1.000,2682,3663,0,8,0.76,pass
+sens_prior_hn05,1.001,3580,5340,0,7,0.75,pass
+sens_prior_hn2,1.001,2949,4156,0,7,0.71,pass
+sens_point_relaxed_k14,1.001,2473,3810,0,8,0.73,pass
+sens_legacy_k23,1.001,2236,3999,0,7,0.69,pass
+sens_strict_excl_weak,1.002,3278,3821,0,8,0.76,pass
+sens_strict_excl_exposed,1.001,3569,5103,0,7,0.74,pass
+sens_strict_missing_not_employed_bound,1.002,2934,4442,0,7,0.76,pass
+sens_strict_normal_normal_hn1,1.002,2889,3983,0,7,0.72,pass
+primary_k3_hn05,1.001,3031,3493,0,7,0.80,pass
+sens_prior_hn025,1.000,5053,4629,0,6,0.87,pass
+sens_prior_hn1,1.002,2756,3179,0,7,0.67,pass
+sens_k4_hn05,1.002,3472,4816,0,7,0.81,pass
+sens_k3_missing_not_employed,1.001,3113,4034,0,7,0.77,pass
+sens_k4_missing_not_employed,1.001,3556,4293,0,6,0.74,pass
+loo_ERICKSON_2021,1.001,3639,3673,0,6,0.82,pass
+loo_KILLACKEY_2008,1.002,2941,2137,0,6,0.84,pass
+loo_KILLACKEY_2019,1.001,3881,3705,0,7,0.86,pass
+exact_binomial_k3,1.001,4840,4600,0,6,0.89,pass
+exact_binomial_k4,1.000,5405,6926,0,6,0.90,pass
+mr_design,1.001,3111,5240,0,8,0.74,pass
+mr_timepoint,1.002,3403,5424,0,9,0.73,pass
+mr_exposure,1.001,4999,8041,0,9,0.78,pass
+mr_attrition,1.001,3067,4967,0,8,0.68,pass
+mr_outcome_basis,1.002,2799,4973,0,8,0.72,pass

@@ -1,0 +1,2 @@
+model,category,s_min,s_max,rr_min,rr_max,hits_grid_edge
+fixed_effect,H1,0.04,2.5,1.0408107741923882,12.182493960703473,TRUE

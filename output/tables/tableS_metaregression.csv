@@ -1,0 +1,8 @@
+Model,Term,Logit contrast (95% CrI),Odds ratio (95% CrI),P(> 0)
+mr_design,design_rct,0.23 (-0.47 to 0.93),1.26 (0.63 to 2.55),0.743
+mr_timepoint,time_years_c,0.19 (-0.55 to 0.91),1.21 (0.58 to 2.49),0.699
+mr_exposure,exposurepart,-0.02 (-0.93 to 0.87),0.98 (0.40 to 2.39),0.483
+mr_exposure,exposureall,0.27 (-0.61 to 1.15),1.31 (0.54 to 3.16),0.735
+mr_exposure,exposureunknown,0.39 (-0.56 to 1.33),1.48 (0.57 to 3.80),0.801
+mr_attrition,attrition_c,-0.22 (-1.60 to 1.18),0.80 (0.20 to 3.25),0.375
+mr_outcome_basis,basis_period,0.05 (-0.60 to 0.71),1.05 (0.55 to 2.02),0.561
