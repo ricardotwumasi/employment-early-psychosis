@@ -12,9 +12,7 @@ the primary inference is a Bayesian re-analysis in brms with exact binomial like
 informative half-normal priors on the between-study standard deviation, reported following the
 guidance of Dienes (2021) on Bayesian hypothesis tests.
 
-The Bayesian analysis was specified after the registered frequentist results were known and is
-therefore a declared deviation from the protocol. Every estimand, prior, decision threshold,
-missing-data rule and sensitivity analysis was frozen before any Bayesian model was fitted; the
+Every estimand, prior, decision threshold, missing-data rule and sensitivity analysis was frozen before any Bayesian model was fitted; the
 specification is documented in the script headers.
 
 ## Analyses
@@ -106,10 +104,11 @@ a unique `study_id_clean` and asserts that no further collisions appear.
 
 ## Contributors
 
-- Yanan Li
 - Hazal Kaplankiran
-- Anna Georgiades
+- Yanan Li
+- Giulia Trotta
 - Ricardo Twumasi
+- Anna Georgiades
 
 ## AI statement
 
@@ -129,3 +128,29 @@ This code was scaffolded with the assistance of Claude Fable 5.1 (Anthropic, San
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
+
+## Citation
+
+For citing this repository, please use:
+
+<details>
+<summary>BibTeX</summary>
+<pre><code>@article{kaplankiran2026,
+  title={Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis},
+  author={Kaplankiran, Hazal; Li; Yanan; Trotta; Giulia; Twumasi, Ricardo; and Georgiades, Anna},
+  journal={tbc},
+  year={2026},
+  publisher={tbc},
+  doi={tbc}
+}
+</code></pre>
+</details>
+<details>
+<summary>APA</summary>
+<pre><code>Kaplankiran, H., Li, Y., Trotta, G., Twumasi, R., & Georgiades, A (2026). Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis. tbc.</code></pre>
+</details>
+<details>
+<summary>Vancouver</summary>
+<pre><code>Kaplankiran H, Li Y, Trotta G, Twumasi R, Georgiades A. Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis. tbc. 2026</code></pre>
+</details>
+
