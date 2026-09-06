@@ -1,0 +1,462 @@
+{
+  "status": "completed",
+  "failure_message": {},
+  "mode": "cache-only",
+  "started_at": "2026-09-06 02:33:21 BST",
+  "finished_at": "2026-09-06 02:35:49 BST",
+  "elapsed_minutes": 2.47,
+  "git": {
+    "commit": "e3d8081610c66434962d8e9e17834a344236752c",
+    "dirty": true
+  },
+  "input_hashes": {
+    "data/yanan_data_280826.csv": "a167afc2fb70a2e1fbf96eddc3f540c266235cd3507b855adb5be786d757f70f",
+    "data/review/correction_ledger.csv": "1e28935810cd36d51cd1d8b8c9d56ded564bb5f6a8d5d4c60db0b3f8c3b31b6e",
+    "data/registry/fit_registry.csv": "bd1c5a93008c644e23ed1e492e9575977a81774911ef3ca509feea20dc7946e1",
+    "data/schema/raw_extraction_schema_v1.csv": "202343e9743d3b2c8d648766307abe080ffacfce7532171619d063aaf5fcf032",
+    "docs/analysis_specification_2026-09-01.txt": "d6928e505182cce9135b1ce6ecef3106f7d0550e36c932a275d90edc5e338fee",
+    "data/external/frederick2019/competitive_employment_any.rds": "6bf5b2f78888e11b2b76d48af508ff2374036c431170ec61172e7e22c61ca9dd",
+    "renv.lock": "2794240a25b526ffc2916fd74ca3ac2a058696bc1fd1582f1132d8e3cb883026"
+  },
+  "r_version": "R version 4.4.2 (2024-10-31)",
+  "packages": {
+    "brms": "2.23.0",
+    "cmdstanr": "0.9.0",
+    "metafor": "4.6.0",
+    "posterior": "1.6.0",
+    "bridgesampling": "1.2.1",
+    "bayesplot": "1.12.0.9000",
+    "digest": "0.6.37",
+    "readr": "2.1.5",
+    "dplyr": "1.1.4",
+    "ggplot2": "4.0.0"
+  },
+  "cmdstan": {
+    "version": "2.36.0",
+    "path": "/Users/k1812261/.cmdstan/cmdstan-2.36.0"
+  },
+  "fits": [
+    {
+      "model_id": "primary_strict_point_hn1",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/primary_strict_point_hn1_80c4f35089e3.rds",
+      "key": "80c4f35089e3090db2c0a9c2b4322e1a",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:09:40"
+    },
+    {
+      "model_id": "secondary_period_hn1",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/secondary_period_hn1_5aa6e95323b3.rds",
+      "key": "5aa6e95323b3593f87c12ba9f997c312",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:09:47"
+    },
+    {
+      "model_id": "sens_prior_hn05",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_prior_hn05_b20699f89487.rds",
+      "key": "b20699f894875c9d8368a837398e9352",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:09:59"
+    },
+    {
+      "model_id": "sens_prior_hn2",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_prior_hn2_00ff4fafaf20.rds",
+      "key": "00ff4fafaf20f168046c87cdd4a759ec",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:12"
+    },
+    {
+      "model_id": "sens_point_relaxed_k14",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_point_relaxed_k14_14d9cacbfe9e.rds",
+      "key": "14d9cacbfe9e58c2b2c65a3721d8d2e8",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:19"
+    },
+    {
+      "model_id": "sens_legacy_k23",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_legacy_k23_f87e7bd1534e.rds",
+      "key": "f87e7bd1534e5eb15c403c8a017e0651",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:27"
+    },
+    {
+      "model_id": "sens_strict_excl_weak",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_strict_excl_weak_95ac4a2540c0.rds",
+      "key": "95ac4a2540c0d248e19dce442eb8d421",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:32"
+    },
+    {
+      "model_id": "sens_strict_excl_exposed",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_strict_excl_exposed_c81d9399a8ad.rds",
+      "key": "c81d9399a8adc47ce13ef5af20b1b2f7",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:37"
+    },
+    {
+      "model_id": "sens_strict_missing_not_employed_bound",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_strict_missing_not_employed_bound_d388f8a7de0d.rds",
+      "key": "d388f8a7de0df1df3fa551534958652d",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:43"
+    },
+    {
+      "model_id": "sens_strict_normal_normal_hn1",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_strict_normal_normal_hn1_33ce21cf73c7.rds",
+      "key": "33ce21cf73c77cc0cf711a3ab2c84929",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:10:55"
+    },
+    {
+      "model_id": "loo_ABDELBAKI_2013",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_ABDELBAKI_2013_09414ba019d6.rds",
+      "key": "09414ba019d67058de7b7226c7007882",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:03"
+    },
+    {
+      "model_id": "loo_ANDERSEN_2024",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_ANDERSEN_2024_9be9d94f0821.rds",
+      "key": "9be9d94f082178fb22051b6432fbcacd",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:08"
+    },
+    {
+      "model_id": "loo_CRAIG_2014",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_CRAIG_2014_5871357a61c2.rds",
+      "key": "5871357a61c2fbdbab9360cd537e7fa3",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:15"
+    },
+    {
+      "model_id": "loo_DUDLEY_2014",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_DUDLEY_2014_6648ff9ed567.rds",
+      "key": "6648ff9ed567ffd783a837b515262b79",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:21"
+    },
+    {
+      "model_id": "loo_EACK_2011",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_EACK_2011_9a3d8fb3014f.rds",
+      "key": "9a3d8fb3014f337852099aaab19e5c8e",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:26"
+    },
+    {
+      "model_id": "loo_HEGELSTAD_2019",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_HEGELSTAD_2019_4fa943eea2c2.rds",
+      "key": "4fa943eea2c2ab25029516d58a621327",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:31"
+    },
+    {
+      "model_id": "loo_POTHIER_2019",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_POTHIER_2019_f8204a053531.rds",
+      "key": "f8204a0535310200953d1de926110804",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:36"
+    },
+    {
+      "model_id": "loo_RINALDI_2010",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_RINALDI_2010_6394ab9a684b.rds",
+      "key": "6394ab9a684bf6e68bc38aa3cb082d9e",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:41"
+    },
+    {
+      "model_id": "loo_ROSENHECK_2017",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_ROSENHECK_2017_f1f0dfcd6f02.rds",
+      "key": "f1f0dfcd6f0272b6d2082ce133f44eb8",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:46"
+    },
+    {
+      "model_id": "loo_VANDUIN_2021",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_VANDUIN_2021_2b733cf51e3f.rds",
+      "key": "2b733cf51e3f319520d4e1c910ccbe81",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:52"
+    },
+    {
+      "model_id": "primary_k3_hn05",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/primary_k3_hn05_493bf6364eea.rds",
+      "key": "493bf6364eeae8abcab86f02ca226de5",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:42"
+    },
+    {
+      "model_id": "sens_prior_hn025",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_prior_hn025_93d5ec7eaa6e.rds",
+      "key": "93d5ec7eaa6e92c24f4534265113b703",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:11:53"
+    },
+    {
+      "model_id": "sens_prior_hn1",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_prior_hn1_161958488769.rds",
+      "key": "161958488769c7eee6c1eafb4d078c94",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:12:03"
+    },
+    {
+      "model_id": "sens_k4_hn05",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_k4_hn05_830f4f5f2d07.rds",
+      "key": "830f4f5f2d073314c288b1447a9aa8f2",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:12:07"
+    },
+    {
+      "model_id": "sens_k3_missing_not_employed",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_k3_missing_not_employed_75349df93d54.rds",
+      "key": "75349df93d546b555141742048808830",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:12:10"
+    },
+    {
+      "model_id": "sens_k4_missing_not_employed",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/sens_k4_missing_not_employed_c8c281124f85.rds",
+      "key": "c8c281124f850ddada2d3574947ab44f",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:12:14"
+    },
+    {
+      "model_id": "loo_ERICKSON_2021",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_ERICKSON_2021_53337ca41677.rds",
+      "key": "53337ca4167714bf7c9d6535e4318a46",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:17"
+    },
+    {
+      "model_id": "loo_KILLACKEY_2008",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_KILLACKEY_2008_c228322546cc.rds",
+      "key": "c228322546cc264f22ff8310bbde6539",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:19"
+    },
+    {
+      "model_id": "loo_KILLACKEY_2019",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/loo_KILLACKEY_2019_8edbdd0c1ea9.rds",
+      "key": "8edbdd0c1ea9415bf42a16da22042b3e",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:23"
+    },
+    {
+      "model_id": "exact_binomial_k3",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/exact_binomial_k3_c01b1f8118f7.rds",
+      "key": "c01b1f8118f7052bc12fe367e2e46b99",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:35"
+    },
+    {
+      "model_id": "exact_binomial_k4",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/exact_binomial_k4_e25312d16f39.rds",
+      "key": "e25312d16f396d5c7985db62b0ab5541",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:51"
+    },
+    {
+      "model_id": "bf_h0_hn05",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h0_hn05_8d8ed3c4f94c.rds",
+      "key": "8d8ed3c4f94c932c8a6d017ce79a3963",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:14:02"
+    },
+    {
+      "model_id": "bf_h1_primary_log2",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h1_primary_log2_095b1e2981df.rds",
+      "key": "095b1e2981dfe83b1f60e01672385867",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:14:40"
+    },
+    {
+      "model_id": "bf_h1_frederick_published",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h1_frederick_published_80160dd95cda.rds",
+      "key": "80160dd95cda9799bc12a77d715112dc",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:15:16"
+    },
+    {
+      "model_id": "bf_h1_bond2015",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h1_bond2015_1e8d0e815193.rds",
+      "key": "1e8d0e8151932f6c4bd9387e849caf82",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:15:50"
+    },
+    {
+      "model_id": "bf_h1_bond2016",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h1_bond2016_d99c9565983c.rds",
+      "key": "d99c9565983cad8418470dcc7dcd1fac",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:16:22"
+    },
+    {
+      "model_id": "bf_h1_modini2016",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/bf_h1_modini2016_01263aa28ac7.rds",
+      "key": "01263aa28ac7b9a9a57e40c96a249648",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:16:55"
+    },
+    {
+      "model_id": "mr_design",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/mr_design_494374fbd024.rds",
+      "key": "494374fbd0245b04793e63f6c3f6c43d",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:00"
+    },
+    {
+      "model_id": "mr_timepoint",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/mr_timepoint_e2fa25819a07.rds",
+      "key": "e2fa25819a07fca92388b8906a021cc5",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:15"
+    },
+    {
+      "model_id": "mr_exposure",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/mr_exposure_fa19680c1f0c.rds",
+      "key": "fa19680c1f0c273888ec8c0896b877ad",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:13:50"
+    },
+    {
+      "model_id": "mr_attrition",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/mr_attrition_55a6081cd32c.rds",
+      "key": "55a6081cd32c5ceed9373d9331fc651c",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 00:14:04"
+    },
+    {
+      "model_id": "mr_outcome_basis",
+      "cache_file": "/private/tmp/claude-503/-Users-k1812261-claude-code-employment-vocational-functioning-meta/a65d9f3e-002f-42f5-b171-8734b9e7a5b7/scratchpad/staged_repo/output/bayesian/fits/mr_outcome_basis_9a8fa0e7a2d6.rds",
+      "key": "9a8fa0e7a2d6329f71e4537e54be807f",
+      "cache_key_version": 1,
+      "from_cache": true,
+      "cache_mtime": "2026-09-02 03:45:01"
+    }
+  ],
+  "gate_attempts_n": 42,
+  "output_hashes": {
+    "output/bayesian/metaregression_contrasts.csv": "c38d276ee10a00c561c5d4601ead4e39980ca3368fa20615ae365074a1352ab6",
+    "output/bayesian/metaregression_diagnostics.csv": "8a2fdb51c02dbb6fd1636a3e3c706aeda10cdaaf8f50ca70c01182869e5c3e4f",
+    "output/bayesian/prevalence_diagnostics.csv": "d6b7832d10ed456595b4a5f3572a63bca8a127e73b171011fa57f5d219173162",
+    "output/bayesian/prevalence_leave_one_out.csv": "6080757766478faa86ad0cedf57360e82b2c52bc54f825aa2739954f2689aa0b",
+    "output/bayesian/prevalence_primary_draws.csv": "8b3de9f84de1d59388ebe2f8870d535138f6afb6ff9d82b5189f8e85e1c44e3e",
+    "output/bayesian/prevalence_primary_study_effects.csv": "2fc690628fb969400c7f0e72e74ab3574567221eb5255202c67db74cbc96332c",
+    "output/bayesian/prevalence_summary.csv": "9792bb1fb4e9fe314837313b74253ed9febaf709f77c73d4891e5324576bea66",
+    "output/bayesian/trials_bridge_bf.csv": "809a3090d6bc225504572fe38d50156fe84a282b33d1dd6f8edea265af5b9fe2",
+    "output/bayesian/trials_diagnostics.csv": "174c345ef03a911da6434edb58c3ac1c4e31b6ba273b7a1e047e39731cdb5493",
+    "output/bayesian/trials_exact_binomial.csv": "a443365ecab2aa3df08895ea69aee30de071e7ad501c94242006ce1657161cc0",
+    "output/bayesian/trials_input_effects.csv": "86352d13227bf3621ee678854ede06f1e56a94d75434f6175bf65e9646c74889",
+    "output/bayesian/trials_primary_draws.csv": "919c4ef305698ac550fddfe2f0c93973065deb66fe299a764cf8835d9dad744e",
+    "output/bayesian/trials_summary.csv": "73dfe483e91b74d57318d3c43c70774c129769578f176465b5d7a96218b2ddea",
+    "output/figures/fig1_forest_prevalence.pdf": "2564c467a8a5be653a8dd4bce3407ee78aaa192ffd6bdc79930201bfb180752d",
+    "output/figures/fig2_forest_trials.pdf": "8851a32db32246998c812776d82c7f2ed088df3d95abbe0b976e61e89c60a013",
+    "output/figures/fig3_dienes.pdf": "a14187a8e846306bf71306685e0caa0e817eebde7da2484e68c7716621e3d4a8",
+    "output/figures/figS1_prior_sensitivity.pdf": "d488b5698556cb3f2dd6eed9bf29fecbbd26acb0f293990b7396a84cd59416c0",
+    "output/figures/figS2_tau_posteriors.pdf": "cfb3e893caeb22d867294d7e306d75bceb7b01dd574a9f11077ebb26f6fb51f7",
+    "output/figures/ppc_prevalence_loo_ABDELBAKI_2013.pdf": "64044fd056955985ed205def306a1d2bbdcfb6b4a367c53205cfc0fa45509461",
+    "output/figures/ppc_prevalence_loo_ANDERSEN_2024.pdf": "34052be98a99239053c7fe4d4c08ece90103078793574a9aa3d1a88c6d774a10",
+    "output/figures/ppc_prevalence_loo_CRAIG_2014.pdf": "a0979141ef8adb9513b71e1b7c542927b9e98391b86a348932129609f1876356",
+    "output/figures/ppc_prevalence_loo_DUDLEY_2014.pdf": "f9947add6eb5513d5be2482f73a9deba5d4aee75d1c9367e5cd6eddcd0fb63c2",
+    "output/figures/ppc_prevalence_loo_EACK_2011.pdf": "4a8883350d255e26c5adb2cbe164ceabd266308c55e81dd8ba00b2d646ff6781",
+    "output/figures/ppc_prevalence_loo_HEGELSTAD_2019.pdf": "32944c46e908c9f47417b875d3959eb31ac287aab750da6191added18282e57b",
+    "output/figures/ppc_prevalence_loo_POTHIER_2019.pdf": "01d1e823fcc1cb0c259c237fdaf6cf48b13d179439df2c5da5dc1f43eeee7b7f",
+    "output/figures/ppc_prevalence_loo_RINALDI_2010.pdf": "12195488203d61f53ea5c33a91e6b2e87a7964cb84972f510df2e72759c946b8",
+    "output/figures/ppc_prevalence_loo_ROSENHECK_2017.pdf": "b139c1acbde88b6c9cb33d5981070c4219a8e9f80869e332f5e6746a0fbdeb0d",
+    "output/figures/ppc_prevalence_loo_VANDUIN_2021.pdf": "a3e86341c944143cde04befb3e7b39a7cac803988abb620d48666b0370d232e6",
+    "output/figures/ppc_prevalence_primary_strict_point_hn1.pdf": "99bb180356611d43f07870fa147e5a623ccfe3aebdb324e780989327b76c385b",
+    "output/figures/ppc_prevalence_secondary_period_hn1.pdf": "8c4353ac7e3640bb383995b2e4dc728ba30908663bc007d70a35a3348f2cd856",
+    "output/figures/ppc_prevalence_sens_legacy_k23.pdf": "f1dbe5daa67f8f4014bce193eba82afcd0708e0059d0a1de108a0abf1a3c65db",
+    "output/figures/ppc_prevalence_sens_point_relaxed_k14.pdf": "21b05ab0bc91c310585ce771374d8d72115a9b431e7ddb6635667ce7dd835954",
+    "output/figures/ppc_prevalence_sens_prior_hn05.pdf": "c1f076a54c795526fc1dc5f82b5475196f479cf708100604297c6149e0c41658",
+    "output/figures/ppc_prevalence_sens_prior_hn2.pdf": "4007f964439a85d642cb9fb1f4b57249c2da66e843f0044bd651a67c4b5191a5",
+    "output/figures/ppc_prevalence_sens_strict_excl_exposed.pdf": "2fb7092b67e077426d027e724f10d61779c49f644d12a2e448fd018037d1330d",
+    "output/figures/ppc_prevalence_sens_strict_excl_weak.pdf": "a33d44bcf12af000161c91f6393a9eebedbdd6a607d08cf7b37ded0f94babd23",
+    "output/figures/ppc_prevalence_sens_strict_missing_not_employed_bound.pdf": "c9c7a7538a79933368ed3eb7548d4cd8cb524469771d635eb8763a9baafdc34b",
+    "output/figures/ppc_trials_exact_binomial_k3.pdf": "2e60883e16d9a74b4db1f4ba4c9d52b5d60f5e0d4fc3622ff354d5554cd364f4",
+    "output/figures/ppc_trials_exact_binomial_k4.pdf": "9df58f4e1a5370055a5fcd787802d92bca1ebc474884b9ece5ec4fd04e0aac6f",
+    "output/frequentist/moderators_registered_coefficients.csv": "ab587e4fd8fbca2342b7ed110f134eab5cdec46f585fe5605e387e94c18e7501",
+    "output/frequentist/moderators_registered_omnibus.csv": "ba8134590f6421467948aeefe73dc5837089f76812907b2ffeb7783e35742c12",
+    "output/frequentist/prevalence_registered_models.csv": "001fa565bad183f785178e0607b27d5432d379059fa6e442e8da6dce1045ebc0",
+    "output/frequentist/prevalence_subgroups_outcome_basis.csv": "bb104a058e26694ffa15cc0a7a858ef79134c077073abdda45477fbebc3b9b53",
+    "output/frequentist/publication_bias_registered.csv": "be5ee1d0a119e926617ca87e986ee61227bedcb81ee6dc6dad7aa0c650d16f03",
+    "output/frequentist/trials_other_comparisons_descriptive.csv": "2a935036232096e894baf885c22238362acb06a7c57250848859a1a0d92cbf5e",
+    "output/frequentist/trials_per_study_effects.csv": "02a26e880cf3f256a0e8c762b42d51e6cbc41457d6d24d4e51ce114b4fe6a643",
+    "output/frequentist/trials_registered_models.csv": "a9c2bdc52dacf7ad876019c5bd59cbe299165f0959a1e1033a9747aacea61c7a",
+    "output/session_info.txt": "7ff8c9871c0b53f3921714a01f0f26add2837c45de35c44dd8399221c2fb0a17",
+    "output/tables/dienes_bayes_factors_fixed_and_approx.csv": "b8765a3aaa30439f66b4fb63520f4360070263769535b7e01be4e3ccccf5c528",
+    "output/tables/dienes_bayes_factors_random_effects.csv": "adf8b8525f5ccbbc9606e22c5f87bd58a68593a4618043cd8e21fb73dc13e546",
+    "output/tables/dienes_bf_grid_over_s.csv": "306bd9da34e1847173f870fa85500fff112180bac1309e8493aaf08266ba3ed3",
+    "output/tables/dienes_bf_quadrature_vs_bridge.csv": "23773197607987c22b4c827c6f4ec906a599586fa5c644fa07040b88e0a2f5ea",
+    "output/tables/dienes_null_interval_decision.csv": "7f34f1040394823c2428133dd4a6805aa11e79d5ec7a952dc65bd995f962b819",
+    "output/tables/dienes_null_interval.csv": "b14ea3848f3f5f9fe60c8a110d5f8acc9e968c453e434458ffa061484852eb3a",
+    "output/tables/dienes_robustness_region_s_fixed_effect.csv": "6fff0b2c8b0155ee7f4a17bdd90b16a330e24941e7273869d6a4ba23b476f371",
+    "output/tables/dienes_robustness_region_s.csv": "b887ea48edc9611ed064ecbf75ba1d21bd4003e589a90a6a9f9938438956bc89",
+    "output/tables/external_frederick2019_reanalysis.csv": "9acb72250075ed9dde3a4ce17f5402a44dde16eca075bc4d8edaec681c2d240d",
+    "output/tables/table1_study_characteristics.csv": "ae9879aa3615cc43016e86966a8e252f6b335b0671b6f176c2d211230c8814e3",
+    "output/tables/table1_study_characteristics.tex": "affee58e5ab5bbd69d7f852a841178b9196f173dd88ef335d643afb5579debf3",
+    "output/tables/table2_prevalence.csv": "bae16407a2cdf94a474598345bc5dd834cd642fa0f15b18706417fe02997a2c4",
+    "output/tables/table2_prevalence.tex": "929e212a26b60723cc8117ea37568edc25e75e1313d1f6dd3a7a827b7ce1606d",
+    "output/tables/table3_trials.csv": "d887951226904a5e8954f813f17c229a1f590e552835222a5489a9c4d06fb6b4",
+    "output/tables/table3_trials.tex": "e0a3d1f236c0b4095e21a13cd66e734b66ad7e195b5f2bf94a1f4acd84eee3f5",
+    "output/tables/table4_bayes_factors.csv": "e47c9b8c0e698a5d24d3497e610b2b748b15f1fd6555a5ff7ebb214a5db57f28",
+    "output/tables/table4_bayes_factors.tex": "52c97c8b5d62bc7fbf41215c6a08e66101ede16fcb2845e8ebb9d7a5047a4ab6",
+    "output/tables/table4_null_interval.csv": "5433ca1f82ec8ee776f56520ac38b79b76361f998c527787c84e445b8d3c48c7",
+    "output/tables/table4_null_interval.tex": "5b09cf6ca3a2b09b6c935e61db1413481bb19a0471ee261d91669239faf97d7b",
+    "output/tables/tableS_corrections.tex": "eccb8ce35f45f19901061fd2cc9e2a41190c98982f5f1da9de817c95a3a99d11",
+    "output/tables/tableS_external_frederick.tex": "19de7cf645f02b783a0ffb8566d0b0057fcf93ea792eb60c006503350bed2a98",
+    "output/tables/tableS_mcmc_diagnostics.csv": "672a28c202500f7c99ac9e99791ba0963d57846a4f997d1dd86fb0b22f88d563",
+    "output/tables/tableS_mcmc_diagnostics.tex": "33b8b5004666c0766375878e8bd8746c1672a442797e22490c93cf25c180d167",
+    "output/tables/tableS_metaregression.csv": "1d29126d46519f08439c5ad0474ae4a93bbc67fcf8b6905b149864f06f826d2f",
+    "output/tables/tableS_metaregression.tex": "abd06cd950217d8a4b29a8e55f0424139d64df6942c6d9440a09d8463a27a3ee",
+    "output/tables/tableS_other_comparisons.csv": "63fe3ec3009a8a0c1836f48234ef84dd90b0d705d4bf1ef5fce34ba85e637bea",
+    "output/tables/tableS_other_comparisons.tex": "8bf7a905bf9a35077ed835066413e09b91f42db58061c6e1f1be6a2c96877af7",
+    "output/tables/tableS_prevalence_loo.csv": "2582aacdadd3b354d2fa0d723f0124928a2a06f7599f3e0ee0387cf1834989d9",
+    "output/tables/tableS_prevalence_loo.tex": "cc538099e7c62a75c31074641695ee91c58dfbda70790ac2189f17e7ebbc86e6",
+    "output/tables/tableS_publication_bias.csv": "795ba26b15a4afa8ebe829ddd27d78759c1ba93fd059432e6d6df468352d843e",
+    "output/tables/tableS_publication_bias.tex": "93b8259e906fb070b555d80b53678abb85b4fbfe5755dc2a5a9ca7b93e0de359",
+    "output/tables/tableS_recovery.csv": "e8f5859eb78a041f877e217231e82d23564c99ac06e7472a5b820c79a2f6d220",
+    "output/tables/tableS_recovery.tex": "002627876f6012ea74dd0a1fe68656f60884e0887e7d249a188c18c4fe58e757",
+    "output/tables/tableS_trial_counts.csv": "db1a59cb8e190742faeadd1b695281f77b3e1d076c3f7dbcbcb2335627691c71",
+    "output/tables/tableS_trial_counts.tex": "a66df3b8bec056a6b16a2964836f9446c6e9f1ee654d03fb9e62dd7a255807bf"
+  }
+}

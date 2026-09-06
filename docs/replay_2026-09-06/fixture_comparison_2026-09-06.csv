@@ -1,0 +1,92 @@
+path,class,note
+data/derived/all_rows_clean.csv,identical,
+data/derived/corrections.csv,identical,
+data/derived/prevalence.csv,identical,
+data/derived/reconciliation.csv,identical,
+data/derived/recovery.csv,identical,
+data/derived/trial_arms.csv,identical,
+data/derived/trials.csv,identical,
+output/bayesian/metaregression_contrasts.csv,identical,
+output/bayesian/metaregression_diagnostics.csv,UNEXPECTED,new columns ['attempt_id']; shared columns identical
+output/bayesian/prevalence_diagnostics.csv,UNEXPECTED,new columns ['attempt_id']; shared columns identical
+output/bayesian/prevalence_leave_one_out.csv,identical,
+output/bayesian/prevalence_primary_draws.csv,whitelisted_new_columns,"new columns ['.chain', '.draw', '.iteration', 'model_id']; shared columns identical"
+output/bayesian/prevalence_primary_study_effects.csv,identical,
+output/bayesian/prevalence_summary.csv,identical,
+output/bayesian/trials_bridge_bf.csv,stochastic,bf_bridge: max|d|=0.254 textdiff=0
+output/bayesian/trials_diagnostics.csv,UNEXPECTED,new columns ['attempt_id']; shared columns identical
+output/bayesian/trials_exact_binomial.csv,identical,
+output/bayesian/trials_input_effects.csv,identical,
+output/bayesian/trials_primary_draws.csv,whitelisted_new_columns,"new columns ['.chain', '.draw', '.iteration', 'model_id']; shared columns identical"
+output/bayesian/trials_summary.csv,identical,
+output/figures/fig1_forest_prevalence.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/fig2_forest_trials.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/fig3_dienes.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/figS1_prior_sensitivity.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/figS2_tau_posteriors.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/funnel_registered_logit.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_ABDELBAKI_2013.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_ANDERSEN_2024.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_CRAIG_2014.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_DUDLEY_2014.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_EACK_2011.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_HEGELSTAD_2019.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_POTHIER_2019.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_RINALDI_2010.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_ROSENHECK_2017.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_loo_VANDUIN_2021.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_primary_strict_point_hn1.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_secondary_period_hn1.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_legacy_k23.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_point_relaxed_k14.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_prior_hn05.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_prior_hn2.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_strict_excl_exposed.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_strict_excl_weak.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_prevalence_sens_strict_missing_not_employed_bound.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_trials_exact_binomial_k3.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/figures/ppc_trials_exact_binomial_k4.pdf,figure_bytes_differ,PDF bytes differ (timestamps or seeded PPC); not promoted this session
+output/frequentist/moderators_registered_coefficients.csv,identical,
+output/frequentist/moderators_registered_omnibus.csv,identical,
+output/frequentist/prevalence_registered_models.csv,identical,
+output/frequentist/prevalence_subgroups_outcome_basis.csv,identical,
+output/frequentist/publication_bias_registered.csv,identical,
+output/frequentist/trials_other_comparisons_descriptive.csv,identical,
+output/frequentist/trials_per_study_effects.csv,identical,
+output/frequentist/trials_registered_models.csv,identical,
+output/session_info.txt,UNEXPECTED,
+output/tables/dienes_bayes_factors_fixed_and_approx.csv,identical,
+output/tables/dienes_bayes_factors_random_effects.csv,identical,
+output/tables/dienes_bf_grid_over_s.csv,identical,
+output/tables/dienes_bf_quadrature_vs_bridge.csv,UNEXPECTED,bf_bridge: max|d|=0.254 textdiff=0; ratio: max|d|=0.0363 textdiff=0; agrees_2sf: max|d|=0 textdiff=2; relative_discrepancy_pct: max|d|=2.84 textdiff=0
+output/tables/dienes_null_interval_decision.csv,identical,
+output/tables/dienes_null_interval.csv,identical,
+output/tables/dienes_robustness_region_s_fixed_effect.csv,identical,
+output/tables/dienes_robustness_region_s.csv,identical,
+output/tables/external_frederick2019_reanalysis.csv,identical,
+output/tables/table1_study_characteristics.csv,label_only_candidate,Set: max|d|=0 textdiff=1
+output/tables/table1_study_characteristics.tex,label_only_candidate,
+output/tables/table2_prevalence.csv,identical,
+output/tables/table2_prevalence.tex,identical,
+output/tables/table3_trials.csv,identical,
+output/tables/table3_trials.tex,identical,
+output/tables/table4_bayes_factors.csv,identical,
+output/tables/table4_bayes_factors.tex,identical,
+output/tables/table4_null_interval.csv,identical,
+output/tables/table4_null_interval.tex,identical,
+output/tables/tableS_corrections.tex,identical,
+output/tables/tableS_external_frederick.tex,identical,
+output/tables/tableS_mcmc_diagnostics.csv,identical,
+output/tables/tableS_mcmc_diagnostics.tex,identical,
+output/tables/tableS_metaregression.csv,identical,
+output/tables/tableS_metaregression.tex,identical,
+output/tables/tableS_other_comparisons.csv,identical,
+output/tables/tableS_other_comparisons.tex,identical,
+output/tables/tableS_prevalence_loo.csv,identical,
+output/tables/tableS_prevalence_loo.tex,identical,
+output/tables/tableS_publication_bias.csv,identical,
+output/tables/tableS_publication_bias.tex,identical,
+output/tables/tableS_recovery.csv,identical,
+output/tables/tableS_recovery.tex,identical,
+output/tables/tableS_trial_counts.csv,identical,
+output/tables/tableS_trial_counts.tex,identical,
