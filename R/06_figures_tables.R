@@ -64,19 +64,9 @@ diag_all   <- bind_rows(read_csv(file.path(bay_dir, "prevalence_diagnostics.csv"
 # Fit inventory: every model the pipeline fits must have passed through the
 # convergence gate in 02, 03 or 04 and appear here exactly once. A model that
 # was re-run at adapt_delta = 0.999 carries the suffix _ad999 and still counts.
-expected_fits <- c(
-  "primary_strict_point_hn1", "secondary_period_hn1", "sens_prior_hn05", "sens_prior_hn2",
-  "sens_point_relaxed_k14", "sens_legacy_k23", "sens_strict_excl_weak", "sens_strict_excl_exposed",
-  "sens_strict_missing_not_employed_bound", "sens_strict_normal_normal_hn1",
-  paste0("loo_", c("ABDELBAKI_2013", "ANDERSEN_2024", "CRAIG_2014", "DUDLEY_2014", "EACK_2011",
-                   "HEGELSTAD_2019", "POTHIER_2019", "RINALDI_2010", "ROSENHECK_2017", "VANDUIN_2021")),
-  "primary_k3_hn05", "sens_prior_hn025", "sens_prior_hn1", "sens_k4_hn05",
-  "sens_k3_missing_not_employed", "sens_k4_missing_not_employed",
-  paste0("loo_", c("ERICKSON_2021", "KILLACKEY_2008", "KILLACKEY_2019")),
-  "exact_binomial_k3", "exact_binomial_k4",
-  "bf_h0_hn05", paste0("bf_h1_", c("primary_log2", "frederick_published", "bond2015", "bond2016", "modini2016")),
-  paste0("mr_", c("design", "timepoint", "exposure", "attrition", "outcome_basis"))
-)
+expected_fits <- read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)$fit_tag
+check(length(expected_fits) == 42 && !anyDuplicated(expected_fits),
+      "fit registry does not contain exactly 42 unique fit_tag values")
 fitted_models <- sub("_ad999$", "", diag_all$model)
 check(setequal(fitted_models, expected_fits) && !anyDuplicated(fitted_models),
       paste0("fit inventory mismatch; missing: ", paste(setdiff(expected_fits, fitted_models), collapse = ", "),
@@ -257,7 +247,7 @@ ggsave(file.path(fig_dir, "figS2_tau_posteriors.pdf"), figS2, width = 6, height 
 set_label <- function(p) {
   case_when(p$in_primary_set ~ "Primary",
             p$overlapping_cohort ~ "Overlapping cohort",
-            !p$population_fep ~ "Not FEP",
+            !p$population_fep ~ "Outside primary estimand (A5)",
             p$definition_class == "composite" ~ "Composite outcome",
             p$definition_class == "retention" ~ "Retention outcome",
             p$outcome_basis == "period" ~ "Period prevalence",

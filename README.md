@@ -2,18 +2,27 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ricardotwumasi/employment-early-psychosis/blob/main/LICENSE)
 [![R](https://img.shields.io/badge/R-4.4.2-blue.svg)](https://cran.r-project.org/)
-[![PROSPERO](https://img.shields.io/badge/PROSPERO-CRD420261402841-brightgreen.svg)](https://www.crd.york.ac.uk/PROSPERO/view/CRD420261402841)
+[![PROSPERO](https://img.shields.io/badge/PROSPERO-CRD420261402841%20v2.0-brightgreen.svg)](https://www.crd.york.ac.uk/PROSPERO/view/CRD420261402841)
 
 R code and extracted data to reproduce our systematic review and meta-analysis of employment
 outcomes in first-episode psychosis. The review is registered on PROSPERO
-([CRD420261402841](https://www.crd.york.ac.uk/PROSPERO/view/CRD420261402841)). The registered
-frequentist analysis (metafor, REML with the Knapp-Hartung adjustment) is reproduced in full, and
-the primary inference is a Bayesian re-analysis in brms with exact binomial likelihoods and weakly
-informative half-normal priors on the between-study standard deviation, reported following the
-guidance of Dienes (2021) on Bayesian hypothesis tests.
+([CRD420261402841](https://www.crd.york.ac.uk/PROSPERO/view/CRD420261402841); version 1.0
+published 26 May 2026, revised by amendment as version 2.0 published 5 September 2026). Version 1.0
+specified a narrative synthesis and no pooling model. The original frequentist analysis (metafor,
+REML with the Knapp-Hartung adjustment) is reproduced in full, and the primary inference is a
+Bayesian re-analysis in brms with exact binomial likelihoods and weakly informative half-normal
+priors on the between-study standard deviation, reported following the guidance of Dienes (2021)
+on Bayesian hypothesis tests. The Bayesian analysis was specified within the research team on
+1 September 2026 before any Bayesian output was generated and was subsequently registered by
+amendment; it is not prospectively registered.
 
-Every estimand, prior, decision threshold, missing-data rule and sensitivity analysis was frozen before any Bayesian model was fitted; the
-specification is documented in the script headers.
+Every estimand, prior, decision threshold, missing-data rule and sensitivity analysis was written
+down before any Bayesian model was fitted; the specification is archived verbatim in
+`docs/analysis_specification_2026-09-01.txt`, and every subsequent change is a dated entry in
+`docs/amendment_2026-09-02.md` (A1 to A22) and `docs/amendment_2026-09-06.md` (A23 onwards).
+`docs/document_control_register.md` records the gate status. **This is a development version:
+the population-eligibility, outcome-window and review-record audits are unresolved (see the
+amendment records), so the current estimates are historical baselines, not release results.**
 
 ## Analyses
 
@@ -33,9 +42,9 @@ specification is documented in the script headers.
    computed exactly for the random-effects model by quadrature and checked by bridge sampling,
    with a robustness region over s.
 4. **Exploratory moderators.** Separate regularised Bayesian meta-regressions (design, timepoint,
-   vocational exposure, attrition), each adjusted for outcome basis. The registered frequentist
+   vocational exposure, attrition), each adjusted for outcome basis. The original frequentist
    moderator models are reproduced alongside.
-5. **Publication bias and recovery outcomes.** Registered funnel plot, Egger test and trim-and-fill
+5. **Publication bias and recovery outcomes.** Original funnel plot, Egger test and trim-and-fill
    with the corrected interpretation; correlations and standardised mean differences with recovery
    measures are tabulated descriptively because they are too sparse to pool.
 
@@ -55,14 +64,45 @@ if they differ, because posterior summaries can change between releases.
 ```bash
 git clone https://github.com/ricardotwumasi/employment-early-psychosis.git
 cd employment-early-psychosis
-Rscript run_all.R            # uses cached fits in output/bayesian/fits if present
-Rscript run_all.R --refit    # refits every Bayesian model
+Rscript run_all.R                # uses cached fits in output/bayesian/fits if present, fits otherwise
+Rscript run_all.R --cache-only   # replay: stops before any fitting call if a cache is missing
+Rscript run_all.R --preflight    # lists which of the 42 registered fits have a readable cache
+Rscript run_all.R --refit        # refits every Bayesian model
+Rscript run_all.R --release      # refit with a clean tree and a synchronised renv.lock; fails on any cached fit
 ```
 
-A full run from scratch takes roughly 20 minutes on a laptop (about 45 Bayesian fits, four
+`Rscript run_all.R` without arguments is not a read-only check: it fits any model whose cache is
+absent. Use `--cache-only` to inspect. Every run writes `output/run_manifest.json` (mode, git
+commit, input and output hashes, package and CmdStan versions, and per-fit cache provenance).
+
+A full run from scratch takes roughly 20 minutes on a laptop (42 Bayesian fits listed in
+`data/registry/fit_registry.csv`, four
 chains each, 2,000 warm-up and 4,000 sampling iterations per chain, seed 20260901). Results are
 reproducible to the reported precision on the same CmdStan build; bit-identical reproduction across
 platforms is not claimed.
+
+## Verification, dependencies and continuous integration
+
+`Rscript tests/testthat.R` runs deterministic checks: the raw file's hash, row count and schema;
+the derived tables' schemas and the historical fixture values (ten primary prevalence studies,
+2,818 baseline and 1,613 assessed participants; three primary trials, 296 randomised and 264
+analysed); the correction ledger against the committed corrections table; the identifier
+crosswalk; the closed-form and quadrature Bayes-factor helpers against stored values and the
+Dienes worked example; the Frederick and VanderWeele (2019) reproduction; the fit registry against
+the exported diagnostics; and the cache-only failure path with the fitting function shimmed. These
+fixtures describe the historical analysis for regression purposes; they are not eligibility rules.
+
+The GitHub Actions workflow `deterministic-checks` runs the cleaner, checks that the derived tables
+are unchanged and runs the tests on Ubuntu without Stan. A green run is not a scientific refit and
+does not certify any estimate.
+
+`renv.lock` was written from the working library on 6 September 2026 and records the package
+versions used. Restoration into a fresh library has not yet been demonstrated, `bayesplot` is a
+development build from `https://stan-dev.r-universe.dev`, and CmdStan 2.36.0 must be installed
+separately (`cmdstanr::install_cmdstan(version = "2.36.0")`). `DESCRIPTION` declares the
+deterministic-check dependencies (Imports) and the analysis stack (Suggests). The external
+Frederick data are committed; `scripts/fetch_external_frederick2019.R` is the only step that
+uses the network and is never run by the analysis.
 
 ## Repository layout
 
@@ -72,7 +112,7 @@ platforms is not claimed.
 | `data/derived/` | Analysis tables written by `R/00_clean_data.R`, including `corrections.csv` (every source-verified correction with its raw value, corrected value and source) and `reconciliation.csv`. |
 | `data/external/frederick2019/` | Supplementary data and code of Frederick and VanderWeele (2019), used to anchor the Bayes-factor H1 scale. |
 | `R/00_clean_data.R` | Reads the raw file, applies the corrections, derives the tables and stops if any pre-specified assertion fails. |
-| `R/01_frequentist_registered.R` | Registered metafor analysis, as submitted and on corrected data. |
+| `R/01_frequentist_registered.R` | Original frequentist metafor analysis, as submitted and on corrected data (the file name predates amendment A14 and is retained). |
 | `R/02_bayes_prevalence.R` | Binomial-normal prevalence models and sensitivity analyses. |
 | `R/03_bayes_trials.R` | Trial models, sensitivity analyses, exact binomial model, bridge sampling. |
 | `R/04_bayes_metaregression.R` | Exploratory moderator models. |
@@ -82,6 +122,9 @@ platforms is not claimed.
 | `R/utils.R` | Shared helpers: cached fitting, convergence gate, posterior summaries, Bayes-factor functions. |
 | `run_all.R` | Runs everything in order and writes `output/session_info.txt`. |
 | `output/frequentist/`, `output/bayesian/`, `output/tables/`, `output/figures/` | Summary tables, diagnostics and figures. Cached model objects are not committed. |
+| `data/schema/`, `data/registry/`, `data/review/` | Extraction schemas, the fit registry, and the review-record files (correction ledger, dispositions, crosswalks, eligibility and candidate-result audits, student evidence log). |
+| `docs/` | Analysis specification, amendment records, document-control register, registration archive, historical output fixtures and changelog. |
+| `tests/`, `.github/workflows/` | Deterministic tests and the CI workflow (see below). |
 | `FEP_employment_data_extraction_template.csv` | The blank extraction template used for the review. |
 
 The four scaffold scripts that previously sat at the repository root have been replaced by the

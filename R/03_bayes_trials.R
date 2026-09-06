@@ -118,7 +118,9 @@ run_exact <- function(arms, tag) {
   p0  <- with(filter(arms, arm_ips == 0), sum(events) / sum(n_analysed))
   rr_draws <- exp(b) / (1 - p0 + p0 * exp(b))
   rr_q     <- quantile(rr_draws, c(0.025, 0.5, 0.975), names = FALSE)
-  g <- pp_check(res$fit, type = "intervals", ndraws = 200) +
+  # Seeded locally from 6 September 2026 (identified computational update);
+  # the historical run was unseeded.
+  g <- with_local_seed(mcmc_settings$seed, pp_check(res$fit, type = "intervals", ndraws = 200)) +
     labs(title = tag, x = "Trial arm", y = "Employed (count)") + theme_minimal()
   ggsave(file.path(fig_dir, paste0("ppc_trials_", tag, ".pdf")), g, width = 7, height = 4)
   summary <- summarise_effect(b, exp, tag, k = length(unique(arms$study_id_clean))) %>%
@@ -148,14 +150,20 @@ s_values <- c(primary_log2 = log(2), frederick_published = log(1.63), bond2015 =
 h0_res <- fit_gated(bf(yi | se(sei) ~ 0 + (1 | study_id_clean)), input_sets$primary_k3,
                     prior(normal(0, 0.5), class = "sd"), gaussian(), "bf_h0_hn05",
                     save_all_pars = TRUE)
-h0_bridge <- bridgesampling::bridge_sampler(h0_res$fit, silent = TRUE)
+# Seeded locally from 6 September 2026 (identified computational update); the
+# historical run was unseeded. Both bridge_sampler() calls (H0 here, H1 below)
+# share this seeded block, matching the historical run in which they shared
+# the same unseeded RNG stream because they ran back to back after pp_check.
+h0_bridge <- with_local_seed(mcmc_settings$seed, bridgesampling::bridge_sampler(h0_res$fit, silent = TRUE))
 bridge_out <- lapply(names(s_values), function(nm) {
   s <- s_values[[nm]]
   h1_res <- fit_gated(bf(yi | se(sei) ~ 0 + Intercept + (1 | study_id_clean)), input_sets$primary_k3,
                       c(set_prior(paste0("normal(0, ", s, ")"), class = "b", lb = 0),
                         prior(normal(0, 0.5), class = "sd")),
                       gaussian(), paste0("bf_h1_", nm), save_all_pars = TRUE)
-  h1_bridge <- bridgesampling::bridge_sampler(h1_res$fit, silent = TRUE)
+  # Seeded locally from 6 September 2026 (identified computational update);
+  # the historical run was unseeded.
+  h1_bridge <- with_local_seed(mcmc_settings$seed, bridgesampling::bridge_sampler(h1_res$fit, silent = TRUE))
   bf <- bridgesampling::bf(h1_bridge, h0_bridge)
   list(row = data.frame(h1_scale_label = nm, s = s, rr_scale = exp(s), tau_scale = 0.5,
                         bf_bridge = as.numeric(bf$bf),
@@ -175,7 +183,10 @@ summary_table <- bind_rows(lapply(results, `[[`, "summary"))
 diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), lapply(exact_results, `[[`, "diag"), bridge_diag))
 write_csv(summary_table, file.path(out_dir, "trials_summary.csv"))
 write_csv(diag_table,    file.path(out_dir, "trials_diagnostics.csv"))
-write_csv(data.frame(mu = results$primary_k3_hn05$draws$mu, tau = results$primary_k3_hn05$draws$tau),
+primary_draws <- results$primary_k3_hn05$draws
+write_csv(data.frame(model_id = "primary_k3_hn05",
+                     .chain = primary_draws$chain, .iteration = primary_draws$iteration,
+                     .draw = primary_draws$draw, mu = primary_draws$mu, tau = primary_draws$tau),
           file.path(out_dir, "trials_primary_draws.csv"))
 
 check(all(diag_table$passes_gate), paste("trial models failing the convergence gate:",

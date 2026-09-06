@@ -1,0 +1,44 @@
+Package: employmentEarlyPsychosis
+Type: Package
+Title: Employment in First-Episode Psychosis: Systematic Review and Bayesian Meta-Analysis (research compendium)
+Version: 1.1.0.9000
+Authors@R: c(
+    person("Hazal", "Kaplankiran", role = "aut"),
+    person("Yanan", "Li", role = "aut"),
+    person("Giulia", "Trotta", role = "aut"),
+    person("Ricardo", "Twumasi", role = c("aut", "cre"),
+           email = "40059457+ricardotwumasi@users.noreply.github.com"),
+    person("Anna", "Georgiades", role = "aut")
+    )
+Description: Research compendium for a systematic review and Bayesian
+    meta-analysis of employment outcomes in first-episode psychosis, covering
+    employment prevalence and the effect of Individual Placement and Support
+    (IPS) on competitive employment. Provides the data-cleaning pipeline,
+    Bayesian and frequentist analysis scripts, and the deterministic checks
+    (schema, correction ledger, identity crosswalk, fit registry and
+    reproducibility manifest) that verify the pipeline before any refit.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.4.0)
+Imports:
+    readr,
+    dplyr,
+    stringr,
+    tidyr,
+    digest,
+    jsonlite,
+    metafor,
+    posterior,
+    testthat,
+    withr
+Suggests:
+    brms,
+    cmdstanr,
+    bridgesampling,
+    bayesplot,
+    ggplot2,
+    patchwork,
+    knitr,
+    scales,
+    renv
+Additional_repositories: https://stan-dev.r-universe.dev

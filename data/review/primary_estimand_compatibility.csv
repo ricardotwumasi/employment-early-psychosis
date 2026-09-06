@@ -1,0 +1,24 @@
+study_id_clean,compatible_with_primary_prevalence_estimand,reason,amendment_ref
+ABDELBAKI_2013,TRUE,No estimand-compatibility exclusion recorded,A5
+ANDERSEN_2024,TRUE,No estimand-compatibility exclusion recorded,A5
+CHUA_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+CRAIG_2014,TRUE,No estimand-compatibility exclusion recorded,A5
+DUDLEY_2014,TRUE,No estimand-compatibility exclusion recorded,A5
+EACK_2011,TRUE,No estimand-compatibility exclusion recorded,A5
+ERICKSON_2021,TRUE,No estimand-compatibility exclusion recorded,A5
+FOWLER_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+HEGELSTAD_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+HUMENSKY_2017,TRUE,No estimand-compatibility exclusion recorded,A5
+KILLACKEY_2008,TRUE,No estimand-compatibility exclusion recorded,A5
+KILLACKEY_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+LIN_2026,FALSE,"Single-arm open-label study of early-phase schizophrenia treated with paliperidone palmitate; does not estimate employment prevalence under FEP service-setting conditions (A5). Early-phase schizophrenia within five years is compatible with the registered population, so the earlier wording 'not FEP' is withdrawn.",A5
+MAJOR_2010,TRUE,No estimand-compatibility exclusion recorded,A5
+NUECHTERLEIN_2020,TRUE,No estimand-compatibility exclusion recorded,A5
+POTHIER_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+RINALDI_2004,TRUE,No estimand-compatibility exclusion recorded,A5
+RINALDI_2010,TRUE,No estimand-compatibility exclusion recorded,A5
+ROSENHECK_2017,TRUE,No estimand-compatibility exclusion recorded,A5
+TAPFUMANEYI_2015,TRUE,No estimand-compatibility exclusion recorded,A5
+TURNER_2019,TRUE,No estimand-compatibility exclusion recorded,A5
+VANDUIN_2021,TRUE,No estimand-compatibility exclusion recorded,A5
+WILLIAMS_2016,TRUE,No estimand-compatibility exclusion recorded,A5

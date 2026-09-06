@@ -45,6 +45,15 @@ na_tokens <- c("", "NA", "N/A", "/")
 raw <- read_csv(I(txt), col_types = cols(.default = col_character()),
                 na = character(0), show_col_types = FALSE, progress = FALSE)
 raw <- raw %>% mutate(across(everything(), ~ str_squish(.x)))
+
+# The raw header and byte content are pinned by the schema and its hash; a
+# silent edit to either would invalidate every downstream identifier and
+# correction target.
+schema_v1 <- read_csv(root_path("data", "schema", "raw_extraction_schema_v1.csv"), show_col_types = FALSE)
+check(identical(names(raw), schema_v1$column), "raw header does not match schema v1")
+check(file_sha256(raw_file) == "a167afc2fb70a2e1fbf96eddc3f540c266235cd3507b855adb5be786d757f70f",
+      "raw extraction hash changed")
+
 raw$report_id <- seq_len(nrow(raw))
 check(nrow(raw) == 44, "expected 44 raw rows")
 
@@ -108,51 +117,14 @@ check(!any(duplicated(dat$result_id)), "result_id is not unique")
 # -------------------------------
 # 4. Source-verified corrections (raw CSV untouched)
 # -------------------------------
-corrections <- tribble(
-  ~study_id_clean, ~effect_type, ~field, ~raw, ~corrected, ~source, ~reason,
-  "KILLACKEY_2019", "proportion", "timepoint_months", "12", "6",
-  "Killackey et al. 2019, Br J Psychiatry 214(2):76-82, Results",
-  "76/126 equals the pooled 0-6 month arm counts (47+29 over 66+60); the paper gives no 12-month per-arm counts and 126 cannot be a 12-month denominator given 20.5% and 28.8% missing at 12 months",
-  "KILLACKEY_2019", "proportion", "follow_up_months", "12", "18",
-  "Killackey et al. 2019, Methods",
-  "Trial follow-up was 18 months; aligns the proportion row with the trial row",
-  "KILLACKEY_2019", "proportion", "outcome_definition",
-  "Worked at least 1 day in paid employment during 6_12 month follow-up period",
-  "Worked at least 1 day in paid employment during 0_6 month follow-up period (arms pooled)",
-  "Killackey et al. 2019, Results", "Label corrected to match the counts",
-  "CRAIG_2014", "proportion", "n_assessed", "159", "134",
-  "Craig et al. 2014, Br J Psychiatry 205(2):145-150, Table 2 (68 + 66 assessed)",
-  "Available-case rule: the prevalence denominator is the number assessed, consistent with the trial row",
-  "HEGELSTAD_2019", "proportion", "n_assessed", "60", "57",
-  "Hegelstad et al. 2019, Early Interv Psychiatry 13(4):859-866, Results (30 completers; 3 controls lacked employment data at 1 year)",
-  "Available-case rule: 14/30 intervention plus 2/27 controls",
-  "HEGELSTAD_2019", "trial_binary", "n_control", "30", "27",
-  "Hegelstad et al. 2019, Results", "Three matched controls lacked employment status at 1 year",
-  "EACK_2011", "proportion", "outcome_definition",
-  "Paid competitive employment at 12-month follow-up",
-  "Paid competitive employment at 24-month follow-up (end of treatment)",
-  "Eack et al. 2011, Res Soc Work Pract 21(1):32-42, Table 1 (PMC3718562)",
-  "Employment outcomes are reported for the 46 two-year completers; label corrected to the 24-month timepoint",
-  "EACK_2011", "proportion", "events", "12", "17",
-  "Eack et al. 2011, Table 1 (PMC3718562): competitively employed CET 13 of 24 (54%), EST 4 of 22 (18%)",
-  "The extracted 9 and 3 do not appear in any row of Table 1; counts replaced by the published end-of-treatment figures",
-  "EACK_2011", "trial_binary", "events_intervention", "9", "13",
-  "Eack et al. 2011, Table 1 (PMC3718562)", "As above",
-  "EACK_2011", "trial_binary", "events_control", "3", "4",
-  "Eack et al. 2011, Table 1 (PMC3718562)", "As above",
-  "TURNER_2019", "proportion", "notes", "",
-  "Follow-up was a mean of 19 months (range 2 to 44), not a fixed 18 months",
-  "Turner et al. 2019, Ir J Occup Ther 47(2):114-123", "Table 1 footnote",
-  "ERICKSON_2021", "trial_binary", "notes", "",
-  "Denominators 47 and 50 reconstructed from the printed counts and percentages (34, 72.3%; 25, 50.0%) in Table 2; randomised 56 vs 53",
-  "Erickson et al. 2021, Early Interv Psychiatry 15(3):662-668, Table 2", "Extraction note",
-  "NUECHTERLEIN_2020", "trial_binary", "notes", "",
-  "Competitive employment during months 7 to 18, available case (36 of 41 and 15 of 22 with outcome data); randomised 46 vs 23",
-  "Nuechterlein et al. 2020, Psychol Med 50(1):20-28, Results", "Extraction note",
-  "FOWLER_2019", "trial_binary", "notes", "",
-  "Non-affective subgroup of the ISREP 24-month follow-up (77 randomised)",
-  "Fowler et al. 2019, Schizophr Res 203:99-104", "Extraction note"
-)
+# The corrections were originally a hardcoded tribble (archived verbatim at
+# tests/testthat/fixtures/corrections_tribble_2026-09-02.R); they now live in
+# the reviewed ledger data/review/correction_ledger.csv, which additionally
+# records who decided each one, when and under which amendment.
+ledger <- read_csv(root_path("data", "review", "correction_ledger.csv"),
+                   col_types = cols(.default = col_character()), na = character(0))
+corrections <- ledger %>%
+  select(study_id_clean, effect_type, field, raw, corrected, source, reason)
 
 # Keep the pre-correction values so that the dissertation's figures can be
 # reproduced exactly (01_frequentist_registered.R, "as submitted" model).
@@ -174,6 +146,18 @@ for (i in seq_len(nrow(corrections))) {
   dat[[cr$field]][idx] <- if (is.numeric(dat[[cr$field]])) as.numeric(cr$corrected) else cr$corrected
 }
 write_csv(corrections, file.path(derived_dir, "corrections.csv"))
+
+# result_id recomputed from the corrected values, with the same recipe as
+# result_id above. Kept out of `dat` (and so out of every derived table,
+# including all_rows_clean.csv's select(everything())) because the identity
+# sidecar data/review/result_crosswalk.csv is the only place it is used; the
+# full prevalence frame enters the meta-regression cache key (R/utils.R
+# fit_cached()), so no column may be added to it or to all_rows_clean.csv.
+result_id_current_map <- dat %>%
+  transmute(report_id,
+           result_id_current = paste(study_id_clean, effect_type,
+                                     str_replace_all(str_to_lower(outcome_measure), "[^a-z0-9]+", "_"),
+                                     paste0(timepoint_months, "m"), sep = "__"))
 
 # Full denominators for the missing-as-not-employed sensitivity (randomised,
 # or matched group size for the non-randomised Hegelstad comparison).
@@ -198,6 +182,10 @@ prevalence <- dat %>%
       study_id_clean == "WILLIAMS_2016" ~ "retention",   # retained job among those employed at baseline
       TRUE                              ~ "competitive_or_paid"
     ),
+    # Legacy column name; this is the primary-estimand compatibility flag of
+    # amendment A5, not a diagnosis judgement. Renaming it is deferred to the
+    # release refit because the full prevalence frame enters the
+    # meta-regression cache key. See data/review/primary_estimand_compatibility.csv.
     population_fep = study_id_clean != "LIN_2026",       # early-phase schizophrenia drug trial
     # Provisional coding of whether the sample was offered a vocational
     # intervention; only rows with exposure_verified == "yes" are used by the
@@ -310,6 +298,19 @@ reconciliation <- bind_rows(
          flag = !is.na(reported) & abs(difference) > tolerance)
 write_csv(reconciliation, file.path(derived_dir, "reconciliation.csv"))
 
+# Every flagged discrepancy must have been reviewed and dispositioned, and
+# every disposition must correspond to a flagged row (data/review/
+# reconciliation_dispositions.csv is not touched by this script).
+dispositions <- read_csv(root_path("data", "review", "reconciliation_dispositions.csv"),
+                         show_col_types = FALSE)
+flagged <- reconciliation %>% filter(flag) %>% select(study_id_clean, effect_type)
+disp_key <- dispositions %>% select(study_id_clean, effect_type)
+check(nrow(flagged) == nrow(dplyr::distinct(flagged)), "duplicate flagged rows in reconciliation")
+check(nrow(dplyr::anti_join(flagged, disp_key, by = c("study_id_clean", "effect_type"))) == 0,
+      "a flagged reconciliation row has no matching disposition")
+check(nrow(dplyr::anti_join(disp_key, flagged, by = c("study_id_clean", "effect_type"))) == 0,
+      "a disposition row does not match any flagged reconciliation row")
+
 # -------------------------------
 # 9. Assertions on the derived tables
 # -------------------------------
@@ -376,6 +377,74 @@ write_csv(trial_arms, file.path(derived_dir, "trial_arms.csv"))
 write_csv(recovery,   file.path(derived_dir, "recovery.csv"))
 write_csv(dat %>% select(report_id, study_id, study_id_clean, result_id, everything()),
           file.path(derived_dir, "all_rows_clean.csv"))
+
+# -------------------------------
+# 11. Identity crosswalk and A5 compatibility sidecars (data/review/, not derived)
+# -------------------------------
+# Bibliographic report identifier (R01 to R24; R16 reserved for Jackel 2025,
+# which has no raw rows). Fixed by hand from the source registry, not derived.
+report_id_map <- c(
+  ABDELBAKI_2013 = "R01", ANDERSEN_2024 = "R02", CRAIG_2014 = "R03", DUDLEY_2014 = "R04",
+  EACK_2011 = "R05", HEGELSTAD_2019 = "R06", POTHIER_2019 = "R07", RINALDI_2010 = "R08",
+  ROSENHECK_2017 = "R09", VANDUIN_2021 = "R10", ERICKSON_2021 = "R11", KILLACKEY_2008 = "R12",
+  KILLACKEY_2019 = "R13", NUECHTERLEIN_2020 = "R14", LIN_2026 = "R15", CHUA_2019 = "R17",
+  HUMENSKY_2017 = "R18", MAJOR_2010 = "R19", RINALDI_2004 = "R20", TAPFUMANEYI_2015 = "R21",
+  TURNER_2019 = "R22", WILLIAMS_2016 = "R23", FOWLER_2019 = "R24"
+)
+check(setequal(names(report_id_map), unique(dat$study_id_clean)),
+      "report_id_map does not cover exactly the studies present in the data")
+
+registry <- read_csv(root_path("data", "review", "source_registry.csv"), show_col_types = FALSE)
+check(!anyDuplicated(registry$study_key), "source_registry.csv has duplicate study_key values")
+
+crosswalk <- dat %>%
+  left_join(result_id_current_map, by = "report_id") %>%
+  left_join(prevalence %>% select(study_id_clean, in_primary_set), by = "study_id_clean") %>%
+  left_join(trials %>% select(study_id_clean, analysis_set), by = "study_id_clean") %>%
+  transmute(
+    raw_row_id = report_id,
+    report_id = unname(report_id_map[study_id_clean]),
+    study_id_clean,
+    registry_key = tolower(str_replace_all(study_id_clean, "_", "")),
+    cohort_id = if_else(study_id_clean %in% c("RINALDI_2004", "RINALDI_2010"),
+                        "SWL_IPS_SERVICE", study_id_clean),
+    result_id, result_id_current,
+    effect_type,
+    in_primary_set = if_else(effect_type == "proportion", in_primary_set, NA),
+    analysis_set = if_else(effect_type == "trial_binary", analysis_set, NA_character_),
+    id_changed = result_id != result_id_current
+  ) %>%
+  left_join(registry %>% select(registry_key = study_key, doi), by = "registry_key") %>%
+  arrange(raw_row_id) %>%
+  group_by(report_id) %>%
+  mutate(result_uid = paste0(report_id, "_", sprintf("%02d", row_number()))) %>%
+  ungroup() %>%
+  select(raw_row_id, report_id, study_id_clean, registry_key, doi, cohort_id,
+        result_id, result_id_current, result_uid, effect_type, in_primary_set,
+        analysis_set, id_changed)
+
+check(all(unique(crosswalk$registry_key) %in% registry$study_key),
+      "a crosswalk registry_key has no match in source_registry.csv")
+check(all(!is.na(crosswalk$doi)), "a crosswalk row's registry match has a missing DOI")
+changed <- crosswalk %>% filter(id_changed)
+check(nrow(changed) == 1 && changed$study_id_clean == "KILLACKEY_2019" && changed$effect_type == "proportion",
+      "expected exactly one id_changed row: KILLACKEY_2019 proportion")
+check(!anyDuplicated(crosswalk$result_uid), "result_uid is not unique")
+write_csv(crosswalk, root_path("data", "review", "result_crosswalk.csv"))
+
+# A5 (docs/amendment_2026-09-02.md): population_fep is the primary-estimand
+# compatibility flag, not a diagnosis judgement; the sidecar carries the
+# corrected reason so the flag itself need not be renamed before the release
+# refit (renaming it would change data/derived/prevalence.csv's columns,
+# which enters the meta-regression cache key).
+compat <- read_csv(root_path("data", "review", "primary_estimand_compatibility.csv"),
+                   show_col_types = FALSE)
+compat_check <- prevalence %>%
+  select(study_id_clean, population_fep) %>%
+  inner_join(compat, by = "study_id_clean")
+check(nrow(compat_check) == nrow(prevalence), "compatibility sidecar is missing a prevalence study")
+check(all(compat_check$population_fep == compat_check$compatible_with_primary_prevalence_estimand),
+      "population_fep disagrees with the A5 compatibility sidecar")
 
 cat("\nCorrections applied:\n")
 print(as.data.frame(corrections[, c("study_id_clean", "effect_type", "field", "raw", "corrected")]),

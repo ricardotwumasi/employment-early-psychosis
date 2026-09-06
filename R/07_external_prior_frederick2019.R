@@ -18,36 +18,25 @@
 #
 #   Data: S3 File (zipped .rds files) and S2 File (R code) downloaded from
 #   PLOS ONE on 2026-09-02 into data/external/frederick2019/, see
-#   data/external/README.md. The download only runs when the committed copy
-#   is missing, so the script works offline.
+#   data/external/README.md. The committed .rds is required; if it is
+#   missing, run scripts/fetch_external_frederick2019.R once (network
+#   required) to fetch and verify it, then re-run this script.
 #
 #   Output: output/tables/external_frederick2019_reanalysis.csv
 # ===============================================
 
 # -------------------------------
-# 1. Packages and working directory
+# 1. Packages and paths
 # -------------------------------
-if (!requireNamespace("metafor", quietly = TRUE)) install.packages("metafor")
 library(metafor)
-
-# run_all.R runs this from the repository root; allow a direct run from R/
-if (!dir.exists("data") && dir.exists("../data")) setwd("..")
+source(if (file.exists("R/utils.R")) "R/utils.R" else "utils.R")
 
 # -------------------------------
-# 2. Data (committed copy, downloaded only if absent)
+# 2. Data (committed copy; fetched separately, never by this script)
 # -------------------------------
-ext_dir  <- "data/external/frederick2019"
-rds_path <- file.path(ext_dir, "competitive_employment_any.rds")
-zip_path <- file.path(ext_dir, "pone.0212208.s003.zip")
-plos_url <- paste0("https://journals.plos.org/plosone/article/file?",
-                   "type=supplementary&id=10.1371/journal.pone.0212208.")
-
+rds_path <- root_path("data", "external", "frederick2019", "competitive_employment_any.rds")
 if (!file.exists(rds_path)) {
-  dir.create(ext_dir, recursive = TRUE, showWarnings = FALSE)
-  if (!file.exists(zip_path)) {
-    download.file(paste0(plos_url, "s003"), zip_path, mode = "wb")
-  }
-  unzip(zip_path, files = "competitive_employment_any.rds", exdir = ext_dir)
+  stop("External Frederick 2019 data missing; run Rscript scripts/fetch_external_frederick2019.R once (network required)")
 }
 
 df <- readRDS(rds_path)
@@ -109,8 +98,8 @@ tab <- rbind(
 # -------------------------------
 # 5. Output
 # -------------------------------
-dir.create("output/tables", recursive = TRUE, showWarnings = FALSE)
-out_path <- "output/tables/external_frederick2019_reanalysis.csv"
+dir.create(root_path("output", "tables"), recursive = TRUE, showWarnings = FALSE)
+out_path <- root_path("output", "tables", "external_frederick2019_reanalysis.csv")
 write.csv(tab, out_path, row.names = FALSE)
 
 print(tab, row.names = FALSE, right = FALSE)

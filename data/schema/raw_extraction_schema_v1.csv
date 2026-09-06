@@ -1,0 +1,50 @@
+position,column,type,na_tokens,allowed_values,description
+1,study_id,character,|NA|N/A|/,,"Raw study identifier as extracted; collides across three pairs of distinct studies (Killackey, Rinaldi), resolved downstream by study_id_clean"
+2,author,character,|NA|N/A|/,,First author surname
+3,year,integer,|NA|N/A|/,,Publication year as extracted (online-first year for a few studies; corrected to the citable print year downstream as study_key/study_id_clean)
+4,country,character,|NA|N/A|/,,Country of the study sample
+5,region,character,|NA|N/A|/,Europe|North America|Oceania|Asia,World region of the study sample
+6,design,character,|NA|N/A|/,RCT|Cohort,Study design
+7,setting,character,|NA|N/A|/,,Care setting
+8,diagnosis,character,|NA|N/A|/,FEP|FES,Diagnostic population label
+9,diagnostic_tool,character,|NA|N/A|/,,Diagnostic instrument or method used to confirm the diagnosis
+10,n_total,integer,|NA|N/A|/,,Total sample size of the study or cohort
+11,pct_male,numeric,|NA|N/A|/,,Percentage of the sample who are male
+12,mean_age,numeric,|NA|N/A|/,,Mean age of the sample at baseline
+13,sd_age,numeric,|NA|N/A|/,,Standard deviation of age at baseline
+14,follow_up_months,integer,|NA|N/A|/,,Total study follow-up duration in months
+15,timepoint_months,integer,|NA|N/A|/,,Timepoint of the reported outcome in months
+16,effect_type,character,|NA|N/A|/,proportion|trial_binary|correlation|smd,"Row type: a prevalence proportion, a trial 2x2 binary comparison, a correlation, or a standardised mean difference"
+17,outcome_domain,character,|NA|N/A|/,,"Outcome domain (e.g. employment, functioning, symptoms)"
+18,outcome_measure,character,|NA|N/A|/,,Named outcome measure or construct
+19,outcome_definition,character,|NA|N/A|/,,Free-text definition of the outcome as reported
+20,outcome_basis,character,|NA|N/A|/,point|period,Whether the employment outcome is a point-in-time status or a period (any employment over an interval) measure; blank for non-employment rows
+21,events,integer,|NA|N/A|/,,Numerator for a proportion row (number employed)
+22,n_assessed,integer,|NA|N/A|/,,Denominator for a proportion row (number assessed for employment status)
+23,events_intervention,integer,|NA|N/A|/,,Number of events in the intervention arm of a trial_binary row
+24,n_intervention,integer,|NA|N/A|/,,Number analysed in the intervention arm of a trial_binary row
+25,events_control,integer,|NA|N/A|/,,Number of events in the control arm of a trial_binary row
+26,n_control,integer,|NA|N/A|/,,Number analysed in the control arm of a trial_binary row
+27,intervention_name,character,|NA|N/A|/,,Name of the intervention arm
+28,comparator,character,|NA|N/A|/,,Name of the comparator arm
+29,r,numeric,|NA|N/A|/,,Correlation coefficient for a correlation row
+30,n_r,integer,|NA|N/A|/,,Sample size underlying a correlation row
+31,group1_label,character,|NA|N/A|/,,Label of the first group for a standardised-mean-difference row
+32,mean1,numeric,|NA|N/A|/,,Mean of group 1 for a standardised-mean-difference row
+33,sd1,numeric,|NA|N/A|/,,Standard deviation of group 1 for a standardised-mean-difference row
+34,n1,integer,|NA|N/A|/,,Sample size of group 1 for a standardised-mean-difference row
+35,group2_label,character,|NA|N/A|/,,Label of the second group for a standardised-mean-difference row
+36,mean2,numeric,|NA|N/A|/,,Mean of group 2 for a standardised-mean-difference row
+37,sd2,numeric,|NA|N/A|/,,Standard deviation of group 2 for a standardised-mean-difference row
+38,n2,integer,|NA|N/A|/,,Sample size of group 2 for a standardised-mean-difference row
+39,reported_es_type,character,|NA|N/A|/,proportion|RR,Type of effect size as reported in the source (proportion or risk ratio)
+40,reported_es,numeric,|NA|N/A|/,,"Effect size as reported in the source, on the scale given by reported_es_type"
+41,reported_ci_low,numeric,|NA|N/A|/,,Lower bound of the reported confidence interval
+42,reported_ci_high,numeric,|NA|N/A|/,,Upper bound of the reported confidence interval
+43,reported_p,character,|NA|N/A|/,,Reported p-value or inequality as printed in the source (free text; not parsed to numeric)
+44,quality_tool,character,|NA|N/A|/,EPHPP,Name of the quality-appraisal tool used
+45,quality_rating,character,|NA|N/A|/,Weak|Moderate|Strong,Overall quality-appraisal rating
+46,page_source,character,|NA|N/A|/,,Page or table in the source document the row was extracted from
+47,extractor,character,|NA|N/A|/,,Initials of the extracting reviewer
+48,checker,character,|NA|N/A|/,,Initials of the checking reviewer
+49,notes,character,|NA|N/A|/,,Free-text extraction notes

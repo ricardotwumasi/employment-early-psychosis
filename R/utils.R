@@ -50,7 +50,36 @@ mcmc_settings <- list(
 # -------------------------------
 # The cache key is a hash of the data, formula, priors, family and sampler
 # settings, so a change to any of them forces a refit. Set
-# options(fep.refit = TRUE) to ignore the cache.
+# options(fep.refit = TRUE) to ignore the cache, or options(fep.cache_only =
+# TRUE) to forbid fitting altogether (stop if a cache entry is missing or
+# invalid). The actual brm() call is indirected through fep_brm_call() so
+# that tests can replace it with a stub that must never be reached in
+# cache-only mode.
+fep_brm_call <- function(...) brms::brm(...)
+
+# Appends one row to the in-session fit log (options("fep.fit_log")); fit_log()
+# returns the accumulated rows as a data.frame. Provenance only, not used by
+# any downstream analysis.
+record_fit_log <- function(model_id, cache_file, key, from_cache, cache_mtime) {
+  row <- data.frame(model_id = model_id, cache_file = cache_file, key = key,
+                    cache_key_version = 1L, from_cache = from_cache,
+                    cache_mtime = cache_mtime, stringsAsFactors = FALSE)
+  log <- getOption("fep.fit_log", list())
+  log[[length(log) + 1]] <- row
+  options(fep.fit_log = log)
+  invisible(row)
+}
+
+fit_log <- function() {
+  log <- getOption("fep.fit_log", list())
+  if (length(log) == 0) {
+    return(data.frame(model_id = character(0), cache_file = character(0), key = character(0),
+                      cache_key_version = integer(0), from_cache = logical(0),
+                      cache_mtime = as.POSIXct(character(0)), stringsAsFactors = FALSE))
+  }
+  do.call(rbind, log)
+}
+
 fit_cached <- function(formula, data, prior, family, tag,
                        adapt_delta = mcmc_settings$adapt_delta,
                        save_all_pars = FALSE, ...) {
@@ -64,12 +93,44 @@ fit_cached <- function(formula, data, prior, family, tag,
   dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
   cache_file <- file.path(cache_dir, paste0(tag, "_", substr(key, 1, 12), ".rds"))
   refit <- isTRUE(getOption("fep.refit", FALSE))
+  cache_only <- isTRUE(getOption("fep.cache_only", FALSE))
+
+  if (cache_only) {
+    if (refit) {
+      stop("CACHE_ONLY: fep.cache_only and fep.refit cannot both be set (conflict) for ", tag,
+           call. = FALSE)
+    }
+    if (!file.exists(cache_file)) {
+      stop("CACHE_ONLY: missing cache for ", tag, ": ", cache_file, call. = FALSE)
+    }
+    fit <- tryCatch(readRDS(cache_file), error = function(e) {
+      stop("CACHE_ONLY: unreadable cache for ", tag, ": ", conditionMessage(e), call. = FALSE)
+    })
+    check(inherits(fit, "brmsfit"), paste0("CACHE_ONLY: cached object for ", tag, " is not a brmsfit"))
+    meta <- attr(fit, "fep_cache_meta")
+    if (is.null(meta)) {
+      # Fits cached before 6 September 2026 carry no metadata; their identity
+      # rests on the 12-character key prefix in the file name, which
+      # file.exists(cache_file) has already matched against the computed key.
+      message("  [cache-only] ", tag, " (legacy cache without metadata; key prefix matched by file name)")
+    } else {
+      if (!identical(meta$key, key)) {
+        stop("CACHE_ONLY: cached fit for ", tag, " key mismatch (stale cache)", call. = FALSE)
+      }
+      message("  [cache-only] ", tag)
+    }
+    record_fit_log(tag, cache_file, key, from_cache = TRUE, cache_mtime = file.mtime(cache_file))
+    return(fit)
+  }
+
   if (!refit && file.exists(cache_file)) {
     message("  [cache] ", tag)
-    return(readRDS(cache_file))
+    fit <- readRDS(cache_file)
+    record_fit_log(tag, cache_file, key, from_cache = TRUE, cache_mtime = file.mtime(cache_file))
+    return(fit)
   }
   message("  [fit] ", tag)
-  fit <- brms::brm(
+  fit <- fep_brm_call(
     formula = formula, data = data, prior = prior, family = family,
     chains = mcmc_settings$chains, warmup = mcmc_settings$warmup,
     iter = mcmc_settings$iter, seed = mcmc_settings$seed,
@@ -78,7 +139,13 @@ fit_cached <- function(formula, data, prior, family, tag,
     save_pars = if (save_all_pars) brms::save_pars(all = TRUE) else NULL,
     refresh = 0, silent = 2, ...
   )
+  attr(fit, "fep_cache_meta") <- list(
+    key = key, cache_key_version = 1L, tag = tag, fitted_at = Sys.time(),
+    brms = packageVersion("brms"), cmdstanr = packageVersion("cmdstanr"),
+    cmdstan = cmdstanr::cmdstan_version(), r = R.version.string
+  )
   saveRDS(fit, cache_file)
+  record_fit_log(tag, cache_file, key, from_cache = FALSE, cache_mtime = file.mtime(cache_file))
   fit
 }
 
@@ -117,15 +184,51 @@ diagnose_fit <- function(fit, tag) {
   )
 }
 
+# Appends one row (with an attempt_id: 1 for the first try, 2 for the
+# adapt_delta = 0.999 retry) to the in-session gate-attempt log
+# (options("fep.gate_attempts")); write_gate_attempts() writes it to file.
+# Every attempt is kept, including a failing first attempt that fit_gated()
+# would otherwise silently overwrite.
+record_gate_attempt <- function(diag) {
+  attempts <- getOption("fep.gate_attempts", list())
+  attempts[[length(attempts) + 1]] <- diag
+  options(fep.gate_attempts = attempts)
+  invisible(diag)
+}
+
+write_gate_attempts <- function(path) {
+  attempts <- getOption("fep.gate_attempts", list())
+  df <- if (length(attempts) == 0) {
+    data.frame(model = character(0), max_rhat = numeric(0), min_ess_bulk = numeric(0),
+              min_ess_tail = numeric(0), divergences = numeric(0), max_treedepth = numeric(0),
+              min_ebfmi = numeric(0), passes_gate = logical(0), attempt_id = integer(0))
+  } else {
+    do.call(rbind, attempts)
+  }
+  dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
+  write.csv(df, path, row.names = FALSE)
+  invisible(df)
+}
+
 # Fit, check the gate, and re-run once at adapt_delta = 0.999 if it fails.
+# In cache-only mode a failing gate stops the run rather than triggering a
+# retry, because a retry would mean fitting.
 fit_gated <- function(formula, data, prior, family, tag, ...) {
+  cache_only <- isTRUE(getOption("fep.cache_only", FALSE))
   fit  <- fit_cached(formula, data, prior, family, tag, ...)
   diag <- diagnose_fit(fit, tag)
+  diag$attempt_id <- 1L
+  record_gate_attempt(diag)
   if (!diag$passes_gate) {
+    if (cache_only) {
+      stop("CACHE_ONLY: gate failed for ", tag, "; refit not permitted", call. = FALSE)
+    }
     message("  [gate] ", tag, " failed; re-running at adapt_delta = 0.999")
     fit  <- fit_cached(formula, data, prior, family, paste0(tag, "_ad999"),
                        adapt_delta = 0.999, ...)
     diag <- diagnose_fit(fit, paste0(tag, "_ad999"))
+    diag$attempt_id <- 2L
+    record_gate_attempt(diag)
   }
   list(fit = fit, diag = diag)
 }
@@ -151,11 +254,13 @@ summarise_effect <- function(draws_link, transf, label, k = NA_integer_) {
   )
 }
 
-# Draws of the pooled effect (b_Intercept) and the between-study SD.
+# Draws of the pooled effect (b_Intercept), the between-study SD, and the
+# chain/iteration/draw indices (so callers can export a fully indexed table).
 pooled_draws <- function(fit) {
   d <- posterior::as_draws_df(fit)
   sd_name <- grep("^sd_", names(d), value = TRUE)[1]
-  list(mu = d$b_Intercept, tau = d[[sd_name]])
+  list(mu = d$b_Intercept, tau = d[[sd_name]],
+       chain = d$.chain, iteration = d$.iteration, draw = d$.draw)
 }
 
 # Prediction draws for a new study: theta_new_j = mu_j + tau_j * z_j, with
@@ -253,4 +358,56 @@ null_interval_decision <- function(L, U, m) {
   } else {
     list(decision = "suspend judgement", m_min = NA, m_max = NA)
   }
+}
+
+# -------------------------------
+# Reproducibility helpers
+# -------------------------------
+
+# Run expr under a temporary seed, restoring the caller's random stream
+# (including "no seed set yet") on exit. Used to seed the unseeded historical
+# pp_check() and bridge_sampler() calls without affecting anything else that
+# draws random numbers in the same session.
+with_local_seed <- function(seed, expr) {
+  had_seed <- exists(".Random.seed", envir = globalenv(), inherits = FALSE)
+  if (had_seed) old_seed <- get(".Random.seed", envir = globalenv())
+  on.exit({
+    if (had_seed) {
+      assign(".Random.seed", old_seed, envir = globalenv())
+    } else if (exists(".Random.seed", envir = globalenv(), inherits = FALSE)) {
+      rm(".Random.seed", envir = globalenv())
+    }
+  }, add = TRUE)
+  set.seed(seed)
+  expr
+}
+
+# SHA-256 of a file's contents, for provenance and fixture checks.
+file_sha256 <- function(path) digest::digest(file = path, algo = "sha256")
+
+# Cross-check the fit registry against output/bayesian/fits/: every
+# registered fit_tag must have exactly one readable cache file, matched
+# exactly (a tag must not match another tag's file as a substring, e.g.
+# "loo_X" must not match "loo_XY", "sens_prior_hn1" must not match
+# "sens_prior_hn1x").
+preflight_cache <- function(registry_path = root_path("data", "registry", "fit_registry.csv"),
+                            fits_dir = root_path("output", "bayesian", "fits")) {
+  registry <- read.csv(registry_path, stringsAsFactors = FALSE)
+  rows <- lapply(registry$fit_tag, function(tag) {
+    pattern  <- paste0("^", tag, "_[0-9a-f]{12}\\.rds$")
+    files    <- list.files(fits_dir, pattern = pattern)
+    readable <- length(files) == 1 && tryCatch(
+      inherits(readRDS(file.path(fits_dir, files[1])), "brmsfit"),
+      error = function(e) FALSE
+    )
+    data.frame(fit_tag = tag, n_files = length(files), readable = readable,
+              stringsAsFactors = FALSE)
+  })
+  result <- do.call(rbind, rows)
+  n_ok <- sum(result$n_files == 1 & result$readable)
+  cat("preflight:", n_ok, "of", nrow(result), "registered fits have exactly one readable cache file\n")
+  if (n_ok < nrow(result)) {
+    print(result[!(result$n_files == 1 & result$readable), ], row.names = FALSE)
+  }
+  invisible(result)
 }

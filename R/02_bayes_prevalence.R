@@ -55,8 +55,10 @@ run_prev <- function(d, tag, tau_scale = 1, events_col = "events", n_col = "n_as
            pi_low = quantile(plogis(pred), 0.025, names = FALSE),
            pi_high = quantile(plogis(pred), 0.975, names = FALSE),
            p_below_50 = mean(plogis(dr$mu) < 0.5))
-  # Posterior predictive check on the observed counts
-  g <- pp_check(res$fit, type = "intervals", ndraws = 200) +
+  # Posterior predictive check on the observed counts. Seeded locally from
+  # 6 September 2026 (identified computational update); the historical run
+  # was unseeded.
+  g <- with_local_seed(mcmc_settings$seed, pp_check(res$fit, type = "intervals", ndraws = 200)) +
     labs(title = tag, x = "Study", y = "Employed (count)") + theme_minimal()
   ggsave(file.path(fig_dir, paste0("ppc_prevalence_", tag, ".pdf")), g, width = 7, height = 4)
   list(summary = summary, diag = res$diag, fit = res$fit, draws = dr)
@@ -136,8 +138,10 @@ summary_table <- bind_rows(c(lapply(results, `[[`, "summary"), list(nn_summary))
 diag_table    <- bind_rows(c(lapply(results, `[[`, "diag"), list(nn_res$diag), lapply(loo_res, `[[`, "diag")))
 write_csv(summary_table, file.path(out_dir, "prevalence_summary.csv"))
 write_csv(diag_table,    file.path(out_dir, "prevalence_diagnostics.csv"))
-write_csv(data.frame(mu = results$primary_strict_point_hn1$draws$mu,
-                     tau = results$primary_strict_point_hn1$draws$tau),
+primary_draws <- results$primary_strict_point_hn1$draws
+write_csv(data.frame(model_id = "primary_strict_point_hn1",
+                     .chain = primary_draws$chain, .iteration = primary_draws$iteration,
+                     .draw = primary_draws$draw, mu = primary_draws$mu, tau = primary_draws$tau),
           file.path(out_dir, "prevalence_primary_draws.csv"))
 
 check(all(diag_table$passes_gate), paste("prevalence models failing the convergence gate:",
