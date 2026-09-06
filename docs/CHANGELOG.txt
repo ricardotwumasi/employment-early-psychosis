@@ -48,3 +48,35 @@ British English. Times are Europe/London local time.
   Status: DRAFT AS PREPARED. The exact text submitted to PROSPERO on 2 September 2026, the
     submission receipt and the public revised record are still to be archived by the review
     guarantor; see docs/registration/README.md.
+
+[2026-09-06 01:30:00 BST] Archived the public PROSPERO version 2.0 record.
+  Archive file: docs/registration/prospero_revised_public_export_2026-09-05.pdf
+  SHA-256: 4c02845ebb88789fa32870b92bcc6db2c35db0665597b0058442904f32b31579
+  Source: browser print of https://www.crd.york.ac.uk/PROSPERO/view/CRD420261402841 captured
+    06/09/2026 00:29 (outer-project file new_PROSPERO_v2.pdf, copied byte for byte).
+  Content: the record's version history states "Version 2.0, published 05 Sep 2026" and
+    "Version 1.0, published 26 May 2026". Publication date (5 September) and capture date
+    (6 September) are distinct and both are recorded.
+  Effect: the public-status question of Gate 0B is closed. Still outstanding: exact submitted
+    text, submission receipt, version 1.0 export, author approval files.
+  docs/registration/checksums.sha256 created (two files).
+
+[2026-09-06 01:35:00 BST] Recorded the historical output fixtures.
+  File: docs/fixtures/historical_outputs_2026-09-02.sha256
+  Content: SHA-256 of every committed file under output/ and data/derived/ at commit 4e18493.
+  Purpose: any later change to these files must be a named, whitelisted difference.
+
+[2026-09-06 01:40:00 BST] Opened docs/amendment_2026-09-06.md (entries A23 to A32).
+  Status: working record; recorded facts (A23, A28, A29, A30, A31) and proposals (A24, A25 rule,
+    A26, A27) plus one open scope conflict (A32). Nothing approved. A1 to A22 unchanged.
+  Evidence added the same day: data/review/student_evidence_log.md; column
+    team_agreed_2026_09_05 in data/review/prisma_flow_comparison.csv; rows bond2026 and
+    bond2026correction in data/review/source_registry.csv (31 rows).
+  Engineering added the same day (see amendment A31 and the handover): data/schema/,
+    data/review/correction_ledger.csv, data/review/reconciliation_dispositions.csv,
+    data/review/result_crosswalk.csv, data/review/primary_estimand_compatibility.csv,
+    data/registry/fit_registry.csv, tests/, DESCRIPTION, renv.lock, CITATION.cff,
+    .github/workflows/deterministic-checks.yml, scripts/fetch_external_frederick2019.R.
+  Evidence tables drafted the same day by assistant agents, awaiting human checking:
+    data/review/population_eligibility.csv, data/review/candidate_results.csv,
+    data/review/novelty_crosswalk.md.

@@ -10,7 +10,7 @@
 |---|---|---|---|
 | Public analysis repository | `employment-early-psychosis/` (GitHub `ricardotwumasi/employment-early-psychosis`) | `main` at `adb39de`, matching `origin/main` | Clean tree verified 2 September 2026 |
 | Superseded release tag | same repository | `v1.0.0` at `ffa2890` | Retained; must not be moved or deleted |
-| Working branch for Phase 0 archive | same repository | `v1.1-phase0` from `adb39de` | Created 2 September 2026; local, not pushed at creation |
+| Working branch for Phase 0 archive | same repository | `v1.1-phase0` at `4e18493` (one commit ahead of `adb39de`) | Created 2 September 2026; local, not pushed at creation. Development branch `v1.1-dev` created from it on 6 September 2026 |
 | Raw extraction CSV | `data/yanan_data_280826.csv` | `a167afc2fb70a2e1fbf96eddc3f540c266235cd3507b855adb5be786d757f70f` | Byte-identical to `msc_dissertations/each_chapter/Yanan Data 280826.csv` and to the workspace copy `data/yanan_data_280826.csv` (verified 2 September 2026) |
 | Corrections table | `data/derived/corrections.csv` | `4a6b8d628879ed5ce034d116b82c9344a8c3a3be3c19d36ebd5ad8cd7567afea` | Fourteen source-linked rows |
 | 1 September specification (archive) | `docs/analysis_specification_2026-09-01.txt` | `d6928e505182cce9135b1ce6ecef3106f7d0550e36c932a275d90edc5e338fee` | Verbatim; see `docs/CHANGELOG.txt` for provenance and limitations |
@@ -25,13 +25,33 @@
 | Publication readiness assessment | `../PUBLICATION_READINESS_ASSESSMENT_2026-09-02.md` | `31a14a031f23d02e257595a19bf57a1b0e1b3961a3562b4860741cbc808e4dea` | |
 | Handover (morning revision) | `../HANDOVER_2026-09-02.md` | `06c0ec280f7c35b973aff174f72061908ab34811e5c8c4a41093d2d991a740b1` | Hash taken before the afternoon update |
 
+## 1b. Artefacts at adoption of plan revision 1.4 and the 6 September 2026 execution session
+
+Outer-project documents are not in Git; they are identified here by hash only (decision of RT, 6 September 2026). The hashes of the plan and handover below are those of revision 1.4 as read at the start of the session; revision 1.5 replaces them in place at the end of the session and its hashes are recorded in the external handover, not here, so that no register entry has to contain the hash of a file that is still being written.
+
+| Artefact | Location | Identity | Notes |
+|---|---|---|---|
+| Plan revision 1.4 | `../NEXT_VERSION_PLAN_v1.1.md` | `4a17ddca8ef89e3dc33222ddfe328c0f12d8d724d3bdfcec3596fe5569d3f5fe` | 5 September 2026; superseded in place by revision 1.5 on 6 September 2026 |
+| Handover for revision 1.4 | `../HANDOVER_2026-09-02.md` | `d30d0ecf43749b8d8945a0c0a577ca6a8b373951d2daa1bf6937c718496d6cce` | 5 September 2026 text; updated in place on 6 September 2026 |
+| Project assessment | `../PROJECT_ASSESSMENT_2026-09-05.md` | `07f302c46b0f044820dfc8c3a0a7ae70ff9f866fcaeb265c8fc711320efa23f7` | |
+| Execution-plan assessment | `../V1_4_EXECUTION_PLAN_ASSESSMENT_2026-09-06.md` | `f883b6029b0ad9cdde37d593c0963ccd885dcf8af9e16b9cff6c9e4a9d2bec72` | Seven required revisions applied to the session plan before execution |
+| Plan revision 1.3 (superseded) | `../tmp/NEXT_VERSION_PLAN_v1.1_rev1.3_backup_2026-09-05.md` | `039838a178d59a46adf74e0e9ab0746b6bd8f1bd92e5eaa1cdbe0673f8137ada` | |
+| Handover before revision 1.4 (superseded) | `../tmp/HANDOVER_2026-09-02_pre_v1.4_backup_2026-09-05.md` | `5133edeb653a83a8e36cc05d6964b6050c3c678e569e6181cf681e7a85df15c2` | |
+| PROSPERO version 2.0 public export | `docs/registration/prospero_revised_public_export_2026-09-05.pdf` (copy of `../new_PROSPERO_v2.pdf`) | `4c02845ebb88789fa32870b92bcc6db2c35db0665597b0058442904f32b31579` | Version 2.0 published 5 September 2026; captured 6 September 2026 00:29 |
+| Bond, Drake and Becker 2026 | `../literature/Bond, Drake and Becker 2026.pdf` | `4208e082df65aa4ece1288981e00e73ceb293b6d613fbe0862542c703bd7a7b6` | Licensed PDF; not in Git |
+| Bond, Drake and Becker 2026 correction | `../literature/Bond, Drake and Becker  2026 correction.pdf` | `dcfa36045344e6b6a0b423eb0e890688aed5670428989b82b112889177695faa` | Licensed PDF; not in Git |
+| YL reply of 5 September 2026 | `../msc_dissertations/yanan_response_050926.md` | `8e3dea809ad141c8ad485327c256963aefa43b0ed3d3ff7b09fc8932ba32a51d` | Private correspondence; facts recorded in `data/review/student_evidence_log.md` |
+| Historical output fixtures | `docs/fixtures/historical_outputs_2026-09-02.sha256` | `2a341e78f025646010072575e1500f682d6a3e7ed9fd4e0574c357960f76f12d` | SHA-256 of every committed file under `output/` and `data/derived/` at `4e18493` |
+| Amendment record, 6 September 2026 | `docs/amendment_2026-09-06.md` | recorded in `docs/CHANGELOG.txt` at each revision | Entries A23 to A32; nothing approved |
+| Manuscript source (local, not in Git) | `../manuscript/manuscript.tex` | `3b2031158194835747d788204d0a506850c4b31f0aa04978ffe7a1a79483ab1c` at the start of the session | Edited on 6 September 2026 (development draft); post-edit hash in the handover |
+
 ## 2. Gate record
 
 | Gate | Status | Date | Decision basis | Evidence held | Evidence outstanding |
 |---|---|---|---|---|---|
 | 0A local scientific freeze | Passed | 2 September 2026 | All five authors approved the package of decisions (estimands, analysis hierarchy, terminology, Lin 2026 treatment); confirmed to RT on 2 September 2026 and submitted to PROSPERO the same day | This register; `docs/amendment_2026-09-02.md` (SHA-256 `5d478f80…`, the written record of those decisions, drafted after the approval); archived specification | Written approval files for each author under `docs/registration/approvals/` with hashes; each author's confirmation that the amendment text matches what they approved |
-| 0B registration submission | Passed subject to archive | 2 September 2026 | AG submitted the PROSPERO major revision with review-team approval; the public revised record was expected later on 2 September 2026 | Draft as prepared | Exact submitted text, submission receipt, public version 1.0 export, public revised export, checksum file |
-| 1 tested reproducible implementation | Open | | | | |
+| 0B registration submission | Passed subject to archive; public status verified 5 September 2026 | 2 September 2026 (submission); 5 September 2026 (version 2.0 published) | AG submitted the PROSPERO major revision with review-team approval; the public record's version history shows version 2.0 published 5 September 2026 | Draft as prepared; public version 2.0 export (`docs/registration/prospero_revised_public_export_2026-09-05.pdf`, SHA-256 `4c02845e…`); `docs/registration/checksums.sha256` | Exact submitted text, submission receipt, public version 1.0 export, author approval files |
+| 1 tested reproducible implementation | Partial | 6 September 2026 | Deterministic tests, schema and ledger checks, fit registry, cache-only mode with a tested failure path, run manifest and a deterministic-check CI workflow added on `v1.1-dev`; lockfile written from the working library | Test and CI results recorded in the handover; `docs/fixtures/historical_outputs_2026-09-02.sha256` | Restoration of the environment from `renv.lock` into a fresh library, and the release-mode failure-path check, have not been demonstrated; `bayesplot` is a development build from `stan-dev.r-universe.dev`; CI covers the deterministic layer only |
 | 2 approved analysis specification | Open | | | | |
 | 3 auditable review record | Open | | | | |
 | 4 reproducible scientific run | Open | | | | |

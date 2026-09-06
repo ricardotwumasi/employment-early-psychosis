@@ -1,0 +1,25 @@
+# Student evidence log
+
+Dated record of what the two student reviewers (HK, review-record lead; YL, extraction and appraisal lead) have supplied or confirmed since the coordinated requests of 2 September 2026. Facts only; initials only; no correspondence text or addresses. The messages themselves are held privately by RT outside the repository. A reported statement is not the same as a verified record; the "Verification status" column says which it is.
+
+## 1. Requests sent
+
+| Date | To | Items requested (summary) | Status |
+|---|---|---|---|
+| 2 Sep 2026 | HK | Reconciled PRISMA counts and editable diagram; per-source search strings, platforms, dates and hit counts, including how Google Scholar and PubMed were searched; full-text exclusion list with reasons; screening agreement; EPHPP Blinding component and JBI items 6 and 7 | No reply as of 6 Sep 2026 |
+| 2 Sep 2026 | YL | Agreement of one set of identification and duplicate counts with HK; extraction workbook with page or table source per number; EPHPP component ratings for the 23 studies; confirmation of Erickson 2021 denominators; whether Killackey 2019 reports per-arm 12-month counts | Replied 5 Sep 2026 (see Section 2); workbook and EPHPP components outstanding |
+
+## 2. Replies received
+
+| Date | From | Statement (paraphrased, factual content only) | Verification status | Effect on the record |
+|---|---|---|---|---|
+| 5 Sep 2026 | YL | YL and HK checked and will use HK's counts: 2,541 records identified and 891 duplicates | Reported joint agreement; the screening export has not been supplied and HK has not replied separately | Recorded in `prisma_flow_comparison.csv` column `team_agreed_2026_09_05`; downstream boxes remain unreconciled (amendment A29) |
+| 5 Sep 2026 | YL | Erickson 2021: 109 randomised, 97 analysed at the 6 to 12 month follow-up; IPS 34 of 47 (72.3 %), TAU 25 of 50 (50.0 %), read from Table 2 (PDF p. 5); YL also cited the t-test degrees of freedom (93) as supporting 97 | Counts consistent with the printed table. The degrees-of-freedom argument is not adopted as justification: those degrees of freedom belong to the days-worked analysis, not the binary employment outcome | Trial inputs unchanged; amendment A30 |
+| 5 Sep 2026 | YL | Killackey 2019 does not report per-arm employment counts at 12 months. Raw counts are given only for months 0 to 6 (IPS 47/66, TAU 29/60; Results, PDF p. 4). For months 6 to 12 and 12 to 18 the paper gives odds ratios, confidence intervals and P values only (P = 0.288 and P = 0.594). Figure 1 shows model-predicted probabilities, not observed counts; no supplementary table supplies raw data | Consistent with the source as read for `data/review/candidate_results.csv` | The three-trial pool combines Erickson's months 6 to 12 with both Killackey trials' months 0 to 6; the `12m` suffix of the historical Killackey 2019 prevalence `result_id` is preserved in `result_crosswalk.csv` with the corrected `result_id_current` (amendment A25) |
+| 5 Sep 2026 | YL | An updated Excel extraction file will be sent | Outstanding | Needed for the source-page audit and the 23-of-45 crosswalk |
+
+## 3. Open items by student (for the follow-up requests drafted 6 September 2026)
+
+**HK:** confirmation of 2,541 and 891 in her own words; the original database exports, deduplication record and screening workbook so that the screened, sought, assessed, excluded and included boxes can be derived from record-level decisions; the meaning of the `**` marker after "Records excluded" in her Figure 1 (PRISMA 2020 template automation-tool note or a bespoke footnote); the 16 full-text exclusions with citations and one primary reason each; per-source search details (platform, date run, limits, hits, export file; Google Scholar is not an Ovid database; PubMed procedure); the relationship between the FEP search and the "larger international project" named in both dissertations and how the FEP subset was selected; who screened each stage and whether decisions were made before seeing the other reviewer's; EPHPP tool and dictionary version with the Blinding responses; JBI qualitative items 6 and 7 for Jones 2023 and Ørtenblad 2025.
+
+**YL:** the updated workbook with page or table source per number and every candidate time point (raw versus corrected values); the mapping from her 23 studies to HK's 45 and the reason each of the other 22 is not quantitatively usable; whether her downstream flow counts change now that 2,541 and 891 are adopted; EPHPP Blinding responses and tool version; Lin 2026's 12-month employment numerator and outcome-specific denominator (the paper reports 303 completers at 12 months and 280 at 18 months); whether her sheet records diagnostic composition (percentage bipolar, percentage substance-induced) and duration-of-illness range per study, given that PROSPERO version 2.0 rules out contacting study authors.

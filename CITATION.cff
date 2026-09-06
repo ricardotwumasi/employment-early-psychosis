@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below. This is a development version; the analysis is not yet publication-ready (see docs/document_control_register.md)."
+type: software
+title: "Employment in First-Episode Psychosis: A Systematic Review and Bayesian Meta-Analysis (analysis code and data)"
+version: 1.1.0-dev
+date-released: "2026-09-06"
+repository-code: "https://github.com/ricardotwumasi/employment-early-psychosis"
+license: MIT
+authors:
+  - family-names: Kaplankiran
+    given-names: Hazal
+    affiliation: "King's College London"
+    orcid: "https://orcid.org/0009-0003-9146-1303"
+  - family-names: Li
+    given-names: Yanan
+    affiliation: "King's College London"
+    orcid: "https://orcid.org/0009-0009-5482-1350"
+  - family-names: Trotta
+    given-names: Giulia
+    affiliation: "King's College London"
+  - family-names: Twumasi
+    given-names: Ricardo
+    affiliation: "King's College London"
+  - family-names: Georgiades
+    given-names: Anna
+    affiliation: "King's College London"
+keywords:
+  - first-episode psychosis
+  - employment
+  - Individual Placement and Support
+  - Bayesian meta-analysis
+  - systematic review
+identifiers:
+  - type: other
+    value: "PROSPERO CRD420261402841"
+    description: "Registration (version 1.0 published 26 May 2026; version 2.0 published 5 September 2026)"
