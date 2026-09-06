@@ -19,10 +19,23 @@ jobs:
           r-version: '4.4.2'
           use-public-rspm: true
 
+      # The deterministic-check set is the Imports field of DESCRIPTION, listed
+      # explicitly here because pak's solver for the local package also tries to
+      # resolve the Suggests (cmdstanr is not on CRAN) even with hard dependencies.
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          dependencies: '"hard"'
-          extra-packages: any::sessioninfo
+          packages: |
+            any::readr
+            any::dplyr
+            any::stringr
+            any::tidyr
+            any::digest
+            any::jsonlite
+            any::metafor
+            any::posterior
+            any::testthat
+            any::withr
+            any::sessioninfo
 
       - name: Check required packages are installed
         run: |
