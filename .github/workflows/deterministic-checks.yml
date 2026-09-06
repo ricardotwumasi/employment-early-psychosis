@@ -22,11 +22,11 @@ jobs:
       # The deterministic-check set is the Imports field of DESCRIPTION, listed
       # explicitly here because pak's solver for the local package also tries to
       # resolve the Suggests (cmdstanr is not on CRAN) even with hard dependencies.
-      # extra-repositories lets pak resolve cmdstanr (Suggests, not on CRAN)
-      # when it reads DESCRIPTION; it is not installed.
+      # cmdstanr (not on CRAN) is declared in DESCRIPTION's Config/Needs/analysis
+      # field rather than Suggests, because pak parses DESCRIPTION here and
+      # cannot resolve it; nothing from the analysis stack is installed in CI.
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-repositories: https://stan-dev.r-universe.dev
           packages: |
             any::readr
             any::dplyr

@@ -33,7 +33,6 @@ Imports:
     withr
 Suggests:
     brms,
-    cmdstanr,
     bridgesampling,
     bayesplot,
     ggplot2,
@@ -41,4 +40,5 @@ Suggests:
     knitr,
     scales,
     renv
+Config/Needs/analysis: cmdstanr
 Additional_repositories: https://stan-dev.r-universe.dev

@@ -100,7 +100,9 @@ does not certify any estimate.
 versions used. Restoration into a fresh library has not yet been demonstrated, `bayesplot` is a
 development build from `https://stan-dev.r-universe.dev`, and CmdStan 2.36.0 must be installed
 separately (`cmdstanr::install_cmdstan(version = "2.36.0")`). `DESCRIPTION` declares the
-deterministic-check dependencies (Imports) and the analysis stack (Suggests). The external
+deterministic-check dependencies (Imports), the CRAN part of the analysis stack (Suggests) and
+`cmdstanr` under `Config/Needs/analysis` (it is not on CRAN; install it from
+`https://stan-dev.r-universe.dev`). The external
 Frederick data are committed; `scripts/fetch_external_frederick2019.R` is the only step that
 uses the network and is never run by the analysis.
 
