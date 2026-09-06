@@ -80,3 +80,19 @@ British English. Times are Europe/London local time.
   Evidence tables drafted the same day by assistant agents, awaiting human checking:
     data/review/population_eligibility.csv, data/review/candidate_results.csv,
     data/review/novelty_crosswalk.md.
+
+[2026-09-06 03:05:00 BST] Cache-only replay and promotion record.
+  Directory: docs/replay_2026-09-06/ (manifest, log, fixture comparison, stochastic comparison).
+  Result: 42 of 42 fits loaded from cache, no fitting call, no gate retry; 54 fixture files
+    byte-identical; draw exports, diagnostics CSVs and Table 1 promoted with named differences
+    (new identifier columns; attempt_id; A5 label). Bridge-sampling outputs, figures and
+    session_info.txt not promoted (stochastic or byte-level differences).
+  Bridge sampling: under the local seed all five scales miss the A18 two-significant-figure
+    criterion (historically two of five met it); differences from the historical values are
+    0.9 to 3.6 percent, within the 5 percent tolerance fixed before comparison. Recorded, not relaxed.
+  Evidence tables written the same day by assistant agents and checked only by spot reads
+    (Hegelstad 2019 Table 1; Tapfumaneyi 2015 service list; Rosenheck 2017 Table 1 fitted means):
+    population_eligibility.csv (24 rows), candidate_results.csv (628 rows), novelty_crosswalk.md.
+    Findings summarised in docs/amendment_2026-09-06.md entries A24 and A25.
+  Token budget: the candidate-results agent exceeded the 250,000-token per-task limit of
+    CLAUDE.md Rule 6 (about 516,000 tokens including its own subagents); surfaced, not hidden.
