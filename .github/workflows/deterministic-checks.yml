@@ -1,0 +1,46 @@
+# Deterministic-check environment only. No Stan, no model fitting; a green
+# run is not a scientific refit. It only proves that the data-cleaning
+# pipeline (R/00_clean_data.R) is reproducible and that the deterministic
+# test suite (tests/testthat.R) passes with just the Imports in DESCRIPTION.
+name: deterministic-checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  deterministic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.2'
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          dependencies: '"hard"'
+          extra-packages: any::sessioninfo
+
+      - name: Check required packages are installed
+        run: |
+          Rscript -e '
+          cat(".libPaths():\n"); print(.libPaths())
+          pkgs <- c("readr", "dplyr", "stringr", "tidyr", "digest", "jsonlite",
+                    "metafor", "posterior", "testthat", "withr")
+          missing <- pkgs[!vapply(pkgs, requireNamespace, logical(1), quietly = TRUE)]
+          if (length(missing) > 0) stop("Missing required packages: ", paste(missing, collapse = ", "))
+          cat("All required packages are installed.\n")
+          '
+        shell: bash
+
+      - name: Reproduce the derived data tables
+        run: Rscript R/00_clean_data.R
+
+      - name: Fail if the derived tables or identity crosswalk differ from what is committed
+        run: git diff --exit-code -- data/derived data/review/result_crosswalk.csv
+
+      - name: Run the deterministic test suite
+        run: Rscript tests/testthat.R
