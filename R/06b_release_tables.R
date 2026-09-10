@@ -274,7 +274,7 @@ macros <- c(
   mac("rcRRmissing", ci(tm$estimate, tm$ci_low, tm$ci_high)),
   mac("rcRRLooMin", fmt(min(loo_t$estimate))), mac("rcRRLooMax", fmt(max(loo_t$estimate))),
   mac("rcOR", fmt(tr_exact$or)), mac("rcORLo", fmt(tr_exact$or_low)), mac("rcORHi", fmt(tr_exact$or_high)),
-  mac("rcORPgtOne", fmt(tr_exact$p_or_gt_1, 2)), mac("rcORp0", pct(tr_exact$pooled_control_risk, 0)),
+  mac("rcORPgtOne", fmt(tr_exact$p_or_gt_1, 2)), mac("rcORpZero", pct(tr_exact$pooled_control_risk, 0)),
   mac("rcORrrAtPzero", ci(tr_exact$rr_at_p0, tr_exact$rr_at_p0_low, tr_exact$rr_at_p0_high)),
   mac("rcBFprimary", fmt(bfp$bf_quadrature)), mac("rcBFprimaryBridge", fmt(bfp$bf_bridge)),
   mac("rcBFagreeCount", sum(tr_bf$agree_2sf)), mac("rcBFmaxDiscrepancy", fmt(max(abs(tr_bf$discrepancy_pct)), 1)),
