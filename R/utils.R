@@ -137,6 +137,14 @@ fit_cached <- function(formula, data, prior, family, tag,
     return(fit)
   }
   message("  [fit] ", tag)
+  # Each fit writes its CmdStan CSV files to its own directory. Consecutive
+  # fast fits (the leave-one-out loops take under two seconds each) otherwise
+  # share cmdstanr's timestamped file names in the session temp directory,
+  # and the previous fit object's finaliser can remove the new fit's CSV
+  # before it is read ("File does not exist" from read_cmdstan_csv; seen twice
+  # on 10 September 2026). The directory has no effect on the draws.
+  out_dir <- file.path(tempdir(), "cmdstan_output", paste0(tag, "_", substr(key, 1, 12)))
+  dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
   fit <- fep_brm_call(
     formula = formula, data = data, prior = prior, family = family,
     chains = mcmc_settings$chains, warmup = mcmc_settings$warmup,
@@ -144,7 +152,7 @@ fit_cached <- function(formula, data, prior, family, tag,
     backend = mcmc_settings$backend,
     control = list(adapt_delta = adapt_delta),
     save_pars = if (save_all_pars) brms::save_pars(all = TRUE) else NULL,
-    refresh = 0, silent = 2, ...
+    refresh = 0, silent = 2, output_dir = out_dir, ...
   )
   attr(fit, "fep_cache_meta") <- list(
     key = key, cache_key_version = 1L, tag = tag, fitted_at = Sys.time(),
