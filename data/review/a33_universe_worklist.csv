@@ -1,0 +1,25 @@
+item_id,study_key,author_year_as_printed,design,source_list,local_pdf,a33_population_status,a25_result_status,notes
+U01,allott2013,Allot et al. (2013),Cross-sectional,included_45,no,pending retrieval,pending retrieval,
+U02,allott2017,Allott et al. (2017),Longitudinal,included_45,no,pending retrieval,pending retrieval,
+U03,alvarezjimenez2012,Alvarez-Jimenez et al. (2012),Longitudinal,included_45,no,pending retrieval,pending retrieval,
+U04,alvarezjimenez2021,Alvarez-Jimenez et al. (2021),Randomised Controlled Trial,included_45,no,pending retrieval,pending retrieval,
+U05,baksheev2012,Baksheev et al. (2012),Randomised Controlled Trial,included_45,no,pending retrieval,pending retrieval,
+U06,buckle2025,Buckle et al. (2025),Longitudinal Cohort,included_45,no,pending retrieval,pending retrieval,
+U07,caruana2018,Caruana et al. (2018),Cross-sectional,included_45,no,pending retrieval,pending retrieval,
+U08,chan2020,Chan et al. (2020),Longitudinal,included_45,yes,eligible under A33,not determined from the first pages,"FES (first-episode schizophrenia-spectrum, nonaffective) sample entering the EASY early intervention service in Hong Kong 2001-2002 (2-year phase-specific intervention, ages 15-25); comorbid organic brain conditions, drug-induced psychosis and prior treatment for longer than 1 month before presentation were excluded, so population eligible under A33 (PDF p.2, Method/Samples). Employment is measured as months of full-time or part-time competitive paid employment or full-time education combined (PDF p.2, Ten-year employment history), not employment-only, and outcomes reported in the first pages are 10-year cluster-level; not determined from the first pages whether an employment-only count at 6 to 24 months is reported."
+U09,chang2014,Chang et al. (2014),Longitudinal,included_45,no,pending retrieval,pending retrieval,
+U10,jackel2025,Jäckel et al. (2025),Randomised Controlled Trial,included_45,yes,eligible under A33,no employment-only result (composite outcome only),"population eligible under A33 (bipolar with psychotic features admitted; 23 of 94 substance-induced); reports only an employment, education or training composite, so no employment-only result (candidate_results R16)"
+U11,jones2023,Jones et al. (2023),Qualitative,included_45,no,pending retrieval,pending retrieval,
+U12,kam2015,Kam et al. (2015),Longitudinal,included_45,no,pending retrieval,pending retrieval,
+U13,mackinley2022,MacKinley et al. (2022),Prospective Longitudinal Cohort Study,included_45,no,pending retrieval,pending retrieval,
+U14,maraj2019,Maraj et al. (2019),Longitudinal Cohort,included_45,no,pending retrieval,pending retrieval,
+U15,miley2023,Miley et al. (2023),Longitudinal Secondary Analysis,included_45,no,pending retrieval,pending retrieval,
+U16,nossel2018,Nossel et al. (2018),Prospective Longitudinal Cohort,included_45,no,pending retrieval,pending retrieval,
+U17,ortenblad2025,Ortenblad et al. (2025),Qualitative Study,included_45,no,pending retrieval,pending retrieval,
+U18,poon2010,Poon et al. (2010),Retrospective Cohort Study,included_45,no,pending retrieval,pending retrieval,
+U19,ramsay2012,Ramsay et al. (2012),Cross-Sectional Study,included_45,no,pending retrieval,pending retrieval,
+U20,stralin2019,Stralin et al. (2019),Longitudinal,included_45,no,pending retrieval,pending retrieval,
+U21,tarricone2017,Tarricone et al. (2017),Incidence Cohort Study,included_45,no,pending retrieval,pending retrieval,
+U22,hegelstad2017,Hegelstad et al. (2017),Longitudinal,included_45,yes,eligible under A33,not determined from the first pages,"First episode of nonaffective, nonorganic psychosis, age 18-65, recruited via the TIPS early- versus usual-detection catchment areas (PDF p.1, Methods), so population eligible under A33. The vocational outcome is full-time employment or study combined (Table 1 footnote a, PDF p.3), reported at 1, 2, 5 and 10 years; not determined from the first pages whether an employment-only count at 6 to 24 months is reported (only combined employment-or-study proportions are given at 1 year and 10 years)."
+U23,drake2013,Drake et al. (2013),not supplied,full_text_exclusion,no,pending retrieval,pending retrieval,"Excluded by HK as a mixed sample (primary psychosis, substance-induced psychosis and diagnostic-switch participants); now within the A33 population definition, so retrieve and screen (see full_text_exclusions.csv, X03, a33_rescreen_needed)."
+U24,not supplied,not supplied,not supplied,unscreened_records,no,pending retrieval,pending retrieval,"17 records marked red in AIM Review, not screened (HK, 10 Sep 2026); record-level citations not supplied."
