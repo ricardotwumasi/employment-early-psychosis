@@ -1,0 +1,2 @@
+study_id_clean,study_label,timepoint_months,events_intervention,n_intervention,events_control,n_control,rr,log_rr,se_log_rr,rr_low,rr_high,note
+KILLACKEY_2008,Killackey 2008,6,13,20,2,21,6.825,1.9205923410710235,0.6923178672430962,1.757072938220176,26.510353660778453,Strict registered population rule (A24): single eligible trial; Wald interval on the log RR; no pooling (A26)

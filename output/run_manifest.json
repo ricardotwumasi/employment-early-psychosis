@@ -1,0 +1,746 @@
+{
+  "status": "completed",
+  "failure_message": {},
+  "mode": "release",
+  "started_at": "2026-09-10 16:49:32 BST",
+  "finished_at": "2026-09-10 17:02:48 BST",
+  "elapsed_minutes": 13.27,
+  "git": {
+    "commit": "43f0e87e69a8155495e4f17eea6580f002b3eb44",
+    "dirty": true
+  },
+  "input_hashes": {
+    "data/yanan_data_280826.csv": "a167afc2fb70a2e1fbf96eddc3f540c266235cd3507b855adb5be786d757f70f",
+    "data/review/correction_ledger.csv": "6ce2ae3c287ed0a4fc28a5208f38f4fa218b62ed8e80c4d0ee7078f21a547110",
+    "data/registry/fit_registry.csv": "5ac84ac80f83ccada732529f847e5012566b652c5d9a72de9b8c8000243f6bf8",
+    "data/schema/raw_extraction_schema_v1.csv": "202343e9743d3b2c8d648766307abe080ffacfce7532171619d063aaf5fcf032",
+    "docs/analysis_specification_2026-09-01.txt": "d6928e505182cce9135b1ce6ecef3106f7d0550e36c932a275d90edc5e338fee",
+    "data/external/frederick2019/competitive_employment_any.rds": "6bf5b2f78888e11b2b76d48af508ff2374036c431170ec61172e7e22c61ca9dd",
+    "renv.lock": "7ffa8480ba8212089b7401ddcf4b60b6fe1676f4dd7df39a5d0608f30fd0d6d1"
+  },
+  "r_version": "R version 4.4.2 (2024-10-31)",
+  "packages": {
+    "brms": "2.23.0",
+    "cmdstanr": "0.9.0",
+    "metafor": "4.6.0",
+    "posterior": "1.6.0",
+    "bridgesampling": "1.2.1",
+    "bayesplot": "1.12.0.9000",
+    "digest": "0.6.37",
+    "readr": "2.1.5",
+    "dplyr": "1.1.4",
+    "ggplot2": "4.0.0"
+  },
+  "cmdstan": {
+    "version": "2.36.0",
+    "path": "/Users/k1812261/.cmdstan/cmdstan-2.36.0"
+  },
+  "fits": [
+    {
+      "model_id": "primary_strict_point_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/primary_strict_point_hn1_80c4f35089e3.rds",
+      "key": "80c4f35089e3090db2c0a9c2b4322e1a",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:49:46"
+    },
+    {
+      "model_id": "secondary_period_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/secondary_period_hn1_5aa6e95323b3.rds",
+      "key": "5aa6e95323b3593f87c12ba9f997c312",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:49:53"
+    },
+    {
+      "model_id": "sens_prior_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_prior_hn05_b20699f89487.rds",
+      "key": "b20699f894875c9d8368a837398e9352",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:04"
+    },
+    {
+      "model_id": "sens_prior_hn2",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_prior_hn2_00ff4fafaf20.rds",
+      "key": "00ff4fafaf20f168046c87cdd4a759ec",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:16"
+    },
+    {
+      "model_id": "sens_point_relaxed_k14",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_point_relaxed_k14_14d9cacbfe9e.rds",
+      "key": "14d9cacbfe9e58c2b2c65a3721d8d2e8",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:23"
+    },
+    {
+      "model_id": "sens_legacy_k23",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_legacy_k23_f87e7bd1534e.rds",
+      "key": "f87e7bd1534e5eb15c403c8a017e0651",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:32"
+    },
+    {
+      "model_id": "sens_strict_excl_weak",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_strict_excl_weak_95ac4a2540c0.rds",
+      "key": "95ac4a2540c0d248e19dce442eb8d421",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:38"
+    },
+    {
+      "model_id": "sens_strict_excl_exposed",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_strict_excl_exposed_c81d9399a8ad.rds",
+      "key": "c81d9399a8adc47ce13ef5af20b1b2f7",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:43"
+    },
+    {
+      "model_id": "sens_strict_missing_not_employed_bound",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_strict_missing_not_employed_bound_d388f8a7de0d.rds",
+      "key": "d388f8a7de0df1df3fa551534958652d",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:50:50"
+    },
+    {
+      "model_id": "sens_strict_normal_normal_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_strict_normal_normal_hn1_33ce21cf73c7.rds",
+      "key": "33ce21cf73c77cc0cf711a3ab2c84929",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:03"
+    },
+    {
+      "model_id": "loo_ABDELBAKI_2013",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_ABDELBAKI_2013_09414ba019d6.rds",
+      "key": "09414ba019d67058de7b7226c7007882",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:09"
+    },
+    {
+      "model_id": "loo_ANDERSEN_2024",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_ANDERSEN_2024_9be9d94f0821.rds",
+      "key": "9be9d94f082178fb22051b6432fbcacd",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:15"
+    },
+    {
+      "model_id": "loo_CRAIG_2014",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_CRAIG_2014_5871357a61c2.rds",
+      "key": "5871357a61c2fbdbab9360cd537e7fa3",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:22"
+    },
+    {
+      "model_id": "loo_DUDLEY_2014",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_DUDLEY_2014_6648ff9ed567.rds",
+      "key": "6648ff9ed567ffd783a837b515262b79",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:28"
+    },
+    {
+      "model_id": "loo_EACK_2011",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_EACK_2011_9a3d8fb3014f.rds",
+      "key": "9a3d8fb3014f337852099aaab19e5c8e",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:34"
+    },
+    {
+      "model_id": "loo_HEGELSTAD_2019",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_HEGELSTAD_2019_4fa943eea2c2.rds",
+      "key": "4fa943eea2c2ab25029516d58a621327",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:40"
+    },
+    {
+      "model_id": "loo_POTHIER_2019",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_POTHIER_2019_f8204a053531.rds",
+      "key": "f8204a0535310200953d1de926110804",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:46"
+    },
+    {
+      "model_id": "loo_RINALDI_2010",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_RINALDI_2010_6394ab9a684b.rds",
+      "key": "6394ab9a684bf6e68bc38aa3cb082d9e",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:51"
+    },
+    {
+      "model_id": "loo_ROSENHECK_2017",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_ROSENHECK_2017_f1f0dfcd6f02.rds",
+      "key": "f1f0dfcd6f0272b6d2082ce133f44eb8",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:51:58"
+    },
+    {
+      "model_id": "loo_VANDUIN_2021",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_VANDUIN_2021_2b733cf51e3f.rds",
+      "key": "2b733cf51e3f319520d4e1c910ccbe81",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:03"
+    },
+    {
+      "model_id": "primary_k3_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/primary_k3_hn05_493bf6364eea.rds",
+      "key": "493bf6364eeae8abcab86f02ca226de5",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:15"
+    },
+    {
+      "model_id": "sens_prior_hn025",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_prior_hn025_93d5ec7eaa6e.rds",
+      "key": "93d5ec7eaa6e92c24f4534265113b703",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:24"
+    },
+    {
+      "model_id": "sens_prior_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_prior_hn1_161958488769.rds",
+      "key": "161958488769c7eee6c1eafb4d078c94",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:34"
+    },
+    {
+      "model_id": "sens_k4_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_k4_hn05_830f4f5f2d07.rds",
+      "key": "830f4f5f2d073314c288b1447a9aa8f2",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:38"
+    },
+    {
+      "model_id": "sens_k3_missing_not_employed",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_k3_missing_not_employed_75349df93d54.rds",
+      "key": "75349df93d546b555141742048808830",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:41"
+    },
+    {
+      "model_id": "sens_k4_missing_not_employed",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/sens_k4_missing_not_employed_c8c281124f85.rds",
+      "key": "c8c281124f850ddada2d3574947ab44f",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:44"
+    },
+    {
+      "model_id": "loo_ERICKSON_2021",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_ERICKSON_2021_53337ca41677.rds",
+      "key": "53337ca4167714bf7c9d6535e4318a46",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:48"
+    },
+    {
+      "model_id": "loo_KILLACKEY_2008",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_KILLACKEY_2008_c228322546cc.rds",
+      "key": "c228322546cc264f22ff8310bbde6539",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:51"
+    },
+    {
+      "model_id": "loo_KILLACKEY_2019",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/loo_KILLACKEY_2019_8edbdd0c1ea9.rds",
+      "key": "8edbdd0c1ea9415bf42a16da22042b3e",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:52:54"
+    },
+    {
+      "model_id": "exact_binomial_k3",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/exact_binomial_k3_c01b1f8118f7.rds",
+      "key": "c01b1f8118f7052bc12fe367e2e46b99",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:53:06"
+    },
+    {
+      "model_id": "exact_binomial_k4",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/exact_binomial_k4_e25312d16f39.rds",
+      "key": "e25312d16f396d5c7985db62b0ab5541",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:53:19"
+    },
+    {
+      "model_id": "bf_h0_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h0_hn05_8d8ed3c4f94c.rds",
+      "key": "8d8ed3c4f94c932c8a6d017ce79a3963",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:53:28"
+    },
+    {
+      "model_id": "bf_h1_primary_log2",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h1_primary_log2_095b1e2981df.rds",
+      "key": "095b1e2981dfe83b1f60e01672385867",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:54:02"
+    },
+    {
+      "model_id": "bf_h1_frederick_published",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h1_frederick_published_80160dd95cda.rds",
+      "key": "80160dd95cda9799bc12a77d715112dc",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:54:35"
+    },
+    {
+      "model_id": "bf_h1_bond2015",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h1_bond2015_1e8d0e815193.rds",
+      "key": "1e8d0e8151932f6c4bd9387e849caf82",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:55:09"
+    },
+    {
+      "model_id": "bf_h1_bond2016",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h1_bond2016_d99c9565983c.rds",
+      "key": "d99c9565983cad8418470dcc7dcd1fac",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:55:42"
+    },
+    {
+      "model_id": "bf_h1_modini2016",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/bf_h1_modini2016_01263aa28ac7.rds",
+      "key": "01263aa28ac7b9a9a57e40c96a249648",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:56:17"
+    },
+    {
+      "model_id": "mr_design",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/mr_design_494374fbd024.rds",
+      "key": "494374fbd0245b04793e63f6c3f6c43d",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:57:00"
+    },
+    {
+      "model_id": "mr_timepoint",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/mr_timepoint_e2fa25819a07.rds",
+      "key": "e2fa25819a07fca92388b8906a021cc5",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:57:16"
+    },
+    {
+      "model_id": "mr_exposure",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/mr_exposure_fa19680c1f0c.rds",
+      "key": "fa19680c1f0c273888ec8c0896b877ad",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:57:51"
+    },
+    {
+      "model_id": "mr_attrition",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/mr_attrition_55a6081cd32c.rds",
+      "key": "55a6081cd32c5ceed9373d9331fc651c",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:05"
+    },
+    {
+      "model_id": "mr_outcome_basis",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/mr_outcome_basis_9a8fa0e7a2d6.rds",
+      "key": "9a8fa0e7a2d6329f71e4537e54be807f",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:25"
+    },
+    {
+      "model_id": "rc_a33_point_primary_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_primary_hn1_ede4e27e2779.rds",
+      "key": "ede4e27e277960366b68c19520635670",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:33"
+    },
+    {
+      "model_id": "rc_a33_point_prior_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_prior_hn05_f662e5ba1f9a.rds",
+      "key": "f662e5ba1f9ad8b970727784a7941a0d",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:37"
+    },
+    {
+      "model_id": "rc_a33_point_prior_hn2",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_prior_hn2_4759e22f49e7.rds",
+      "key": "4759e22f49e7c23f0cc0bd5c21152d79",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:42"
+    },
+    {
+      "model_id": "rc_a33_point_duration_sens_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_duration_sens_hn1_bc41e93e008e.rds",
+      "key": "bc41e93e008e6c3fe3b916fa4c2d022c",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:46"
+    },
+    {
+      "model_id": "rc_a33_period_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_period_hn1_7770a8e575d7.rds",
+      "key": "7770a8e575d7d0aa6be8698c82d4370f",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:54"
+    },
+    {
+      "model_id": "rc_a33_point_excl_weak_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_excl_weak_hn1_748a2a0e271a.rds",
+      "key": "748a2a0e271ae8180aaca37ca79f708a",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:58:57"
+    },
+    {
+      "model_id": "rc_a33_point_missing_bound_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_missing_bound_hn1_e58c5ca32a9a.rds",
+      "key": "e58c5ca32a9a586185f5a69a3348b32a",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:03"
+    },
+    {
+      "model_id": "rc_a33_point_normal_normal_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_normal_normal_hn1_1b90803f637e.rds",
+      "key": "1b90803f637eeca6944596ff3c3595f6",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:07"
+    },
+    {
+      "model_id": "rc_loo_prev_ABDELBAKI_2013",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_ABDELBAKI_2013_786308ce3815.rds",
+      "key": "786308ce3815e4f0c440d3ea53631159",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:12"
+    },
+    {
+      "model_id": "rc_loo_prev_ANDERSEN_2024",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_ANDERSEN_2024_e4663daca10f.rds",
+      "key": "e4663daca10f4d71f8da7ce435b6c9de",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:17"
+    },
+    {
+      "model_id": "rc_loo_prev_CRAIG_2014",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_CRAIG_2014_60458431e08b.rds",
+      "key": "60458431e08b42286dcbe4000a84d51c",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:22"
+    },
+    {
+      "model_id": "rc_loo_prev_DUDLEY_2014",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_DUDLEY_2014_90eaeb038c3a.rds",
+      "key": "90eaeb038c3ae27492eab378d3a5e565",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:26"
+    },
+    {
+      "model_id": "rc_loo_prev_HEGELSTAD_2019",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_HEGELSTAD_2019_1af4de669067.rds",
+      "key": "1af4de669067ea7b91af883c1c89f2a7",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:32"
+    },
+    {
+      "model_id": "rc_loo_prev_RINALDI_2010",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_prev_RINALDI_2010_f57664f36960.rds",
+      "key": "f57664f3696064c8c5138e8a1005c666",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:37"
+    },
+    {
+      "model_id": "rc_trial_a33_k3_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_trial_a33_k3_hn05_9b1f519d0ed2.rds",
+      "key": "9b1f519d0ed2c030d1df7c893f516d04",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:41"
+    },
+    {
+      "model_id": "rc_trial_a33_k3_hn025",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_trial_a33_k3_hn025_2453c0291fa9.rds",
+      "key": "2453c0291fa9555be40a53a422fbe876",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:44"
+    },
+    {
+      "model_id": "rc_trial_a33_k3_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_trial_a33_k3_hn1_0bca5d93ebf9.rds",
+      "key": "0bca5d93ebf9e0c0c4a80e7a1bb47c7a",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:48"
+    },
+    {
+      "model_id": "rc_trial_a33_k3_missing_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_trial_a33_k3_missing_hn05_25d66fafd6dc.rds",
+      "key": "25d66fafd6dccec80a52867dfeea00fe",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:51"
+    },
+    {
+      "model_id": "rc_loo_trial_ERICKSON_2021",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_trial_ERICKSON_2021_53337ca41677.rds",
+      "key": "53337ca4167714bf7c9d6535e4318a46",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:54"
+    },
+    {
+      "model_id": "rc_loo_trial_KILLACKEY_2008",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_trial_KILLACKEY_2008_d50ee5309666.rds",
+      "key": "d50ee5309666bae0fd765fc2ce991a45",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 16:59:58"
+    },
+    {
+      "model_id": "rc_loo_trial_KILLACKEY_2019",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_loo_trial_KILLACKEY_2019_c9652253cb0d.rds",
+      "key": "c9652253cb0d6b965447b0c439eef06c",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:00:02"
+    },
+    {
+      "model_id": "rc_exact_binomial_a33_k3",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_exact_binomial_a33_k3_9aeb6851a722.rds",
+      "key": "9aeb6851a722eb61fb593bb237c39064",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:00:07"
+    },
+    {
+      "model_id": "rc_bf_h0_hn05",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h0_hn05_64203cafc2b3.rds",
+      "key": "64203cafc2b30529624e292a83884b92",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:00:11"
+    },
+    {
+      "model_id": "rc_bf_h1_primary_log2",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_primary_log2_177412175b60.rds",
+      "key": "177412175b6060091dd89bd77fd92821",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:00:37"
+    },
+    {
+      "model_id": "rc_bf_h1_frederick_published",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_frederick_published_bcf660ca0312.rds",
+      "key": "bcf660ca0312d85364ffd80ccf08aeb0",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:01:03"
+    },
+    {
+      "model_id": "rc_bf_h1_bond2015",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_bond2015_3d6a4dc33c25.rds",
+      "key": "3d6a4dc33c25cfc5aaf694ebdfa22838",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:01:29"
+    },
+    {
+      "model_id": "rc_bf_h1_bond2016",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_bond2016_62a751a23edb.rds",
+      "key": "62a751a23edb8d81cb4940dc166051cb",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:01:55"
+    },
+    {
+      "model_id": "rc_bf_h1_modini2016",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_modini2016_533367e4124a.rds",
+      "key": "533367e4124a74fec6e95671329f9034",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:02:20"
+    },
+    {
+      "model_id": "rc_bf_h1_modini2016_ad999",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_bf_h1_modini2016_ad999_d4488310f5d1.rds",
+      "key": "d4488310f5d1199912c4c3c32f03bece",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-09-10 17:02:25"
+    }
+  ],
+  "gate_attempts_n": 71,
+  "output_hashes": {
+    "output/bayesian/gate_attempts.csv": "c72de25caf89877d7e5e057a800fea1bdd07ede084578df4dcc0b8a8136b78b6",
+    "output/bayesian/metaregression_contrasts.csv": "c38d276ee10a00c561c5d4601ead4e39980ca3368fa20615ae365074a1352ab6",
+    "output/bayesian/metaregression_diagnostics.csv": "8a2fdb51c02dbb6fd1636a3e3c706aeda10cdaaf8f50ca70c01182869e5c3e4f",
+    "output/bayesian/prevalence_diagnostics.csv": "d6b7832d10ed456595b4a5f3572a63bca8a127e73b171011fa57f5d219173162",
+    "output/bayesian/prevalence_leave_one_out.csv": "6080757766478faa86ad0cedf57360e82b2c52bc54f825aa2739954f2689aa0b",
+    "output/bayesian/prevalence_primary_draws.csv": "8b3de9f84de1d59388ebe2f8870d535138f6afb6ff9d82b5189f8e85e1c44e3e",
+    "output/bayesian/prevalence_primary_study_effects.csv": "2fc690628fb969400c7f0e72e74ab3574567221eb5255202c67db74cbc96332c",
+    "output/bayesian/prevalence_summary.csv": "9792bb1fb4e9fe314837313b74253ed9febaf709f77c73d4891e5324576bea66",
+    "output/bayesian/trials_bridge_bf.csv": "809a3090d6bc225504572fe38d50156fe84a282b33d1dd6f8edea265af5b9fe2",
+    "output/bayesian/trials_diagnostics.csv": "174c345ef03a911da6434edb58c3ac1c4e31b6ba273b7a1e047e39731cdb5493",
+    "output/bayesian/trials_exact_binomial.csv": "a443365ecab2aa3df08895ea69aee30de071e7ad501c94242006ce1657161cc0",
+    "output/bayesian/trials_input_effects.csv": "86352d13227bf3621ee678854ede06f1e56a94d75434f6175bf65e9646c74889",
+    "output/bayesian/trials_primary_draws.csv": "919c4ef305698ac550fddfe2f0c93973065deb66fe299a764cf8835d9dad744e",
+    "output/bayesian/trials_summary.csv": "73dfe483e91b74d57318d3c43c70774c129769578f176465b5d7a96218b2ddea",
+    "output/figures/fig1_forest_prevalence.pdf": "c7b7de607ba642d0421d01246b99da7880a66813162ac86874acd076763d0c4b",
+    "output/figures/fig2_forest_trials.pdf": "8f6f3490d27b619f8e9ac154704d6437316b74d419ba7541c099fc635c59753d",
+    "output/figures/fig3_dienes.pdf": "07fdc5f3b3db4013cf5b1b88e6cdaffcc308359c008d3ec6dcb160a879c020ea",
+    "output/figures/figS1_prior_sensitivity.pdf": "89c28c8065b047cc6b6130996bab9954997a52bf0012b11870a6f51922489ef6",
+    "output/figures/figS2_tau_posteriors.pdf": "e8a17abd096eec5bfe9fb739b22e4d59714055c1b51c5a14c3c25057dbf5a3e3",
+    "output/figures/ppc_prevalence_loo_ABDELBAKI_2013.pdf": "e10e132b68d86bb0f29d8a9ea4562985c70f433e3b831ceef2ad2697cf7e060d",
+    "output/figures/ppc_prevalence_loo_ANDERSEN_2024.pdf": "0f7e54b711835a68a21c7606793d164061202972e95e683d77d3585d6d4cd770",
+    "output/figures/ppc_prevalence_loo_CRAIG_2014.pdf": "6eb74bb431eef78134e7630413cc8d4f13ce419b123cb872c1fd4c0ae6ac4b4e",
+    "output/figures/ppc_prevalence_loo_DUDLEY_2014.pdf": "d5e4d6a3a6755867ecd3932217a27e626991c3cbc0b110f21e195d0f06909f64",
+    "output/figures/ppc_prevalence_loo_EACK_2011.pdf": "7cb36678056be981e17631e3ada57775869621707633b740eb4a7e51db2baf9e",
+    "output/figures/ppc_prevalence_loo_HEGELSTAD_2019.pdf": "c6ec4fc167a0960b6eb614b069bd7f3dfcb28270a5c1561dbeb86c6fc9377e41",
+    "output/figures/ppc_prevalence_loo_POTHIER_2019.pdf": "117f60413092678eb017fbabfc1fc549ccdadbe46908f4adedc0ed45c6aa56b1",
+    "output/figures/ppc_prevalence_loo_RINALDI_2010.pdf": "b1f21b4b4c201588225045f66746a3f312f97b89abaced35952d6e97e32f081b",
+    "output/figures/ppc_prevalence_loo_ROSENHECK_2017.pdf": "bd274f7976d1ff5006573d9771f0ac54e1508aecbc4a3b32a948a476fb97f700",
+    "output/figures/ppc_prevalence_loo_VANDUIN_2021.pdf": "5dd5836b12af19d63059755b6108af670231ea2d588736ed5c332cefc2858300",
+    "output/figures/ppc_prevalence_primary_strict_point_hn1.pdf": "d59ff5c9c5c2e07018bbc42c86423f4469864ea874e1289eaa4ea517a1593101",
+    "output/figures/ppc_prevalence_secondary_period_hn1.pdf": "9e98ec8508f8cb5d948ff4680a13ad519ae9e4e0d62352e4a1a34963b4cc0be8",
+    "output/figures/ppc_prevalence_sens_legacy_k23.pdf": "db999830c578accf31eb67aa6963c035e038fbe57eb512e3793fd0dc6e0c3862",
+    "output/figures/ppc_prevalence_sens_point_relaxed_k14.pdf": "fe983adb591acc6928bdc7af27349d84b269f758ec97722def6f666b52005441",
+    "output/figures/ppc_prevalence_sens_prior_hn05.pdf": "76711b9b7d01bafd8c5291878c2cd1058cbce8bf5a8dc7e31f4fbd947666a587",
+    "output/figures/ppc_prevalence_sens_prior_hn2.pdf": "a3294915e0ec1b61b2a4c4ad71309f881d8c92610ed29d36a5646db5f958ed44",
+    "output/figures/ppc_prevalence_sens_strict_excl_exposed.pdf": "e29d33f225d85f33f9de612bb6c05bfaa2476fec386b9ccac018b02ab8129b2b",
+    "output/figures/ppc_prevalence_sens_strict_excl_weak.pdf": "90e7f71cba02816431da2cb1603c6532320fdb66ea416791516d44e1a11b8a28",
+    "output/figures/ppc_prevalence_sens_strict_missing_not_employed_bound.pdf": "e2d1139f384ea38701e8b032210f99adda400c23ec4ee4076e8725ec5b79fac0",
+    "output/figures/ppc_trials_exact_binomial_k3.pdf": "48453c1015e81d22c7cd893454f945e38b404b746a85249b8ecba432486dc9e5",
+    "output/figures/ppc_trials_exact_binomial_k4.pdf": "e78bed9aafe6728938ea90024aadb823a986c205ac6580680ae8d94e0240367f",
+    "output/frequentist/moderators_registered_coefficients.csv": "ab587e4fd8fbca2342b7ed110f134eab5cdec46f585fe5605e387e94c18e7501",
+    "output/frequentist/moderators_registered_omnibus.csv": "ba8134590f6421467948aeefe73dc5837089f76812907b2ffeb7783e35742c12",
+    "output/frequentist/prevalence_registered_models.csv": "001fa565bad183f785178e0607b27d5432d379059fa6e442e8da6dce1045ebc0",
+    "output/frequentist/prevalence_subgroups_outcome_basis.csv": "bb104a058e26694ffa15cc0a7a858ef79134c077073abdda45477fbebc3b9b53",
+    "output/frequentist/publication_bias_registered.csv": "be5ee1d0a119e926617ca87e986ee61227bedcb81ee6dc6dad7aa0c650d16f03",
+    "output/frequentist/trials_other_comparisons_descriptive.csv": "2a935036232096e894baf885c22238362acb06a7c57250848859a1a0d92cbf5e",
+    "output/frequentist/trials_per_study_effects.csv": "02a26e880cf3f256a0e8c762b42d51e6cbc41457d6d24d4e51ce114b4fe6a643",
+    "output/frequentist/trials_registered_models.csv": "a9c2bdc52dacf7ad876019c5bd59cbe299165f0959a1e1033a9747aacea61c7a",
+    "output/release/bayesian/rc_absolute_risk_scenarios.csv": "6040d1a2f3b27f64c4ffa69c5ffd0fd235846bc9ed349278806c507fc8ef5ac5",
+    "output/release/bayesian/rc_exact_binomial_a33_k3_joint_draws.csv": "019df630b2b1f962773afdf7e5f1694a85e0c5f55c2fa062dd285109e04314ce",
+    "output/release/bayesian/rc_prevalence_diagnostics.csv": "19b2b6636761958ef4de81c49ddfac56a09e4fc2c52ffc9ef5471de6f7635302",
+    "output/release/bayesian/rc_prevalence_leave_one_out.csv": "2df58389d6bea9d074cea5d88a216b55f30522879d8df2c1a9eb8a8ba10d5a5d",
+    "output/release/bayesian/rc_prevalence_primary_draws.csv": "e7dc8d1c4984c3a8379ca3f8b6aff7969d075b93a80c86322c4183271a7b021f",
+    "output/release/bayesian/rc_prevalence_primary_study_effects.csv": "d950fb697d4a635c7f552e85f2339ed9d65fc056db3ed121bb77efdcbbb4ca07",
+    "output/release/bayesian/rc_prevalence_strict_record.csv": "dfa216a8a3db9a92f53343451ba051e45d6c5b77b468c247f2b2a9f8a79edec3",
+    "output/release/bayesian/rc_prevalence_summary.csv": "80117631404f00ba495622c0ad8f81c42bfb98ac09d5fb660c8bf0dcf90dee05",
+    "output/release/bayesian/rc_prevalence_variable_window.csv": "53a6d7735a1f922722143e7987cc7873fd61068d067e13c3d220e920e5265fd5",
+    "output/release/bayesian/rc_trials_bayes_factors.csv": "9a50dd2d0906cff61f46315cfdd89f0b3b6342ea9eca2547a511eabe396e7136",
+    "output/release/bayesian/rc_trials_bf_robustness_region.csv": "22db5ef61e607b6797bcda6f08912e784f9e26f2cbfb30a2cfa478a0b9911aa9",
+    "output/release/bayesian/rc_trials_diagnostics.csv": "3d4d629659056f25f4c9dfa3384e1fd08982b2118e33f14b8d34c0226d477edf",
+    "output/release/bayesian/rc_trials_exact_binomial.csv": "d42d09b6a588c9878046cafc399b145e9cc8b0f3cd721925b3ef8b59d88f348f",
+    "output/release/bayesian/rc_trials_input_effects.csv": "970855c36c050d5780ed1b93787c49274f995d98ae0b32ab77839a672f21c026",
+    "output/release/bayesian/rc_trials_leave_one_out.csv": "4f2d71615b8117c2ff39a1a30733a1c36080464f4d3c79b44a544e4582cd5ec2",
+    "output/release/bayesian/rc_trials_primary_draws.csv": "d5982a0e1f01e2b1bd4658342cd0703c3fd5099b9157cdb52b11e75d9680f30b",
+    "output/release/bayesian/rc_trials_strict_record.csv": "98446126ce0139930ad2a0b7fa1bc5762e3eb23b0e2762b20c9e6d8669797243",
+    "output/release/bayesian/rc_trials_summary.csv": "88227f24efd9966bd481449b08452e6be5755695ba642c20794ce2cb5088626a",
+    "output/release/figures/ppc_rc_a33_period_hn1.pdf": "6cfc5aab126c491c29c44c4c4758626384855ed690161aa0cedae08bb7e2ceb5",
+    "output/release/figures/ppc_rc_a33_point_duration_sens_hn1.pdf": "d98b342f731b52e833f270efc0f533db011580e3ea807db70fe6609fcb2c037a",
+    "output/release/figures/ppc_rc_a33_point_excl_weak_hn1.pdf": "08455540a8c496807613201dec45bb4a9893890133b6db846b3a53acf519236c",
+    "output/release/figures/ppc_rc_a33_point_missing_bound_hn1.pdf": "d624da4092b4860d5bf5db43dd70cedd7ca42b391020b86aa4d59f2e8f373936",
+    "output/release/figures/ppc_rc_a33_point_primary_hn1.pdf": "013d43a0b98066b3fa5ed21e58fb189c5a9caa005bb13fd1d248a06f52b2f394",
+    "output/release/figures/ppc_rc_a33_point_prior_hn05.pdf": "6e151a8d5c28c16b2e443472d287a74fdc93c559a95249c9a311cefba2a54f00",
+    "output/release/figures/ppc_rc_a33_point_prior_hn2.pdf": "2c97850ff2df0740d2ffc6a7da8bf9313db7d5870a25e7ac9576ef44a3aa41bc",
+    "output/release/figures/ppc_rc_exact_binomial_a33_k3.pdf": "e0cbae0becff4ffcf924da5c3412332eb32b273b2b201cafa264f86241510eb5",
+    "output/release/figures/ppc_rc_loo_prev_ABDELBAKI_2013.pdf": "0beb2956135af00664e4a80c4dbcaae7e9056031469f75e3fc92e6afabcd3cfc",
+    "output/release/figures/ppc_rc_loo_prev_ANDERSEN_2024.pdf": "b14b80ef26b2de367ca70108f16a68933656d0e94b9cee16bc4eb030b53a2100",
+    "output/release/figures/ppc_rc_loo_prev_CRAIG_2014.pdf": "de5d8fb7382da931f2eea76a494cd93767f8a00ca93889822ab33dae5a1d83a1",
+    "output/release/figures/ppc_rc_loo_prev_DUDLEY_2014.pdf": "7a42b464f7f8682748063c005c61d42cf9e8ec280f1399aa169607bf3d53e25c",
+    "output/release/figures/ppc_rc_loo_prev_HEGELSTAD_2019.pdf": "2bf661aa5f95697a65abf42c5773b828060c80bb90d87af20be058232f36cc04",
+    "output/release/figures/ppc_rc_loo_prev_RINALDI_2010.pdf": "972bfd8530f753c17855a7a7fa3d66a022f09b4caf8efec07c3584522b454ee8",
+    "output/release/figures/rc_fig1_forest_prevalence.pdf": "027e6c0ef691143d098ae5685662b4e1788f9696ce14a1163410a6501f4466f1",
+    "output/release/figures/rc_fig2_forest_trials.pdf": "76c3c36e74212baee7ddae0fd6792848e96f98ca2f800eba406354fce0a17c7b",
+    "output/release/tables/rc_numbers.tex": "f6a9714dfeebe77297e7f504899d9d4587ae2b94099b25bc1621747582345b57",
+    "output/release/tables/rc_table_absolute_risk.csv": "df7cad9c5ae83a8e0275caf8aee8539f51ef39baa6c469279320c66d4dbff4ed",
+    "output/release/tables/rc_table_absolute_risk.tex": "8fa4f0adb839ca1c70f741f860616909bf737a76cd3e6c108bc314495ece8405",
+    "output/release/tables/rc_table_bayes_factors.csv": "d273567fdcc6a15b41acc4a267b1068ca6007a134b6a950539045fee10218af8",
+    "output/release/tables/rc_table_bayes_factors.tex": "e45a5226db6a0f53bb50df06dfd7476adfe09af05fccb11c52248f61eac9e7a3",
+    "output/release/tables/rc_table_leave_one_out.csv": "37875a4b62a4558001ea493668ca5dd8aa6bc4e61128f19c55673715adc76a01",
+    "output/release/tables/rc_table_leave_one_out.tex": "39174dfbb3b6c6bda237268605e430fdba7de7bc31831f5a083957f350d9a381",
+    "output/release/tables/rc_table_mcmc_diagnostics.csv": "34f1d61a3803a630e7f2ddd8d97d916a34d6e5be9c72708891dd722a6de92162",
+    "output/release/tables/rc_table_mcmc_diagnostics.tex": "922e9083e739559cf1fe067a017312c2d2c3a41bd8cea77762271de98bfab994",
+    "output/release/tables/rc_table_membership.csv": "7cc39c6e89d80d5e1f8338533f9aa547e37606c51e1d71b7fae03a05b029254f",
+    "output/release/tables/rc_table_membership.tex": "5dd46cb670ff1f349e617adb4da2dbc255ac28f3bc8927c09a4a5cd004be3857",
+    "output/release/tables/rc_table_prevalence.csv": "d140aa949fcbecfecadaee9188e34a31364178d72d5472fd4b9f3da765d8a430",
+    "output/release/tables/rc_table_prevalence.tex": "afd8fe74c870ecf27ba635657b3bfac63539e938ed7ece8dd1d94fa576671ed4",
+    "output/release/tables/rc_table_trial_membership.csv": "ce39704e227ce7408ac8ea5d538672482f44afa0bfb6c691f03925b5b0537e28",
+    "output/release/tables/rc_table_trial_membership.tex": "1c73913267b45f4ef9e3666607498d8dcce72235510a5a5fff27296b250fa412",
+    "output/release/tables/rc_table_trials.csv": "5533c4c19eb83379bda3cd666ffbf112f3e7e641071ff6cf1b2bd79133d0c7d5",
+    "output/release/tables/rc_table_trials.tex": "84857e6a298bb055871f86f35235ee98c05e49190c03475f98f4402b407270ab",
+    "output/session_info.txt": "e6fd004d6f07510086bd32b5852619100f6d53d9f202bba25107977ef53e89ff",
+    "output/tables/dienes_bayes_factors_fixed_and_approx.csv": "b8765a3aaa30439f66b4fb63520f4360070263769535b7e01be4e3ccccf5c528",
+    "output/tables/dienes_bayes_factors_random_effects.csv": "adf8b8525f5ccbbc9606e22c5f87bd58a68593a4618043cd8e21fb73dc13e546",
+    "output/tables/dienes_bf_grid_over_s.csv": "306bd9da34e1847173f870fa85500fff112180bac1309e8493aaf08266ba3ed3",
+    "output/tables/dienes_bf_quadrature_vs_bridge.csv": "23773197607987c22b4c827c6f4ec906a599586fa5c644fa07040b88e0a2f5ea",
+    "output/tables/dienes_null_interval_decision.csv": "7f34f1040394823c2428133dd4a6805aa11e79d5ec7a952dc65bd995f962b819",
+    "output/tables/dienes_null_interval.csv": "b14ea3848f3f5f9fe60c8a110d5f8acc9e968c453e434458ffa061484852eb3a",
+    "output/tables/dienes_robustness_region_s_fixed_effect.csv": "6fff0b2c8b0155ee7f4a17bdd90b16a330e24941e7273869d6a4ba23b476f371",
+    "output/tables/dienes_robustness_region_s.csv": "b887ea48edc9611ed064ecbf75ba1d21bd4003e589a90a6a9f9938438956bc89",
+    "output/tables/external_frederick2019_reanalysis.csv": "9acb72250075ed9dde3a4ce17f5402a44dde16eca075bc4d8edaec681c2d240d",
+    "output/tables/table1_study_characteristics.csv": "ae9879aa3615cc43016e86966a8e252f6b335b0671b6f176c2d211230c8814e3",
+    "output/tables/table1_study_characteristics.tex": "affee58e5ab5bbd69d7f852a841178b9196f173dd88ef335d643afb5579debf3",
+    "output/tables/table2_prevalence.csv": "bae16407a2cdf94a474598345bc5dd834cd642fa0f15b18706417fe02997a2c4",
+    "output/tables/table2_prevalence.tex": "929e212a26b60723cc8117ea37568edc25e75e1313d1f6dd3a7a827b7ce1606d",
+    "output/tables/table3_trials.csv": "d887951226904a5e8954f813f17c229a1f590e552835222a5489a9c4d06fb6b4",
+    "output/tables/table3_trials.tex": "e0a3d1f236c0b4095e21a13cd66e734b66ad7e195b5f2bf94a1f4acd84eee3f5",
+    "output/tables/table4_bayes_factors.csv": "e47c9b8c0e698a5d24d3497e610b2b748b15f1fd6555a5ff7ebb214a5db57f28",
+    "output/tables/table4_bayes_factors.tex": "52c97c8b5d62bc7fbf41215c6a08e66101ede16fcb2845e8ebb9d7a5047a4ab6",
+    "output/tables/table4_null_interval.csv": "5433ca1f82ec8ee776f56520ac38b79b76361f998c527787c84e445b8d3c48c7",
+    "output/tables/table4_null_interval.tex": "5b09cf6ca3a2b09b6c935e61db1413481bb19a0471ee261d91669239faf97d7b",
+    "output/tables/tableS_corrections.tex": "eccb8ce35f45f19901061fd2cc9e2a41190c98982f5f1da9de817c95a3a99d11",
+    "output/tables/tableS_external_frederick.tex": "19de7cf645f02b783a0ffb8566d0b0057fcf93ea792eb60c006503350bed2a98",
+    "output/tables/tableS_mcmc_diagnostics.csv": "672a28c202500f7c99ac9e99791ba0963d57846a4f997d1dd86fb0b22f88d563",
+    "output/tables/tableS_mcmc_diagnostics.tex": "33b8b5004666c0766375878e8bd8746c1672a442797e22490c93cf25c180d167",
+    "output/tables/tableS_metaregression.csv": "1d29126d46519f08439c5ad0474ae4a93bbc67fcf8b6905b149864f06f826d2f",
+    "output/tables/tableS_metaregression.tex": "abd06cd950217d8a4b29a8e55f0424139d64df6942c6d9440a09d8463a27a3ee",
+    "output/tables/tableS_other_comparisons.csv": "63fe3ec3009a8a0c1836f48234ef84dd90b0d705d4bf1ef5fce34ba85e637bea",
+    "output/tables/tableS_other_comparisons.tex": "8bf7a905bf9a35077ed835066413e09b91f42db58061c6e1f1be6a2c96877af7",
+    "output/tables/tableS_prevalence_loo.csv": "2582aacdadd3b354d2fa0d723f0124928a2a06f7599f3e0ee0387cf1834989d9",
+    "output/tables/tableS_prevalence_loo.tex": "cc538099e7c62a75c31074641695ee91c58dfbda70790ac2189f17e7ebbc86e6",
+    "output/tables/tableS_publication_bias.csv": "795ba26b15a4afa8ebe829ddd27d78759c1ba93fd059432e6d6df468352d843e",
+    "output/tables/tableS_publication_bias.tex": "93b8259e906fb070b555d80b53678abb85b4fbfe5755dc2a5a9ca7b93e0de359",
+    "output/tables/tableS_recovery.csv": "e8f5859eb78a041f877e217231e82d23564c99ac06e7472a5b820c79a2f6d220",
+    "output/tables/tableS_recovery.tex": "002627876f6012ea74dd0a1fe68656f60884e0887e7d249a188c18c4fe58e757",
+    "output/tables/tableS_trial_counts.csv": "db1a59cb8e190742faeadd1b695281f77b3e1d076c3f7dbcbcb2335627691c71",
+    "output/tables/tableS_trial_counts.tex": "a66df3b8bec056a6b16a2964836f9446c6e9f1ee654d03fb9e62dd7a255807bf"
+  }
+}
