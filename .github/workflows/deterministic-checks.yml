@@ -55,7 +55,10 @@ jobs:
       - name: Reproduce the derived data tables
         run: Rscript R/00_clean_data.R
 
-      - name: Fail if the derived tables or identity crosswalk differ from what is committed
+      - name: Derive the release input tables (A33 scope, 10 September 2026)
+        run: Rscript R/00b_release_inputs.R
+
+      - name: Fail if the derived tables, release inputs or identity crosswalk differ from what is committed
         run: git diff --exit-code -- data/derived data/review/result_crosswalk.csv
 
       - name: Run the deterministic test suite

@@ -64,7 +64,10 @@ diag_all   <- bind_rows(read_csv(file.path(bay_dir, "prevalence_diagnostics.csv"
 # Fit inventory: every model the pipeline fits must have passed through the
 # convergence gate in 02, 03 or 04 and appear here exactly once. A model that
 # was re-run at adapt_delta = 0.999 carries the suffix _ad999 and still counts.
-expected_fits <- read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)$fit_tag
+registry_all  <- read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)
+# The release layer (R/02b, R/03b, added 10 September 2026) is validated by
+# R/06b_release_tables.R; this script owns the historical layer of 42 fits.
+expected_fits <- registry_all$fit_tag[registry_all$layer == "historical"]
 check(length(expected_fits) == 42 && !anyDuplicated(expected_fits),
       "fit registry does not contain exactly 42 unique fit_tag values")
 fitted_models <- sub("_ad999$", "", diag_all$model)

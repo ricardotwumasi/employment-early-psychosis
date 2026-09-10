@@ -1,0 +1,7 @@
+study_id_clean,study_label,arm,arm_ips,events,n_analysed,n_full
+ERICKSON_2021,Erickson 2021,intervention,1,30,50,56
+ERICKSON_2021,Erickson 2021,control,0,30,52,53
+KILLACKEY_2008,Killackey 2008,intervention,1,13,20,20
+KILLACKEY_2008,Killackey 2008,control,0,2,21,21
+KILLACKEY_2019,Killackey 2019,intervention,1,47,66,73
+KILLACKEY_2019,Killackey 2019,control,0,29,60,73

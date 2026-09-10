@@ -123,7 +123,14 @@ check(!any(duplicated(dat$result_id)), "result_id is not unique")
 # records who decided each one, when and under which amendment.
 ledger <- read_csv(root_path("data", "review", "correction_ledger.csv"),
                    col_types = cols(.default = col_character()), na = character(0))
+# Only the historical layer is applied here (C01 to C14, amendment A6), so
+# that the derived files reproduce the 2 September fixtures byte for byte.
+# Release-layer rows (C15 onwards, amendment A36, 10 September 2026) are
+# applied by R/00b_release_inputs.R to the release input tables only.
+check("layer" %in% names(ledger), "correction ledger has no layer column")
+check(all(ledger$layer %in% c("historical", "release")), "unknown ledger layer value")
 corrections <- ledger %>%
+  filter(layer == "historical") %>%
   select(study_id_clean, effect_type, field, raw, corrected, source, reason)
 
 # Keep the pre-correction values so that the dissertation's figures can be

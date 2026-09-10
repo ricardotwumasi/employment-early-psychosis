@@ -3,11 +3,16 @@
 # a hardcoded vector); if it drifted from the diagnostics CSVs the gate
 # check in 06 would pass on a registry that no longer describes reality.
 
-registry <- readr::read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)
+registry_all <- readr::read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)
+# Historical layer only: the release layer (10 September 2026) is checked in
+# test-release-inputs.R against output/release/.
+registry <- registry_all[registry_all$layer == "historical", ]
 
-test_that("the registry has exactly 42 unique fit_tag values", {
+test_that("the historical layer of the registry has exactly 42 unique fit_tag values", {
   expect_equal(nrow(registry), 42)
   expect_false(anyDuplicated(registry$fit_tag) > 0)
+  expect_false(anyDuplicated(registry_all$fit_tag) > 0)
+  expect_true(all(registry_all$layer %in% c("historical", "release")))
 })
 
 test_that("the registry equals the union of the three diagnostics CSVs' model names, with all passing the gate", {
