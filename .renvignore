@@ -1,0 +1,3 @@
+# Archived external code (Frederick and VanderWeele 2019 supplement) is not part of this project's dependency set
+data/external/
+tmp/

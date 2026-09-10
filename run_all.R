@@ -62,13 +62,8 @@ if (cmdstan_v != "2.36.0") stop("CmdStan ", cmdstan_v, " installed; results were
 # --release preconditions
 # -------------------------------
 if (opt_release) {
-  if (!file.exists("renv.lock")) stop("--release requires renv.lock to exist.")
-  synced <- tryCatch(renv::status(lockfile = "renv.lock")$synchronized,
-                     error = function(e) stop("--release: renv::status() could not be evaluated: ",
-                                              conditionMessage(e), call. = FALSE))
-  if (!isTRUE(synced)) stop("--release requires renv::status(lockfile = \"renv.lock\")$synchronized to be TRUE.")
-  porcelain <- system2("git", c("status", "--porcelain"), stdout = TRUE)
-  if (length(porcelain) > 0) stop("--release requires a clean git tree; uncommitted changes present.")
+  options(fep.release = TRUE)
+  check_release_preconditions()
 }
 
 # -------------------------------
@@ -148,25 +143,23 @@ run_pipeline <- function() {
   tryCatch({
     scripts <- c(
       "R/00_clean_data.R",
+      "R/00b_release_inputs.R",
       "R/01_frequentist_registered.R",
       "R/02_bayes_prevalence.R",
       "R/03_bayes_trials.R",
       "R/04_bayes_metaregression.R",
       "R/05_dienes_inference.R",
       "R/07_external_prior_frederick2019.R",
-      "R/06_figures_tables.R"
+      "R/06_figures_tables.R",
+      "R/02b_release_prevalence.R",
+      "R/03b_release_trials.R",
+      "R/06b_release_tables.R"
     )
     for (s in scripts) {
       cat("\n==================== ", s, " ====================\n", sep = "")
       source(s, local = new.env(), echo = FALSE)
     }
-    if (opt_release) {
-      fits <- fit_log()
-      if (any(fits$from_cache)) {
-        stop("--release requires every model to be fitted, not loaded from cache: ",
-             paste(fits$model_id[fits$from_cache], collapse = ", "))
-      }
-    }
+    if (opt_release) assert_release_fits_fresh(fit_log())
     m$status <- "completed"
   }, error = function(e) {
     m$status <- "failed"

@@ -123,6 +123,13 @@ fit_cached <- function(formula, data, prior, family, tag,
     return(fit)
   }
 
+  # Release mode (options(fep.release = TRUE)) must never read a cache, even
+  # if fep.refit were unset by a caller; the assertion after the run
+  # (assert_release_fits_fresh) is the second line of defence.
+  if (isTRUE(getOption("fep.release", FALSE)) && !refit) {
+    stop("RELEASE: fep.release is set but fep.refit is not; refusing to consult the cache for ", tag,
+         call. = FALSE)
+  }
   if (!refit && file.exists(cache_file)) {
     message("  [cache] ", tag)
     fit <- readRDS(cache_file)
@@ -391,8 +398,12 @@ file_sha256 <- function(path) digest::digest(file = path, algo = "sha256")
 # "loo_X" must not match "loo_XY", "sens_prior_hn1" must not match
 # "sens_prior_hn1x").
 preflight_cache <- function(registry_path = root_path("data", "registry", "fit_registry.csv"),
-                            fits_dir = root_path("output", "bayesian", "fits")) {
+                            fits_dir = root_path("output", "bayesian", "fits"),
+                            layers = NULL) {
   registry <- read.csv(registry_path, stringsAsFactors = FALSE)
+  # layers: restrict to the historical or release layer of the registry
+  # (NULL = every registered fit).
+  if (!is.null(layers)) registry <- registry[registry$layer %in% layers, ]
   rows <- lapply(registry$fit_tag, function(tag) {
     pattern  <- paste0("^", tag, "_[0-9a-f]{12}\\.rds$")
     files    <- list.files(fits_dir, pattern = pattern)
@@ -410,4 +421,35 @@ preflight_cache <- function(registry_path = root_path("data", "registry", "fit_r
     print(result[!(result$n_files == 1 & result$readable), ], row.names = FALSE)
   }
   invisible(result)
+}
+
+# -------------------------------
+# Release-mode guards (run_all.R --release)
+# -------------------------------
+# Preconditions: a lockfile that the library satisfies and a clean git tree.
+# Both checks are injectable so that the failure paths can be tested without
+# a real renv library or a dirty checkout.
+check_release_preconditions <- function(lockfile = "renv.lock",
+                                        synced_fun = function(lf) renv::status(lockfile = lf)$synchronized,
+                                        porcelain_fun = function() system2("git", c("status", "--porcelain"), stdout = TRUE)) {
+  if (!file.exists(lockfile)) stop("--release requires renv.lock to exist.", call. = FALSE)
+  synced <- tryCatch(synced_fun(lockfile),
+                     error = function(e) stop("--release: renv::status() could not be evaluated: ",
+                                              conditionMessage(e), call. = FALSE))
+  if (!isTRUE(synced)) {
+    stop("--release requires renv::status(lockfile = \"", lockfile, "\")$synchronized to be TRUE.", call. = FALSE)
+  }
+  porcelain <- porcelain_fun()
+  if (length(porcelain) > 0) stop("--release requires a clean git tree; uncommitted changes present.", call. = FALSE)
+  invisible(TRUE)
+}
+
+# After the run: every logged fit must have been fitted in this session.
+assert_release_fits_fresh <- function(fits) {
+  if (nrow(fits) == 0) stop("--release: no fits were logged; nothing was fitted.", call. = FALSE)
+  if (any(fits$from_cache)) {
+    stop("--release requires every model to be fitted, not loaded from cache: ",
+         paste(fits$model_id[fits$from_cache], collapse = ", "), call. = FALSE)
+  }
+  invisible(TRUE)
 }

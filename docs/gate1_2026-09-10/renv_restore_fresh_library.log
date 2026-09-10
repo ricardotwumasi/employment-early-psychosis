@@ -1,0 +1,322 @@
+The following package(s) will be updated:
+
+# CRAN -----------------------------------------------------------------------
+- abind            [* -> 1.4-8]
+- backports        [* -> 1.5.0]
+- BH               [* -> 1.84.0-0]
+- bit              [* -> 4.5.0]
+- bit64            [* -> 4.5.2]
+- bridgesampling   [* -> 1.2-1]
+- brio             [* -> 1.1.5]
+- brms             [* -> 2.23.0]
+- Brobdingnag      [* -> 1.2-9]
+- callr            [* -> 3.7.6]
+- checkmate        [* -> 2.3.2]
+- cli              [* -> 3.6.6]
+- clipr            [* -> 0.8.0]
+- coda             [* -> 0.19-4.1]
+- cpp11            [* -> 0.5.0]
+- crayon           [* -> 1.5.3]
+- data.table       [* -> 1.16.2]
+- desc             [* -> 1.4.3]
+- diffobj          [* -> 0.3.5]
+- digest           [* -> 0.6.37]
+- distributional   [* -> 0.5.0]
+- dplyr            [* -> 1.1.4]
+- evaluate         [* -> 1.0.5]
+- fansi            [* -> 1.0.6]
+- farver           [* -> 2.1.2]
+- fs               [* -> 2.1.0]
+- future           [* -> 1.34.0]
+- future.apply     [* -> 1.11.3]
+- generics         [* -> 0.1.3]
+- ggplot2          [* -> 4.0.0]
+- ggridges         [* -> 0.5.6]
+- globals          [* -> 0.16.3]
+- glue             [* -> 1.8.0]
+- gridExtra        [* -> 2.3]
+- gtable           [* -> 0.3.6]
+- highr            [* -> 0.11]
+- hms              [* -> 1.1.3]
+- inline           [* -> 0.3.20]
+- isoband          [* -> 0.2.7]
+- jsonlite         [* -> 2.0.0]
+- knitr            [* -> 1.49]
+- labeling         [* -> 0.4.3]
+- lifecycle        [* -> 1.0.5]
+- listenv          [* -> 0.9.1]
+- loo              [* -> 2.8.0]
+- magrittr         [* -> 2.0.3]
+- mathjaxr         [* -> 1.6-0]
+- matrixStats      [* -> 1.4.1]
+- metadat          [* -> 1.2-0]
+- metafor          [* -> 4.6-0]
+- mvtnorm          [* -> 1.3-2]
+- nleqslv          [* -> 3.3.6]
+- numDeriv         [* -> 2016.8-1.1]
+- parallelly       [* -> 1.39.0]
+- patchwork        [* -> 1.3.0]
+- pbapply          [* -> 1.7-2]
+- pillar           [* -> 1.9.0]
+- pkgbuild         [* -> 1.4.8]
+- pkgconfig        [* -> 2.0.3]
+- pkgload          [* -> 1.5.3]
+- plyr             [* -> 1.8.9]
+- posterior        [* -> 1.6.0]
+- praise           [* -> 1.0.0]
+- prettyunits      [* -> 1.2.0]
+- processx         [* -> 3.9.0]
+- progress         [* -> 1.2.3]
+- ps               [* -> 1.9.3]
+- purrr            [* -> 1.0.2]
+- QuickJSR         [* -> 1.4.0]
+- R6               [* -> 2.6.1]
+- RColorBrewer     [* -> 1.1-3]
+- Rcpp             [* -> 1.0.13-1]
+- RcppEigen        [* -> 0.3.4.0.2]
+- RcppParallel     [* -> 5.1.9]
+- readr            [* -> 2.1.5]
+- renv             [* -> 1.1.4]
+- reshape2         [* -> 1.4.4]
+- rlang            [* -> 1.3.0]
+- rprojroot        [* -> 2.1.1]
+- rstan            [* -> 2.32.6]
+- rstantools       [* -> 2.6.0]
+- S7               [* -> 0.2.0]
+- scales           [* -> 1.4.0]
+- StanHeaders      [* -> 2.32.10]
+- stringi          [* -> 1.8.4]
+- stringr          [* -> 1.5.1]
+- tensorA          [* -> 0.36.2.1]
+- testthat         [* -> 3.3.2]
+- tibble           [* -> 3.2.1]
+- tidyr            [* -> 1.3.1]
+- tidyselect       [* -> 1.2.1]
+- tzdb             [* -> 0.4.0]
+- utf8             [* -> 1.2.4]
+- vctrs            [* -> 0.6.5]
+- viridisLite      [* -> 0.4.2]
+- vroom            [* -> 1.6.5]
+- waldo            [* -> 0.6.2]
+- withr            [* -> 3.0.2]
+- xfun             [* -> 0.49]
+- yaml             [* -> 2.3.10]
+
+# https://stan-dev.r-universe.dev --------------------------------------------
+- bayesplot        [* -> 1.12.0.9000]
+- cmdstanr         [* -> 0.9.0]
+
+# Downloading packages -------------------------------------------------------
+- Downloading R6 from CRAN ...                  OK [84.9 Kb in 0.3s]
+- Querying repositories for available binary packages ... Done!
+- Querying repositories for available source packages ... Done!
+- Cloning 'https://github.com/stan-dev/bayesplot' ... OK [cloned repository in 1.9 seconds]
+- Downloading cli from P3M ...                  OK [1.3 Mb in 0.62s]
+- Downloading lifecycle from CRAN ...           OK [129.6 Kb in 0.2s]
+- Downloading rlang from CRAN ...               OK [765.7 Kb in 0.13s]
+- Downloading pkgbuild from CRAN ...            OK [203.8 Kb in 0.22s]
+- Downloading processx from P3M ...             OK [388.8 Kb in 0.63s]
+- Downloading ps from P3M ...                   OK [402.7 Kb in 0.54s]
+- Downloading jsonlite from CRAN ...            OK [1.1 Mb in 0.58s]
+- Downloading evaluate from CRAN ...            OK [99.8 Kb in 0.19s]
+- Downloading fs from P3M ...                   OK [290.2 Kb in 0.56s]
+- Downloading patchwork from P3M ...            OK [3.2 Mb in 0.89s]
+- Downloading pkgload from CRAN ...             OK [87 Kb in 0.11s]
+- Downloading rprojroot from CRAN ...           OK [109.5 Kb in 0.19s]
+- Downloading renv from P3M ...                 OK [2.2 Mb in 1.5s]
+- Downloading testthat from CRAN ...            OK [3.1 Mb in 0.36s]
+- Downloading waldo from CRAN ...               OK [134.5 Kb in 0.42s]
+Successfully downloaded 17 packages in 14 seconds.
+
+# Installing packages --------------------------------------------------------
+- Installing BH ...                             OK [copied from cache in 6.3s]
+- Installing Brobdingnag ...                    OK [copied from cache]
+- Installing QuickJSR ...                       OK [copied from cache]
+- Installing R6 ...
+- OK [installed binary and cached in 64s]
+- Installing RColorBrewer ...                   OK [copied from cache]
+- Installing Rcpp ...                           OK [copied from cache in 0.35s]
+- Installing RcppEigen ...                      OK [copied from cache in 0.34s]
+- Installing RcppParallel ...                   OK [copied from cache in 0.1s]
+- Installing S7 ...                             OK [copied from cache]
+- Installing StanHeaders ...                    OK [copied from cache in 1.0s]
+- Installing abind ...                          OK [copied from cache]
+- Installing backports ...                      OK [copied from cache]
+- Installing cli ...
+- OK [installed binary and cached in 0.11s]
+- Installing generics ...                       OK [copied from cache]
+- Installing glue ...                           OK [copied from cache]
+- Installing rlang ...
+* installing *source* package ‘rlang’ ...
+** package ‘rlang’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘Apple clang version 21.0.0 (clang-2100.1.1.101)’
+using SDK: ‘’
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I./rlang/  -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c capture.c -o capture.o
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I./rlang/  -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c internal.c -o internal.o
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I./rlang/  -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c rlang.c -o rlang.o
+clang -arch arm64 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -I./rlang/  -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2  -c version.c -o version.o
+clang -arch arm64 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -L/Library/Frameworks/R.framework/Resources/lib -L/opt/R/arm64/lib -o rlang.so capture.o internal.o rlang.o version.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /private/var/folders/26/m3gzvtx9075gb8z7877m29cm0000gq/T/renv_restore_lib_2026-09-10/.renv/1/00LOCK-rlang/00new/rlang/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (rlang)
+- OK [built from source and cached in 8.0s]
+- Installing lifecycle ...
+- OK [installed binary and cached in 81s]
+- Installing magrittr ...                       OK [copied from cache]
+- Installing fansi ...                          OK [copied from cache]
+- Installing utf8 ...                           OK [copied from cache]
+- Installing vctrs ...                          OK [copied from cache]
+- Installing pillar ...                         OK [copied from cache]
+- Installing pkgconfig ...                      OK [copied from cache]
+- Installing tibble ...                         OK [copied from cache]
+- Installing withr ...                          OK [copied from cache]
+- Installing tidyselect ...                     OK [copied from cache]
+- Installing dplyr ...                          OK [copied from cache]
+- Installing gtable ...                         OK [copied from cache]
+- Installing isoband ...                        OK [copied from cache]
+- Installing farver ...                         OK [copied from cache]
+- Installing labeling ...                       OK [copied from cache]
+- Installing viridisLite ...                    OK [copied from cache]
+- Installing scales ...                         OK [copied from cache]
+- Installing ggplot2 ...                        OK [copied from cache]
+- Installing ggridges ...                       OK [copied from cache]
+- Installing checkmate ...                      OK [copied from cache]
+- Installing tensorA ...                        OK [copied from cache]
+- Installing numDeriv ...                       OK [copied from cache]
+- Installing distributional ...                 OK [copied from cache]
+- Installing matrixStats ...                    OK [copied from cache]
+- Installing posterior ...                      OK [copied from cache]
+- Installing plyr ...                           OK [copied from cache]
+- Installing stringi ...                        OK [copied from cache]
+- Installing stringr ...                        OK [copied from cache]
+- Installing reshape2 ...                       OK [copied from cache]
+- Installing purrr ...                          OK [copied from cache]
+- Installing cpp11 ...                          OK [copied from cache]
+- Installing tidyr ...                          OK [copied from cache]
+- Installing bayesplot ...
+* installing *source* package ‘bayesplot’ ...
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (bayesplot)
+- OK [built from source and cached in 7.2s]
+- Installing bit ...                            OK [copied from cache]
+- Installing bit64 ...                          OK [copied from cache]
+- Installing mvtnorm ...                        OK [copied from cache]
+- Installing coda ...                           OK [copied from cache]
+- Installing bridgesampling ...                 OK [copied from cache]
+- Installing brio ...                           OK [copied from cache]
+- Installing inline ...                         OK [copied from cache]
+- Installing gridExtra ...                      OK [copied from cache]
+- Installing loo ...                            OK [copied from cache]
+- Installing ps ...
+- OK [installed binary and cached in 81s]
+- Installing processx ...
+- OK [installed binary and cached in 79s]
+- Installing callr ...                          OK [copied from cache]
+- Installing desc ...                           OK [copied from cache]
+- Installing pkgbuild ...
+- OK [installed binary and cached in 65s]
+- Installing rstan ...                          OK [copied from cache in 0.11s]
+- Installing rstantools ...                     OK [copied from cache]
+- Installing digest ...                         OK [copied from cache]
+- Installing globals ...                        OK [copied from cache]
+- Installing listenv ...                        OK [copied from cache]
+- Installing parallelly ...                     OK [copied from cache]
+- Installing future ...                         OK [copied from cache]
+- Installing future.apply ...                   OK [copied from cache]
+- Installing nleqslv ...                        OK [copied from cache]
+- Installing brms ...                           OK [copied from cache]
+- Installing clipr ...                          OK [copied from cache]
+- Installing data.table ...                     OK [copied from cache]
+- Installing jsonlite ...
+- OK [installed binary and cached in 86s]
+- Installing cmdstanr ...                       OK [copied from cache]
+- Installing crayon ...                         OK [copied from cache]
+- Installing diffobj ...                        OK [copied from cache]
+- Installing evaluate ...
+- OK [installed binary and cached in 70s]
+- Installing fs ...
+- OK [installed binary and cached in 75s]
+- Installing xfun ...                           OK [copied from cache]
+- Installing highr ...                          OK [copied from cache]
+- Installing hms ...                            OK [copied from cache]
+- Installing yaml ...                           OK [copied from cache]
+- Installing knitr ...                          OK [copied from cache in 0.11s]
+- Installing mathjaxr ...                       OK [copied from cache]
+- Installing metadat ...                        OK [copied from cache]
+- Installing pbapply ...                        OK [copied from cache]
+- Installing metafor ...                        OK [copied from cache]
+- Installing patchwork ...
+- OK [installed binary and cached in 0.1s]
+- Installing rprojroot ...
+- OK [installed binary and cached in 75s]
+- Installing pkgload ...
+* installing *source* package ‘pkgload’ ...
+** package ‘pkgload’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (pkgload)
+- OK [built from source and cached in 2.1s]
+- Installing praise ...                         OK [copied from cache]
+- Installing prettyunits ...                    OK [copied from cache]
+- Installing progress ...                       OK [copied from cache]
+- Installing tzdb ...                           OK [copied from cache]
+- Installing vroom ...                          OK [copied from cache]
+- Installing readr ...                          OK [copied from cache]
+- Installing renv ...
+- OK [installed binary and cached in 0.14s]
+- Installing waldo ...
+- OK [installed binary and cached in 65s]
+- Installing testthat ...
+- OK [installed binary and cached in 0.14s]
+restore elapsed minutes: 0.76 
+The following package(s) are used in this project, but are not installed:
+- codetools
+- lattice
+- Matrix
+- mgcv
+- nlme
+
+See `?renv::status` for advice on resolving these issues.
+status synchronized in fresh library: FALSE 
+packages installed in fresh library: 102 
+brms            2.23.0
+cmdstanr        0.9.0
+bayesplot       1.12.0.9000
+metafor         4.6.0
+posterior       1.6.0
+bridgesampling  1.2.1
+testthat        3.3.2
+renv            1.1.4
+Rscript -e   15.60s user 13.51s system 62% cpu 46.768 total
+exit: 0
