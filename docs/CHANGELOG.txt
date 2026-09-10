@@ -96,3 +96,33 @@ British English. Times are Europe/London local time.
     Findings summarised in docs/amendment_2026-09-06.md entries A24 and A25.
   Token budget: the candidate-results agent exceeded the 250,000-token per-task limit of
     CLAUDE.md Rule 6 (about 516,000 tokens including its own subagents); surfaced, not hidden.
+
+[2026-09-10 17:10:00 BST] Release candidate 1 session (plan revision 1.6).
+  Audits checked by RT against the source PDFs (population_eligibility.csv, candidate_results.csv);
+    spreadsheet fill-down check dates normalised to 2026-09-10.
+  Amendments A33 to A38 added to docs/amendment_2026-09-06.md: A33 broader early-psychosis scope,
+    adopted post hoc with the strict pool sizes known (k = 0 prevalence, k = 1 trial under the
+    registered rule); approved by RT, AG and GT approval reported by RT, written files outstanding.
+    A34 HK's reply of 10 September and the divided single-screening deviation. A35 A24 approved as
+    the strict comparison. A36 A25 measurement rule with four corrections and ledger C15 to C29
+    (release layer). A37 A26 and A27 approved. A38 A32 closed: no author contact of any kind.
+  PROSPERO version 3 draft: docs/registration/prospero_v3_draft_2026-09-10.md (not submitted).
+  Release input layer: correction_ledger.csv gains a layer column; R/00b_release_inputs.R derives
+    data/derived/release_prevalence.csv, release_trials.csv, release_trial_arms.csv and the
+    membership report from the decision tables and data/review/release_construct_review.csv.
+  Gate 1 closed: renv.lock restored into a fresh library (docs/gate1_2026-09-10/); release-mode
+    guards made testable (tests/testthat/test-release-mode.R). .renvignore added; renv.lock
+    snapshot adds the five recommended packages only.
+  Registry: 28 release-layer fits (70 in total, layer column). R/02b, R/03b, R/06b added.
+  Release run: Rscript run_all.R --release, 13.3 minutes, 70 fits, none from cache, every gate
+    passed; output/run_manifest.json SHA-256
+    d68c422d871710ff3c001ef18a0539bf4eaa0428c41983b83d7f54c486f310ba. Historical summaries
+    byte-identical to docs/fixtures/; historical bridge Bayes factors 3.2 to 3.5 percent above
+    quadrature under the local seed (A18 criterion not met; reported, not relaxed).
+  fit_cached() writes each fit's CmdStan CSVs to a fit-specific directory after two aborted runs
+    caused by temp-file name collisions in the fast leave-one-out loops.
+  Review record: student_evidence_log.md (HK's facts, paraphrased), prisma_flow_comparison.csv
+    (HK 10 Sep column), full_text_exclusions.csv (25 rows, four label collisions),
+    a33_universe_worklist.csv (re-application of A33 pending retrieval of 21 reports).
+  Token budget: the session exceeded the 1,000,000-token limit of CLAUDE.md Rule 6 across agents
+    (each agent task under 250,000); surfaced in the handover.
