@@ -13,3 +13,6 @@ output/bayesian/log_*.txt
 
 # Pipeline log
 output/run_all_log.txt
+
+# Third-party appraisal template supplied by YL (see data/review/README.md)
+data/review/ephpp_tool_template_evans2015.pdf

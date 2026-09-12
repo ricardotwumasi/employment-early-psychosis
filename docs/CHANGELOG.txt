@@ -126,3 +126,22 @@ British English. Times are Europe/London local time.
     a33_universe_worklist.csv (re-application of A33 pending retrieval of 21 reports).
   Token budget: the session exceeded the 1,000,000-token limit of CLAUDE.md Rule 6 across agents
     (each agent task under 250,000); surfaced in the handover.
+
+[2026-09-12 10:30:00 BST] YL's reply of 11 September 2026 logged (amendment A39); nothing adopted.
+  Files supplied by YL renamed and hashed: data/review/yanan_data_110926.csv (re-extraction, 43 rows,
+    72 columns), li_meta_analysis_exclusions_2026-09-11.xlsx/.csv (22 studies in HK's 45 not in her 23),
+    ephpp_tool_template_evans2015.pdf (blank EPHPP tool; not committed).
+  R/08_li_reextraction_comparison.R (not in run_all.R) writes li_reextraction_diff_2026-09-11.csv
+    (115 cell differences on 49 shared columns), li_reextraction_vs_release_2026-09-11.csv (15 of 24
+    employment proportion cells and 2 of 3 trial rows agree with the release inputs) and
+    li_ephpp_components_2026-09-11.csv (23 of 23 global ratings reproduced by the five-component rule).
+  Pool-relevant cells awaiting RT's decision: Lin 2026 215/474 at month 18 (reconstruction; strict set
+    would become k = 1, A33 primary k = 7), Fowler 2019 whole-sample 15/66 in the period set, Humensky
+    2017 34/65 cumulative to 24 months. Queries to YL: Erickson denominators 56/53 and months 0 to 6
+    per-arm cells; Rosenheck fitted percentages; Craig, Eack and Hegelstad pre-ledger values.
+  Facts: YL's flow 1,641 screened, 72 sought, 49 excluded, 23 included (49 = 25 + 22 + 2 companion
+    reports, unnamed); EPHPP Blinding never rated (template without component D).
+  student_evidence_log.md Sections 1 to 3 updated, Section 5 added; prisma_flow_comparison.csv column
+    li_reported_2026_09_11; a33_universe_worklist.csv columns li_label_as_supplied_2026_09_11 and
+    li_reason_2026_09_11 (year-label differences for four studies noted); README and register updated.
+  Release inputs, ledger, registry, outputs and manuscript numbers unchanged.

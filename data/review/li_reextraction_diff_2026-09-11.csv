@@ -1,0 +1,121 @@
+study_id,year,seq,column,value_2026_08_28,value_2026_09_11,status
+ABDELBAKI_001,2013,1,(all),,,row only in 2026-09-11 file
+ABDELBAKI_002,2013,1,(all),,,row only in 2026-08-28 file
+CHUA_001,2019,1,page_source,p.3 Results,p.3 Results Table 1,differs
+CRAIG_001,2014,1,n_assessed,159,134,differs
+CRAIG_001,2014,1,page_source,p.4 Table 2,p.4 Table 2; Results,differs
+CRAIG_001,2014,1,reported_es,0.258,0.306,differs
+CRAIG_002,2014,1,page_source,p.4 Table 2 and Results,,differs
+CRAIG_002,2014,1,reported_ci_high,16.6,8.1,differs
+CRAIG_002,2014,1,reported_es,2.39,3.5,differs
+CRAIG_002,2014,1,reported_es_type,RR,OR,differs
+CRAIG_002,2014,1,reported_p,p < 0.05,,differs
+DUDLEY_002,2013,1,page_source,p.4 Results,,differs
+DUDLEY_002,2013,1,reported_es,1.3,/,differs
+DUDLEY_002,2013,1,reported_es_type,RR,/,differs
+EACK_001,2011,1,outcome_definition,Paid competitive employment at 12-month follow-up,Paid competitive employment at 24-month follow-up,differs
+EACK_001,2011,1,page_source,p.16 Table 1,p.5 Results; p.6 Table 1,differs
+EACK_002,2011,1,page_source,p.16 Table 1,,differs
+EACK_002,2011,1,reported_es,2.75,/,differs
+EACK_002,2011,1,reported_es_type,RR,/,differs
+ERICKSON_001,2021,1,events,59,60,differs
+ERICKSON_001,2021,1,n_assessed,97,109,differs
+ERICKSON_001,2021,1,outcome_definition,Any competitive paid work during the 6_12 month follow-up period (at least 1 day),Any competitive paid work during the 0_6 month follow-up period (at least 1 day),differs
+ERICKSON_001,2021,1,page_source,p.5 Table 2,p.5 Table 2; Results,differs
+ERICKSON_001,2021,1,reported_es,0.608,0.55,differs
+ERICKSON_001,2021,1,timepoint_months,12,0_6,differs
+ERICKSON_002,2021,1,comparator,TAU,,differs
+ERICKSON_002,2021,1,effect_type,trial_binary,proportion,differs
+ERICKSON_002,2021,1,events,,59,differs
+ERICKSON_002,2021,1,events_control,25,,differs
+ERICKSON_002,2021,1,events_intervention,34,,differs
+ERICKSON_002,2021,1,intervention_name,IPS + TAU,,differs
+ERICKSON_002,2021,1,n_assessed,,109,differs
+ERICKSON_002,2021,1,n_control,50,,differs
+ERICKSON_002,2021,1,n_intervention,47,,differs
+ERICKSON_002,2021,1,outcome_definition,Any competitive paid work during the 6_12 month follow-up period,Any competitive paid work during the 6_12 month follow-up period (at least 1 day),differs
+ERICKSON_002,2021,1,page_source,p.5 Table 2,p.5 Table 2; Results,differs
+ERICKSON_002,2021,1,reported_es,1.45,0.541,differs
+ERICKSON_002,2021,1,reported_es_type,RR,proportion,differs
+ERICKSON_002,2021,1,timepoint_months,12,6_12,differs
+ERICKSON_003,2021,1,(all),,,row only in 2026-09-11 file
+FOWLER_001,2019,1,events,5,9,differs
+FOWLER_001,2019,1,n_assessed,44,29,differs
+FOWLER_001,2019,1,page_source,p.4 Table 1,p.4 Table 1; Results,differs
+FOWLER_001,2019,1,reported_es,0.114,0.31,differs
+FOWLER_002,2019,1,events_control,0,6,differs
+FOWLER_002,2019,1,events_intervention,5,9,differs
+FOWLER_002,2019,1,n_control,24,37,differs
+FOWLER_002,2019,1,n_intervention,20,29,differs
+FOWLER_002,2019,1,page_source,p.4 Table 1,,differs
+FOWLER_002,2019,1,reported_es,13.15,/,differs
+FOWLER_002,2019,1,reported_es_type,RR,/,differs
+FOWLER_002,2019,1,reported_p,0.03,0.15,differs
+HEGELSTAD_001,2018,1,page_source,p.5 Table 2,p.5 Table 2; Results,differs
+HEGELSTAD_002,2018,1,page_source,p.5 Table 2 3,,differs
+HEGELSTAD_002,2018,1,reported_es,7,/,differs
+HEGELSTAD_002,2018,1,reported_es_type,RR,/,differs
+HEGELSTAD_002,2018,1,reported_p,,<0.05,differs
+HUMENSKY_001,2017,1,events,12,34,differs
+HUMENSKY_001,2017,1,n_assessed,43,65,differs
+HUMENSKY_001,2017,1,outcome_definition,Working but not in school at 12-month follow-up,Working only or both working and in school at any time during program participation,differs
+HUMENSKY_001,2017,1,outcome_measure,Work only,Working only or both working and in school at any time during program participation,differs
+HUMENSKY_001,2017,1,page_source,p.2 Figure 2,p.3 Table 1; p.2 Results,differs
+HUMENSKY_001,2017,1,reported_es,0.27,0.523,differs
+HUMENSKY_001,2017,1,timepoint_months,12,0_24,differs
+KILLACKEY_001,2008,1,page_source,p.4 Results,p.4 Results; p.5 Fig 3,differs
+KILLACKEY_001,2008,1,timepoint_months,6,0_6,differs
+KILLACKEY_001,2019,1,timepoint_months,12,0_6,differs
+KILLACKEY_002,2008,1,page_source,p.4 Results,,differs
+KILLACKEY_002,2008,1,reported_es,6.84,/,differs
+KILLACKEY_002,2008,1,reported_es_type,RR,/,differs
+KILLACKEY_002,2008,1,timepoint_months,6,0_6,differs
+KILLACKEY_002,2019,1,page_source,p.3 Results,,differs
+KILLACKEY_002,2019,1,reported_ci_high,1.99,9.91,differs
+KILLACKEY_002,2019,1,reported_ci_low,1.09,1.17,differs
+KILLACKEY_002,2019,1,reported_es,1.47,3.4,differs
+KILLACKEY_002,2019,1,reported_es_type,RR,OR,differs
+KILLACKEY_002,2019,1,timepoint_months,6,0_6,differs
+LIN_001,2026,1,events,119,215,differs
+LIN_001,2026,1,n_assessed,280,474,differs
+LIN_001,2026,1,page_source,p.3 Figure 1,p.3 Results; p.4 Fig 1,differs
+LIN_001,2026,1,reported_es,0.42,0.454,differs
+LIN_001,2026,1,timepoint_months,12,18,differs
+LIN_002,2026,1,(all),,,row only in 2026-08-28 file
+LIN_003,2026,1,(all),,,row only in 2026-08-28 file
+MAJOR_001,2010,1,page_source,p.5 Table 2,p.5 Table 2; Results,differs
+MAJOR_001,2010,1,timepoint_months,12,0_12,differs
+MAJOR_002,2010,1,page_source,"p.6 Table 4, Results",,differs
+MAJOR_002,2010,1,reported_ci_high,3.68,/,differs
+MAJOR_002,2010,1,reported_ci_low,1.04,/,differs
+MAJOR_002,2010,1,reported_es,1.96,/,differs
+MAJOR_002,2010,1,reported_es_type,RR,/,differs
+MAJOR_002,2010,1,timepoint_months,12,0_12,differs
+NUECHTERLEIN_001,2020,1,timepoint_months,18,7_18,differs
+NUECHTERLEIN_002,2020,1,page_source,p.8 Figure 4,,differs
+NUECHTERLEIN_002,2020,1,reported_es,2.08,/,differs
+NUECHTERLEIN_002,2020,1,reported_es_type,RR,/,differs
+NUECHTERLEIN_002,2020,1,timepoint_months,18,7_18,differs
+POTHIER_001,2019,1,page_source,p.4 Results,p.4 Results; Table 2,differs
+ROSENHECK_001,2017,1,events,64,71,differs
+ROSENHECK_001,2017,1,n_assessed,282,315,differs
+ROSENHECK_001,2017,1,page_source,p.6 Table 1,p.5 Results; p.6 Table 1,differs
+ROSENHECK_001,2017,1,pct_male,72,72.5,differs
+ROSENHECK_001,2017,1,reported_es,0.227,0.225,differs
+ROSENHECK_001,2017,1,timepoint_months,12,6,differs
+ROSENHECK_002,2017,1,events_control,21,33,differs
+ROSENHECK_002,2017,1,events_intervention,30,38,differs
+ROSENHECK_002,2017,1,n_control,83,133,differs
+ROSENHECK_002,2017,1,n_intervention,144,182,differs
+ROSENHECK_002,2017,1,page_source,"Table 1, p.4 Results",,differs
+ROSENHECK_002,2017,1,pct_male,72,72.5,differs
+ROSENHECK_002,2017,1,reported_es,0.82,/,differs
+ROSENHECK_002,2017,1,reported_es_type,RR,/,differs
+ROSENHECK_002,2017,1,reported_p,,0.16,differs
+ROSENHECK_002,2017,1,timepoint_months,24,6,differs
+TAPFUMANEYI_001,2014,1,timepoint_months,12,0_12,differs
+TURNER_001,2019,1,follow_up_months,18,2_44,differs
+TURNER_001,2019,1,timepoint_months,18,2_44,differs
+VANDUIN_002,2021,1,page_source,p.5 Table 2,,differs
+VANDUIN_002,2021,1,reported_es,2.4,/,differs
+VANDUIN_002,2021,1,reported_es_type,RR,/,differs

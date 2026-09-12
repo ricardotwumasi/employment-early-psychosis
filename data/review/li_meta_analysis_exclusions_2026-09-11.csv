@@ -1,0 +1,23 @@
+item_id,study_as_supplied,design_as_supplied,reason_as_supplied
+L01,Allott 2013,Cross-sectional exploratory,"Employment was used as a grouping variable, not an outcome; no intervention, no control, no effect size"
+L02,Allott 2017,"Uncontrolled pilot, N=5",No control group; very small sample; employment was not a prespecified primary quantitative outcome
+L03,Alvarez-Jimenez 2021 (symptom remission and functional recovery),Observational cohort,Examined relationship between symptom remission and functional recovery; not a vocational intervention
+L04,Alvarez-Jimenez 2021 (Horyzons RCT),RCT,"Outcome was a combined employment/education measure, OR=5.55; if only pure employment is eligible, exclude"
+L05,Baksheev 2012,Secondary analysis of an RCT,Based on Killackey 2008; not an independent study; outcome was combined work/study
+L06,Buckle 2024,Cohort,NEET predicted symptomatic remission; not a vocational intervention
+L07,Caruana 2018,Cross-sectional file audit,"Compared vocational engagement across diagnostic groups; no intervention, no control"
+L08,Chan 2020,Historical controlled study,"Early intervention vs standard care; 10-year employment trajectories, OR calculable, but non-randomized"
+L09,Chang 2014,Prospective cohort,"Predictors of vocational outcome; no control, no intervention"
+L10,Jackel 2025,RCT,"Primary outcome was EET ≥15 h/week, OR=3.0; if only pure employment is eligible, check whether employment alone was reported"
+L11,Jones 2023,Qualitative study,Interview study; no quantitative employment outcome
+L12,Kam 2013,Cohort,Predictors of NEET and relapse; not a vocational intervention
+L13,MacKinley 2022,Cross-sectional/longitudinal,Relationship between GSH and vocational status; not an intervention
+L14,Maraj 2019,Cohort,NEET and service disengagement; not a vocational intervention
+L15,Miley 2021,Causal discovery analysis,Used RAISE-ETP data for causal modeling; not an intervention effect evaluation
+L16,Nossel 2018,Uncontrolled cohort,"OnTrackNY employment/education rates improved, but no control group"
+L17,Ortenblad 2025,Qualitative study,Interview study; no quantitative employment outcome
+L18,Poon 2010,"Retrospective cohort, no control","Occupational therapy program; no control group, no between-group effect size"
+L19,Ramsay 2012,Cross-sectional,Unemployment prevalence and clinical correlates; no intervention
+L20,Strålin 2019,Cohort,13-year employment rate 42%; no control group
+L21,Tarricone 2017,Cohort,Migrant vs native employment outcomes; exposure was not a vocational intervention
+L22,ten Velden Hegelstad 2017,Quasi-experimental,"Early detection vs usual detection; outcome was employment/study, not a pure vocational intervention"
