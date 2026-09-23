@@ -167,3 +167,13 @@ British English. Times are Europe/London local time.
   a33_universe_worklist.csv: local_pdf set to yes for U01 to U07, U09, U11 to U21 and U23; source
     review in progress. student_evidence_log.md Sections 1 to 4 updated, Section 6 added.
   Release inputs, ledger, registry, outputs and manuscript numbers unchanged.
+
+[2026-09-23 15:00:00 BST] Draft source review of the newly held reports (A40, A41); nothing adopted.
+  data/review/source_review_2026-09-23/: agent drafts for U01 to U09 and U11 to U23 in the
+    population_eligibility and candidate_results schemas, cohort linkage, and a re-check of the 25
+    full-text exclusions against A24, A33 and A36; summary a33_source_review_2026-09-23.csv.
+  Candidates for RT's decision: Nossel 2018 124/260 at 6 months; Drake 2013 102/295 at 12 months
+    (overturns X03); Clarke 2022 37/100 at 18 months (companion of Killackey 2019). Porteous 2007
+    period counts need a human check. Baksheev 2012 duplicates Killackey 2008.
+  Lin 2026 Supplementary Table S3: publisher page refused (HTTP 403); needs institutional access.
+  Release inputs, ledger, registry and outputs unchanged.
