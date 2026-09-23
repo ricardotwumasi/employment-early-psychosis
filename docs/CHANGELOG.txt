@@ -145,3 +145,25 @@ British English. Times are Europe/London local time.
     li_reported_2026_09_11; a33_universe_worklist.csv columns li_label_as_supplied_2026_09_11 and
     li_reason_2026_09_11 (year-label differences for four studies noted); README and register updated.
   Release inputs, ledger, registry, outputs and manuscript numbers unchanged.
+
+[2026-09-23 12:00:00 BST] Student replies of 15 and 18 September 2026 logged (amendment A40); RT's
+    decisions of 23 September 2026 recorded (amendment A41); nothing adopted into the release inputs.
+  data/review/yanan_data_150926.csv (YL, 15 Sep; 45 rows, 73 columns; SHA-256 0e208662...) added
+    unedited. R/08_li_reextraction_comparison.R now takes the supply date as an argument (default
+    2026-09-11; re-running for 2026-09-11 reproduces the three 11 September outputs unchanged) and
+    writes li_*_2026-09-15.csv for the new file.
+  Facts (A40): 2,549 is the Ovid figure (difference of eight from 2,541 unexplained); the 17 records
+    marked red in AIM Review cannot be identified; Karambelas 2018 and Ramsay 2011, named by HK as the
+    two further reports, are among the 25 tabled exclusions, so two of the 72 reports sought remain
+    unaccounted for; the four label collisions are different publications; JBI items 6 and 7 still
+    outstanding; all 45 included studies and Drake 2013 are now held as PDFs (kept privately, outside
+    the repository).
+  Decisions (A41): Lin 2026 narrative only (no numerical sensitivity; Supplementary Table S3 not yet
+    retrieved); Fowler 2019 whole sample 15/66 approved in principle for the period set, applied at the
+    candidate 2 input freeze; Humensky 2017 reported separately; search recovery restored to the
+    critical path; EPHPP described as a five-component historical modification; no candidate 2 fit
+    before the plan revision specifies new-result inputs, dated approvals, cohort-uniqueness checks
+    and rule-based tests.
+  a33_universe_worklist.csv: local_pdf set to yes for U01 to U07, U09, U11 to U21 and U23; source
+    review in progress. student_evidence_log.md Sections 1 to 4 updated, Section 6 added.
+  Release inputs, ledger, registry, outputs and manuscript numbers unchanged.

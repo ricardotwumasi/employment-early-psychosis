@@ -1,10 +1,13 @@
 # ===============================================
-# 08 - Compare YL's re-extraction of 11 September 2026 with the pinned raw
-#      file and the release inputs
+# 08 - Compare a YL re-extraction (11 or 15 September 2026) with the pinned
+#      raw file and the release inputs
 # ===============================================
 # Not part of run_all.R. Reads:
 #   data/yanan_data_280826.csv                  pinned raw extraction (A6)
 #   data/review/yanan_data_110926.csv           YL's re-extraction, supplied 11 Sep 2026
+#   data/review/yanan_data_150926.csv           YL's re-extraction, supplied 15 Sep 2026
+# Usage: Rscript R/08_li_reextraction_comparison.R [2026-09-11 | 2026-09-15]
+#   (default 2026-09-11); output names carry the supply date.
 #   data/derived/release_prevalence.csv         release layer (R/00b)
 #   data/derived/release_trial_arms.csv         release layer (R/00b)
 # Writes three review files, all mechanical (no judgement encoded):
@@ -26,6 +29,13 @@ suppressPackageStartupMessages({
 })
 source(if (file.exists("R/utils.R")) "R/utils.R" else "utils.R")
 
+supplied_files <- c("2026-09-11" = "yanan_data_110926.csv", "2026-09-15" = "yanan_data_150926.csv")
+supplied_rows  <- c("2026-09-11" = 43, "2026-09-15" = 45)
+args <- commandArgs(trailingOnly = TRUE)
+supplied <- if (length(args)) args[1] else "2026-09-11"
+check(supplied %in% names(supplied_files), "unknown supply date")
+sfx <- gsub("-", "_", supplied)
+
 read_li <- function(path) {
   txt <- readBin(path, "raw", file.info(path)$size)
   txt <- rawToChar(txt)
@@ -42,12 +52,12 @@ read_li <- function(path) {
 }
 
 old <- read_li(root_path("data", "yanan_data_280826.csv"))
-new <- read_li(root_path("data", "review", "yanan_data_110926.csv"))
-check(nrow(old) == 44 && nrow(new) == 43, "unexpected row counts in the two extraction files")
+new <- read_li(root_path("data", "review", supplied_files[[supplied]]))
+check(nrow(old) == 44 && nrow(new) == supplied_rows[[supplied]], "unexpected row counts in the two extraction files")
 
 shared <- intersect(names(old), names(new))
 only_new <- setdiff(names(new), names(old))
-cat("shared columns:", length(shared), "; columns only in the 11 Sep file:", length(only_new), "\n")
+cat("shared columns:", length(shared), "; columns only in the", supplied, "file:", length(only_new), "\n")
 
 # Rows are matched on study_id and year, then on order within that key (both
 # files list a study's rows in the same order where the study appears in both).
@@ -56,29 +66,30 @@ key_rows <- function(d, label) {
     group_by(study_id, year) %>% mutate(seq = row_number()) %>% ungroup() %>%
     mutate(file = label)
 }
-old_k <- key_rows(old, "2026-08-28"); new_k <- key_rows(new, "2026-09-11")
+old_k <- key_rows(old, "2026-08-28"); new_k <- key_rows(new, supplied)
 
 long <- function(d) {
   d %>% select(study_id, year, seq, row_in_file, all_of(shared)) %>%
     pivot_longer(all_of(setdiff(shared, c("study_id", "year"))), names_to = "column", values_to = "value")
 }
 diff <- full_join(long(old_k) %>% rename(value_2026_08_28 = value, row_2026_08_28 = row_in_file),
-                  long(new_k) %>% rename(value_2026_09_11 = value, row_2026_09_11 = row_in_file),
+                  long(new_k) %>% rename(value_new = value, row_new = row_in_file),
                   by = c("study_id", "year", "seq", "column")) %>%
   mutate(status = case_when(
-    is.na(row_2026_08_28) ~ "row only in 2026-09-11 file",
-    is.na(row_2026_09_11) ~ "row only in 2026-08-28 file",
-    coalesce(value_2026_08_28, "") == coalesce(value_2026_09_11, "") ~ "same",
+    is.na(row_2026_08_28) ~ paste("row only in", supplied, "file"),
+    is.na(row_new) ~ "row only in 2026-08-28 file",
+    coalesce(value_2026_08_28, "") == coalesce(value_new, "") ~ "same",
     TRUE ~ "differs")) %>%
   filter(status != "same") %>%
-  arrange(coalesce(row_2026_09_11, row_2026_08_28), column) %>%
-  select(study_id, year, seq, column, value_2026_08_28, value_2026_09_11, status)
+  arrange(coalesce(row_new, row_2026_08_28), column) %>%
+  select(study_id, year, seq, column, value_2026_08_28, value_new, status)
 # Collapse the whole-row cases to one line each
 row_only <- diff %>% filter(status != "differs") %>% distinct(study_id, year, seq, status) %>%
-  mutate(column = "(all)", value_2026_08_28 = NA, value_2026_09_11 = NA)
+  mutate(column = "(all)", value_2026_08_28 = NA, value_new = NA)
 diff <- bind_rows(diff %>% filter(status == "differs"), row_only) %>%
-  arrange(study_id, year, seq, column)
-write_csv(diff, root_path("data", "review", "li_reextraction_diff_2026-09-11.csv"), na = "")
+  arrange(study_id, year, seq, column) %>%
+  rename(!!paste0("value_", sfx) := value_new)
+write_csv(diff, root_path("data", "review", paste0("li_reextraction_diff_", supplied, ".csv")), na = "")
 cat("cell differences:", sum(diff$status == "differs"), "; rows only in one file:", nrow(row_only), "\n")
 
 # YL's employment cells (proportion rows and trial rows) beside the release inputs
@@ -124,8 +135,8 @@ vs <- li_emp %>%
       counts_agree ~ "counts agree with release input",
       TRUE ~ "counts differ from release input")) %>%
   arrange(study_id_clean, li_row)
-write_csv(vs, root_path("data", "review", "li_reextraction_vs_release_2026-09-11.csv"), na = "")
-cat("\nYL 11 Sep employment cells versus release inputs:\n")
+write_csv(vs, root_path("data", "review", paste0("li_reextraction_vs_release_", supplied, ".csv")), na = "")
+cat("\nYL", supplied, "employment cells versus release inputs:\n")
 print(vs %>% count(li_effect_type, release_comparison) %>% as.data.frame())
 
 # EPHPP components: five rated components (Blinding absent), global rule per the
@@ -139,6 +150,6 @@ ephpp <- new %>%
          global_by_rule = case_when(n_weak == 0 ~ "Strong", n_weak == 1 ~ "Moderate", TRUE ~ "Weak"),
          rule_matches_supplied = global_by_rule == global_as_supplied)
 names(ephpp) <- str_replace_all(names(ephpp), "quality_rating_", "component_") %>% str_replace_all(" ", "_")
-write_csv(ephpp, root_path("data", "review", "li_ephpp_components_2026-09-11.csv"), na = "")
+write_csv(ephpp, root_path("data", "review", paste0("li_ephpp_components_", supplied, ".csv")), na = "")
 cat("\nEPHPP: studies", nrow(ephpp), "; global rating matches the five-component rule in",
     sum(ephpp$rule_matches_supplied), "\n")
