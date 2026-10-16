@@ -177,3 +177,15 @@ British English. Times are Europe/London local time.
     period counts need a human check. Baksheev 2012 duplicates Killackey 2008.
   Lin 2026 Supplementary Table S3: publisher page refused (HTTP 403); needs institutional access.
   Release inputs, ledger, registry and outputs unchanged.
+
+[2026-10-16 13:49:27 BST] Recorded RT's source-review verification and decisions (A42, A43).
+  RT reports checking every row of data/review/source_review_2026-09-23/ against the PDFs on
+    1 October 2026; the cells were adopted on 16 October 2026. Row-level record:
+    data/review/source_review_2026-09-23/signoff_2026-10-16.csv (draft files unchanged).
+  Adopted: Drake 2013 102/295 and Clarke 2022 37/100 (A33 point primary set), Nossel 2018
+    124/260 (A33 period set), Porteous 2007 two standalone variable-window results, Fowler 2019
+    15/66 and Humensky 2017 34/65 (release-ledger rows to follow). Period selection rule and the
+    Moderate-or-Strong sensitivity rule stated. Lin 2026 Table S3 recorded (A43); A5 stands.
+  Candidate-inventory addendum (lead-session extraction, not yet human-verified):
+    data/review/source_review_2026-09-23/candidate_inventory_addendum_2026-10-16.csv
+  No release input, ledger row, registry entry or output changed in this commit.
