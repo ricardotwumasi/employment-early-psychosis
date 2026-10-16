@@ -9,13 +9,15 @@
 #   rc_a33_point_prior_hn05 / hn2   tau prior sensitivities
 #   rc_a33_point_duration_sens_hn1  adds the duration-sensitivity report(s)
 #   rc_a33_period_hn1               A33 period set (secondary estimand)
-#   rc_a33_point_excl_weak_hn1      EPHPP Weak removed
+#   rc_a33_point_excl_weak_hn1      restricted to studies historically rated Moderate or
+#                                   Strong (A42; unrated studies excluded)
 #   rc_a33_point_missing_bound_hn1  n_total denominator (missing = not employed)
 #   rc_a33_point_normal_normal_hn1  logit normal-normal approximation
 #   rc_loo_prev_<study>             leave-one-out on the primary set
 # The strict registered set (A24) is empty by construction (A35) and is
-# recorded as "not estimable" without a model (A26). The variable-window
-# report (Turner 2019) is reported as a single-study binomial interval only.
+# recorded as "not estimable" without a model (A26). Variable-window results
+# (A36, A41, A42) are reported one by one as Jeffreys intervals, never pooled;
+# each is registered with role standalone_interval and keyed by result_uid.
 # Outputs: output/release/bayesian/ and output/release/figures/.
 # ===============================================
 
@@ -78,7 +80,11 @@ results <- list(
   rc_a33_point_prior_hn2         = run_prev(primary, "rc_a33_point_prior_hn2", 2),
   rc_a33_point_duration_sens_hn1 = run_prev(duration, "rc_a33_point_duration_sens_hn1", 1),
   rc_a33_period_hn1              = run_prev(period, "rc_a33_period_hn1", 1),
-  rc_a33_point_excl_weak_hn1     = run_prev(filter(primary, quality_rating != "Weak"), "rc_a33_point_excl_weak_hn1", 1),
+  # A42: keep only studies rated Moderate or Strong in the historical
+  # five-component EPHPP modification; a study never appraised is not treated
+  # as higher quality, so unrated studies are excluded explicitly.
+  rc_a33_point_excl_weak_hn1     = run_prev(filter(primary, quality_rating %in% c("Moderate", "Strong")),
+                                            "rc_a33_point_excl_weak_hn1", 1),
   rc_a33_point_missing_bound_hn1 = run_prev(primary, "rc_a33_point_missing_bound_hn1", 1, n_col = "n_total")
 )
 
@@ -130,11 +136,7 @@ strict_record <- data.frame(
   status = if (nrow(strict) == 0) "not estimable: no prevalence result satisfies the registered population rule from the publication" else "see model",
   studies = paste(strict$study_id_clean, collapse = ", "), stringsAsFactors = FALSE)
 # Variable-window report(s): single-study Jeffreys intervals, no pooling.
-variable_record <- variable %>%
-  transmute(study_id_clean, study_label, events, n_assessed, observed = events / n_assessed,
-            observed_low = qbeta(0.025, events + 0.5, n_assessed - events + 0.5),
-            observed_high = qbeta(0.975, events + 0.5, n_assessed - events + 0.5),
-            note = "Variable follow-up (range 2 to 44 months); not pooled (A36)")
+variable_record <- standalone_record(variable)
 write_csv(strict_record, file.path(out_dir, "rc_prevalence_strict_record.csv"))
 write_csv(variable_record, file.path(out_dir, "rc_prevalence_variable_window.csv"))
 

@@ -9,8 +9,10 @@
 #   Rscript run_all.R --release      # refit + requires a synchronised renv.lock,
 #                                     # a clean git tree, and that every model
 #                                     # was actually fitted (no cache hits)
-#   Rscript run_all.R --preflight    # checks output/bayesian/fits/ against
-#                                     # data/registry/fit_registry.csv and exits
+#   Rscript run_all.R --preflight    # pre-fit check (no fitting, no caches
+#                                     # needed): release inputs re-derive to the
+#                                     # committed files, registry schema and
+#                                     # membership agree; exits 1 on failure
 #
 # Runs the numbered scripts in order, each in a fresh environment, and writes
 # output/session_info.txt and output/run_manifest.json. The pinned versions
@@ -28,11 +30,6 @@ opt_refit   <- "--refit" %in% args
 opt_cache_only <- "--cache-only" %in% args
 opt_release <- "--release" %in% args
 opt_preflight <- "--preflight" %in% args
-
-if (opt_preflight) {
-  preflight_cache()
-  quit(save = "no", status = 0)
-}
 
 if (opt_cache_only && (opt_refit || opt_release)) {
   stop("CACHE_ONLY: --cache-only cannot be combined with --refit or --release.")
@@ -59,6 +56,20 @@ cmdstan_v <- as.character(cmdstanr::cmdstan_version())
 if (cmdstan_v != "2.36.0") stop("CmdStan ", cmdstan_v, " installed; results were generated with 2.36.0.")
 
 # -------------------------------
+# --preflight: checks before any fit (A42)
+# -------------------------------
+if (opt_preflight) {
+  fails <- preflight_release()
+  if (length(fails) > 0) {
+    cat("preflight FAILED:\n", paste0("  - ", fails, "\n"), sep = "")
+    quit(save = "no", status = 1)
+  }
+  cat("preflight passed: environment pins, release inputs re-derived from the decision tables,",
+      "registry schema and registry membership agree\n")
+  quit(save = "no", status = 0)
+}
+
+# -------------------------------
 # --release preconditions
 # -------------------------------
 if (opt_release) {
@@ -74,6 +85,17 @@ if (opt_release) {
 manifest_inputs <- c(
   "data/yanan_data_280826.csv",
   "data/review/correction_ledger.csv",
+  "data/review/population_eligibility.csv",
+  "data/review/release_construct_review.csv",
+  "data/review/release_new_results.csv",
+  "data/review/amendment_dates.csv",
+  "data/review/candidate_results.csv",
+  "data/review/source_review_2026-09-23/results_draft.csv",
+  "data/review/source_review_2026-09-23/candidate_inventory_addendum_2026-10-16.csv",
+  "data/review/source_review_2026-09-23/cohort_draft.csv",
+  "data/review/source_review_2026-09-23/signoff_2026-10-16.csv",
+  "docs/amendment_2026-09-02.md",
+  "docs/amendment_2026-09-06.md",
   "data/registry/fit_registry.csv",
   "data/schema/raw_extraction_schema_v1.csv",
   "docs/analysis_specification_2026-09-01.txt",
@@ -110,6 +132,7 @@ write_manifest <- function(m) {
     started_at      = format(m$started_at, "%Y-%m-%d %H:%M:%S %Z"),
     finished_at     = format(m$finished_at, "%Y-%m-%d %H:%M:%S %Z"),
     elapsed_minutes = as.numeric(round(difftime(m$finished_at, m$started_at, units = "mins"), 2)),
+    git_start = m$git_start,
     git = list(
       commit = tryCatch(system2("git", c("rev-parse", "HEAD"), stdout = TRUE), error = function(e) NA_character_),
       dirty  = length(tryCatch(system2("git", c("status", "--porcelain"), stdout = TRUE),
@@ -135,6 +158,13 @@ run_pipeline <- function() {
   m$status <- "running"
   m$failure_message <- NULL
   m$started_at <- Sys.time()
+  # Tree state before any script writes output (the post-run "git" entry is
+  # dirty whenever generated outputs changed, which says nothing about the start)
+  m$git_start <- list(
+    commit = tryCatch(system2("git", c("rev-parse", "HEAD"), stdout = TRUE), error = function(e) NA_character_),
+    dirty  = length(tryCatch(system2("git", c("status", "--porcelain"), stdout = TRUE),
+                             error = function(e) character(0))) > 0
+  )
   on.exit({
     m$finished_at <- Sys.time()
     write_manifest(m)
@@ -159,7 +189,10 @@ run_pipeline <- function() {
       cat("\n==================== ", s, " ====================\n", sep = "")
       source(s, local = new.env(), echo = FALSE)
     }
-    if (opt_release) assert_release_fits_fresh(fit_log())
+    if (opt_release) {
+      assert_release_fits_fresh(fit_log())
+      verify_run_artefacts(fit_log())
+    }
     m$status <- "completed"
   }, error = function(e) {
     m$status <- "failed"

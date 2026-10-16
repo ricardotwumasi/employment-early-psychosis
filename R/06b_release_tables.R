@@ -56,8 +56,16 @@ diag_all  <- bind_rows(read_csv(file.path(bay_dir, "rc_prevalence_diagnostics.cs
                        read_csv(file.path(bay_dir, "rc_trials_diagnostics.csv"), show_col_types = FALSE))
 
 # Release-layer fit inventory against the registry
+# Only fitted models pass through the convergence gate; standalone intervals
+# (role standalone_interval, A42) have no sampler and are checked separately
+# against the interval output, one registry row per result_uid.
 registry <- read_csv(root_path("data", "registry", "fit_registry.csv"), show_col_types = FALSE)
-expected <- registry$fit_tag[registry$layer == "release"]
+release_reg <- registry[registry$layer == "release", ]
+expected <- release_reg$fit_tag[release_reg$role != "standalone_interval"]
+standalone_uid <- sub("^rc_standalone_", "", release_reg$fit_tag[release_reg$role == "standalone_interval"])
+check(!anyDuplicated(standalone_uid) && setequal(standalone_uid, prev_var$result_uid),
+      paste0("standalone interval registry rows do not match rc_prevalence_variable_window.csv; registry: ",
+             paste(sort(standalone_uid), collapse = ", "), "; output: ", paste(sort(prev_var$result_uid), collapse = ", ")))
 fitted   <- sub("_ad999$", "", diag_all$model)
 check(length(expected) > 0 && !anyDuplicated(expected), "release layer of the fit registry is empty or duplicated")
 check(setequal(fitted, expected) && !anyDuplicated(fitted),
@@ -155,6 +163,13 @@ var_rows <- prev_var %>% transmute(Model = paste0("Variable follow-up, unpooled:
 t_prev <- bind_rows(t_prev, strict_row, var_rows)
 write_csv(t_prev, file.path(tab_dir, "rc_table_prevalence.csv"))
 write_tex(t_prev, "rc_table_prevalence.tex", col_spec = "p{5.2cm}rrp{3.4cm}p{2.2cm}p{2.4cm}")
+
+# Standalone variable-window results, one row per result_uid (A42)
+t_std <- prev_var %>% arrange(result_uid) %>%
+  transmute(Result = result_uid, Study = study_label, `Employed / n` = paste0(events, " / ", n_assessed),
+            `Proportion (95% Jeffreys interval)` = cip(observed, observed_low, observed_high), Window = window)
+write_csv(t_std, file.path(tab_dir, "rc_table_standalone.csv"))
+write_tex(t_std, "rc_table_standalone.tex", col_spec = "llrlp{5.5cm}")
 
 tr_labels <- c(rc_trial_a33_k3_hn05 = "A33 IPS pool, months 0 to 6 (tau ~ HN(0.5))",
                rc_trial_a33_k3_hn025 = "Prior sensitivity, tau ~ HN(0.25)",
@@ -282,9 +297,11 @@ macros <- c(
   mac("rcBFrrSmin", fmt(tr_rr_s$s_min)), mac("rcBFrrSmax", fmt(tr_rr_s$s_max)),
   mac("rcStrictTrialRR", ci(tr_strict$rr[1], tr_strict$rr_low[1], tr_strict$rr_high[1])),
   mac("rcStrictTrialLabel", tr_strict$study_label[1]),
-  mac("rcVarWindowEst", cip(prev_var$observed[1], prev_var$observed_low[1], prev_var$observed_high[1])),
-  mac("rcVarWindowLabel", prev_var$study_label[1])
+  mac("rcVarWindowCount", nrow(prev_var))
 )
+# One macro family per standalone result, named from its result_uid
+# (standalone_macros() in R/utils.R), so no value depends on row order.
+macros <- c(macros, standalone_macros(prev_var, cip))
 for (i in seq_len(nrow(tr_abs))) {
   tag <- c("Twenty", "Thirty", "FortyThree", "Fifty")[i]
   macros <- c(macros,

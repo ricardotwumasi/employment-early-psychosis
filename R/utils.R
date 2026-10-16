@@ -431,6 +431,107 @@ preflight_cache <- function(registry_path = root_path("data", "registry", "fit_r
   invisible(result)
 }
 
+# Standalone variable-window results (A36, A41, A42): one row per result_uid
+# with a Jeffreys interval, never pooled. Used by R/02b to write the record
+# and by the reporting test; R/06b turns the record into LaTeX macros named
+# from the result_uid, so no value depends on row order.
+standalone_record <- function(rows) {
+  rows <- rows[order(rows$result_uid), ]
+  data.frame(result_uid = rows$result_uid, study_id_clean = rows$study_id_clean, study_label = rows$study_label,
+             events = rows$events, n_assessed = rows$n_assessed, observed = rows$events / rows$n_assessed,
+             observed_low = qbeta(0.025, rows$events + 0.5, rows$n_assessed - rows$events + 0.5),
+             observed_high = qbeta(0.975, rows$events + 0.5, rows$n_assessed - rows$events + 0.5),
+             window = rows$window_status, note = "Variable follow-up; not pooled", stringsAsFactors = FALSE)
+}
+# Digits map to letters and "_" to "x" (R18_18 gives RBIxBI): one-to-one, so
+# distinct result_uids always give distinct macro names.
+standalone_macro_key <- function(uid) chartr("0123456789_", "ABCDEFGHIJx", uid)
+standalone_macros <- function(record, fmt_interval) {
+  unlist(lapply(seq_len(nrow(record)), function(i) {
+    k <- standalone_macro_key(record$result_uid[i])
+    c(paste0("% ", record$result_uid[i], " (", record$study_label[i], ")"),
+      paste0("\\newcommand{\\rcVar", k, "Est}{", fmt_interval(record$observed[i], record$observed_low[i], record$observed_high[i]), "}"),
+      paste0("\\newcommand{\\rcVar", k, "Cell}{", record$events[i], "/", record$n_assessed[i], "}"),
+      paste0("\\newcommand{\\rcVar", k, "Label}{", record$study_label[i], "}"))
+  }))
+}
+
+# Pre-fit check for run_all.R --preflight (A42). It needs no cached fits, so
+# a release run can start with new models still unfitted. It re-derives the
+# release inputs from the committed decision tables and requires them to
+# equal the committed files (when they differ, the re-derived files are left
+# in the working tree for inspection), then checks the registry schema and
+# the registry's agreement with the derived membership. Returns the failed
+# checks as a character vector; empty means every check passed.
+preflight_release <- function(registry_path = root_path("data", "registry", "fit_registry.csv")) {
+  fails <- character(0)
+  derived <- root_path("data", "derived", c("release_prevalence.csv", "release_trials.csv", "release_trial_arms.csv"))
+  hashes <- function() vapply(derived, function(f) if (file.exists(f)) file_sha256(f) else NA_character_, character(1))
+  before <- hashes()
+  # A separate R process, so that R/00b (which sources R/utils.R into its
+  # global environment) cannot alter the calling session.
+  out <- withr::with_dir(repo_root(), suppressWarnings(
+    system2(file.path(R.home("bin"), "Rscript"), "R/00b_release_inputs.R", stdout = TRUE, stderr = TRUE)))
+  if (!is.null(attr(out, "status"))) {
+    return(paste("R/00b_release_inputs.R stopped:", paste(tail(out, 3), collapse = " ")))
+  }
+  if (!identical(before, hashes())) {
+    fails <- c(fails, "release inputs re-derived from the decision tables differ from the committed files")
+  }
+
+  reg <- read.csv(registry_path, stringsAsFactors = FALSE, na.strings = c("", "NA"))
+  if (anyDuplicated(reg$fit_tag)) fails <- c(fails, "the registry has a duplicated fit_tag")
+  if (!all(reg$layer %in% c("historical", "release"))) fails <- c(fails, "the registry has an unknown layer")
+  fitted <- reg$role != "standalone_interval"
+  for (col in c("formula", "prior_spec", "seed", "chains", "iter", "warmup", "adapt_delta")) {
+    if (any(is.na(reg[[col]][fitted]))) fails <- c(fails, paste("a fitted registry row lacks", col))
+  }
+  sa <- reg[!fitted, ]
+  if (any(sa$layer != "release" | !grepl("^rc_standalone_", sa$fit_tag) | is.na(sa$formula) | is.na(sa$prior_spec))) {
+    fails <- c(fails, "a standalone-interval registry row is malformed")
+  }
+
+  rp <- read.csv(derived[1], stringsAsFactors = FALSE)
+  rt <- read.csv(derived[2], stringsAsFactors = FALSE)
+  tags <- reg$fit_tag[reg$layer == "release"]
+  same <- function(prefix, members) setequal(sub(prefix, "", grep(prefix, tags, value = TRUE)), members)
+  if (!same("^rc_loo_prev_", rp$study_id_clean[rp$in_a33_point_primary])) {
+    fails <- c(fails, "leave-one-out prevalence rows of the registry do not match the A33 point primary set")
+  }
+  if (!same("^rc_loo_trial_", rt$study_id_clean[rt$in_trial_a33_k3_0to6])) {
+    fails <- c(fails, "leave-one-out trial rows of the registry do not match the A33 IPS pool")
+  }
+  if (!same("^rc_standalone_", rp$result_uid[rp$in_a33_variable_window])) {
+    fails <- c(fails, "standalone-interval rows of the registry do not match the variable-window results")
+  }
+  fails
+}
+
+# Post-fit artefact check for run_all.R --release (A42). Every fitted
+# registry row must have been fitted in this run, and the cache file logged
+# for it must be a readable brmsfit whose stored key equals the logged key.
+# Earlier cache versions of a tag (release candidate 1 caches are kept for
+# provenance) are ignored: only the file logged in this run counts.
+verify_run_artefacts <- function(fits = fit_log(),
+                                 registry_path = root_path("data", "registry", "fit_registry.csv")) {
+  reg <- read.csv(registry_path, stringsAsFactors = FALSE)
+  expected <- reg$fit_tag[reg$role != "standalone_interval"]
+  logged <- sub("_ad999$", "", fits$model_id)
+  bad <- fits$model_id[!vapply(seq_len(nrow(fits)), function(i) {
+    file.exists(fits$cache_file[i]) && tryCatch({
+      f <- readRDS(fits$cache_file[i])
+      inherits(f, "brmsfit") && identical(attr(f, "fep_cache_meta")$key, fits$key[i])
+    }, error = function(e) FALSE)
+  }, logical(1))]
+  problems <- c(
+    if (length(setdiff(expected, logged))) paste("not fitted in this run:", paste(setdiff(expected, logged), collapse = ", ")),
+    if (length(setdiff(logged, expected))) paste("fitted but not registered:", paste(setdiff(logged, expected), collapse = ", ")),
+    if (length(bad)) paste("cache file missing, unreadable or keyed to other inputs:", paste(bad, collapse = ", "))
+  )
+  if (length(problems)) stop("post-fit artefact check failed: ", paste(problems, collapse = "; "), call. = FALSE)
+  invisible(TRUE)
+}
+
 # -------------------------------
 # Release-mode guards (run_all.R --release)
 # -------------------------------
