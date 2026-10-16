@@ -118,3 +118,4 @@ candidate_inventory_addendum_2026-10-16.csv,R15_35,,,inventory row only (not ado
 candidate_inventory_addendum_2026-10-16.csv,R15_36,,,inventory row only (not adopted),,A43,lead-session extraction of 16 Oct 2026; RT verification due at Checkpoint A
 candidate_inventory_addendum_2026-10-16.csv,R18_18,,,PROPOSED: standalone variable-window interval (A41),,A42,lead-session extraction of 16 Oct 2026; RT verification due at Checkpoint A
 candidate_inventory_addendum_2026-10-16.csv,R24_24,,,"PROPOSED: release-ledger cell for the period set (A41, A42)",,A42,lead-session extraction of 16 Oct 2026; RT verification due at Checkpoint A
+candidate_inventory_addendum_2026-10-16.csv,R10_25,,,"ADOPTED under the A42 period rule (RT, 16 Oct 2026): A33 period set, 15/57",2026-10-16,A42,lead-session extraction of 16 Oct 2026; RT verification due at Checkpoint A
