@@ -35,3 +35,7 @@ Conventions: `study_key` is the lower-case first-author surname plus the print y
 `exclusion_table.docx` is HK's source Word document for the 25 full-text exclusions, supplied 10 September 2026; `full_text_exclusions.csv` is its machine-readable conversion and is the file other tables and worklists should reference.
 
 Check-date normalisation, 10 September 2026: `population_eligibility.csv` and `candidate_results.csv` both had `checker` set to RT throughout from RT's Excel review of 10 September 2026, but `check_date` was a spreadsheet fill-down running from 10/09/2026 to later calendar dates one row at a time, not real per-row check dates. Both files' `check_date` columns were reset to `2026-09-10` on every row to remove this artefact.
+
+## JBI appraisals adopted on 18 October 2026 (A45)
+
+`jbi_prevalence_items_2026-10-18.csv` holds 27 RT-approved responses for Drake 2013, Clarke 2023 (CLARKE_2022) and Porteous 2007. `jbi_appraisals_rt_2026-10-18.md` retains the AI proposals, source rationales and approved responses; approval evidence is `docs/registration/approvals/A45_RT_2026-10-18.md`. These are reporting sidecars, not model inputs or EPHPP categories. Table S13 renders these nine-item assessments separately from the ten qualitative items preserved in `../manuscript/sr_data/jbi_items.csv`. The combined record is `../manuscript/responses/JBI_combined_responses_RT_2026-10-18.md`. Independent second human appraisal and remaining release-wide appraisal, including Nossel, remain outstanding.

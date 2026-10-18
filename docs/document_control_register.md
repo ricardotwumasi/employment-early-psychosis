@@ -107,3 +107,22 @@ The final row is a later addition and does not concern the Bayesian specificatio
 | Author order | Kaplankiran, Li, Trotta, Twumasi, Georgiades (corresponding) | 2 September 2026 |
 | Extraction-sheet checker initials | The raw extraction uses "HZ" for the checker; this is Hazal Kaplankiran (HK) | 2 September 2026 |
 | PROSPERO team | Kaplankiran, Li, Georgiades, Twumasi; GT not added by decision | 2 September 2026 |
+
+## 5. A45 appraisal adoption, 18 October 2026
+
+RT explicitly adopted the three AI-prepared JBI appraisals. The supplied qualitative responses and original draft packet were preserved. The following hashes identify the adopted records and rebuilt local manuscript files; they do not replace the RC2 run manifest or imply a new fit.
+
+| Artefact | Location relative to outer workspace | SHA-256 |
+|---|---|---|
+| RT approval | `employment-early-psychosis/docs/registration/approvals/A45_RT_2026-10-18.md` | `cd1dd917912ee19ba38d68195f018f4f1603da2d9b57fd1aaaafbcd30f4d2cfd` |
+| Approved appraisal packet | `employment-early-psychosis/data/review/jbi_appraisals_rt_2026-10-18.md` | `6cc7407a1447bb7fd47c00b994f75cbdd85db6ecffd272ef62098e6e9417ca33` |
+| Categorical responses | `employment-early-psychosis/data/review/jbi_prevalence_items_2026-10-18.csv` | `aa763d1bd22cededa215f82909a0c355c47fc59bd84efaded23001fb8555ffe3` |
+| Consolidated five-report responses | `manuscript/responses/JBI_combined_responses_RT_2026-10-18.md` | `e71401ded5df16abf0a457db3222f4957e291888dae2e335850eba79abf95704` |
+| Manuscript source after A45 | `manuscript/manuscript.tex` | `f1d7f959d0b5ed6e93f67b7edc58d9d2e24c13a01ce9d087a3361b4e0d87f7c6` |
+| Supplement source after A45 | `manuscript/supplement.tex` | `d4ba67c459b21936fe9c2690762b5f6575b754674b7bbeaac66a101b9dcbf428` |
+| Manuscript PDF after A45 | `manuscript/manuscript.pdf` | `8a68d270634b3b1fca96bbf86c9204d04121796d5465753a1d96cc5c7277d8fc` |
+| Supplement PDF after A45 | `manuscript/supplement.pdf` | `0e3281a8900a0ffdff4ffc750da5dfb9387c786083ade54eadd8e63bb9b2a145` |
+| Plan with A45 addendum | `NEXT_VERSION_PLAN_v1.1.md` | `ab8cc16fb2e2af88daa79fd49845c0132b6f46510e567cbff3e0ae7ae3815127` |
+| Handover with A45 addendum | `HANDOVER_2026-09-02.md` | `2245525da338596d60905aec0ab1b45178630ff7fb9e8d93c4256e14becda9b8` |
+
+Verification: all 27 approved categorical responses agree with the original draft; RT/date/A45 fields validated; Jones/Ørtenblad response CSV remains byte-identical (SHA-256 `aa5ad797e277d5519460f2e75b96a52bb38b044e75e193cc3c7e8ddfd89a8057`). The manuscript build passed; `texcount -inc -total` reports 4,999 text words. All 30 manuscript and 39 supplement pages were inspected on contact sheets, with Table S13 on supplement page 22 inspected at full size. No model was fitted, no release-number output changed and no independent reproduction was performed. The build retains existing unrelated layout warnings; this check establishes the added table is readable, not new publication-readiness approval.

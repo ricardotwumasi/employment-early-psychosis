@@ -215,3 +215,9 @@ British English. Times are Europe/London local time.
     R/06b was re-run alone (no fitting). Only output/release/tables/rc_table_prevalence.csv and
     .tex changed, in that label; their SHA-256 therefore differ from the values in
     output/run_manifest.json, which records the run as executed. No number changed.
+
+[2026-10-18] A45: RT approved all 27 AI-prepared JBI responses for Drake 2013,
+  Clarke 2023 and Porteous 2007. Preserved original drafts and supplied qualitative
+  responses. Table S13 separates qualitative and prevalence/attainment panels.
+  No EPHPP category, model input, numerical result or fit changed. Independent
+  second human appraisal and remaining release-wide appraisal remain outstanding.
