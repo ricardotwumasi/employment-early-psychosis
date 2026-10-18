@@ -29,8 +29,9 @@ suppressPackageStartupMessages({
 })
 source(if (file.exists("R/utils.R")) "R/utils.R" else "utils.R")
 
-supplied_files <- c("2026-09-11" = "yanan_data_110926.csv", "2026-09-15" = "yanan_data_150926.csv")
-supplied_rows  <- c("2026-09-11" = 43, "2026-09-15" = 45)
+supplied_files <- c("2026-09-11" = "yanan_data_110926.csv", "2026-09-15" = "yanan_data_150926.csv",
+                    "2026-09-24" = "yanan_data_240926.csv")
+supplied_rows  <- c("2026-09-11" = 43, "2026-09-15" = 45, "2026-09-24" = 45)
 args <- commandArgs(trailingOnly = TRUE)
 supplied <- if (length(args)) args[1] else "2026-09-11"
 check(supplied %in% names(supplied_files), "unknown supply date")
@@ -143,6 +144,9 @@ print(vs %>% count(li_effect_type, release_comparison) %>% as.data.frame())
 # EPHPP dictionary: Strong = no Weak component, Moderate = one, Weak = two or more.
 comp_cols <- c("quality_rating_Selection Bias", "quality_rating_Study Design", "quality_rating_Confounders",
                "quality_rating_Data Collection Methods", "quality_rating_Withdrawals and Dropouts")
+# The 24 September 2026 file drops the Analyses column (it is not a component
+# rating; RT's email of 23 September 2026), so it is optional here.
+if (!"quality_rating_Analyses (appropriateness)" %in% names(new)) new$`quality_rating_Analyses (appropriateness)` <- NA_character_
 ephpp <- new %>%
   distinct(study_id_clean = li_key(author, year), across(all_of(comp_cols)),
            analyses_column = `quality_rating_Analyses (appropriateness)`, global_as_supplied = quality_rating) %>%

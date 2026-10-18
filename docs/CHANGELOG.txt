@@ -200,3 +200,11 @@ British English. Times are Europe/London local time.
     and absolute-risk outputs byte-identical to release candidate 1; prevalence changes traced to
     A42 and A43 input rows. Point primary k = 8: 32.7% (24.3 to 42.3), prediction interval
     12.5 to 62.0.
+
+[2026-10-18 10:45:24 BST] Logged the final student replies of 18 October 2026 (A44).
+  HK: the two unaccounted reports cannot be identified; no export, screening log or saved Ovid
+    history survives. YL: JBI items 6 and 7 (data/review/li_jbi_qualitative_2026-09-24.docx) and
+    a re-extraction file dated 24 September 2026 (data/review/yanan_data_240926.csv, unedited),
+    compared by R/08 (supply date 2026-09-24; the Analyses column is now optional): no count
+    differs from the 15 September file. Nothing adopted; no release input changed. RT: nothing
+    further is expected; the student record is closed.
