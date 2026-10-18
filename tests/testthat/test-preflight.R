@@ -28,6 +28,11 @@ test_that("preflight_release() reports a registry that disagrees with the derive
 })
 
 test_that("run_all.R --preflight exits with status 1 on failure and 0 on success", {
+  # --preflight checks the pinned Bayesian stack first; CI installs only the
+  # package Imports, so this end-to-end check runs where brms and CmdStan exist.
+  # preflight_release() itself is tested above in every environment.
+  skip_if_not_installed("brms")
+  skip_if_not_installed("cmdstanr")
   ok <- withr::with_dir(repo_root(), suppressWarnings(system2("Rscript", c("run_all.R", "--preflight"), stdout = TRUE, stderr = TRUE)))
   expect_null(attr(ok, "status"), info = paste(ok, collapse = "\n"))
   src <- readLines(root_path("run_all.R"))
