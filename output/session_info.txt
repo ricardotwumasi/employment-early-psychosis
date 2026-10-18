@@ -1,6 +1,6 @@
-Run completed: 2026-10-18 09:56:54 BST
+Run completed: 2026-10-18 12:32:28 BST
 Mode: release
-Elapsed: 15.2 minutes
+Elapsed: 16.8 minutes
 CmdStan: 2.36.0
 
 R version 4.4.2 (2024-10-31)

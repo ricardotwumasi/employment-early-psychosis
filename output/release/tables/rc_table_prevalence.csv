@@ -6,6 +6,7 @@ Duration sensitivity (adds onset within eight years),9,1637,33.0 (25.6 to 41.6),
 A33 period prevalence (secondary estimand),9,1825,39.2 (26.8 to 52.9),10.0 to 79.4,0.77 (0.47 to 1.35)
 Historical EPHPP Moderate or Strong only (unrated excluded),3,385,23.2 (13.3 to 45.5),6.1 to 66.4,0.50 (0.09 to 1.60)
 Missing counted as not employed (lower bound),8,2787,24.7 (17.2 to 34.6),8.0 to 56.9,0.56 (0.32 to 1.10)
+Excluding samples with a confirmed universal vocational offer (A46),5,1224,30.0 (19.7 to 43.7),9.2 to 65.0,0.53 (0.24 to 1.27)
 Normal-normal logit approximation,8,1591,32.9 (24.9 to 42.7),13.4 to 61.0,0.47 (0.25 to 0.95)
 Strict registered rule (A24): point prevalence,0,NA,Not estimable (no eligible study),,
 "Variable follow-up, unpooled: Porteous 2007 (2002 to 2004)",1,100,"36.0 (27.1 to 45.7) (single study, Jeffreys interval)",,

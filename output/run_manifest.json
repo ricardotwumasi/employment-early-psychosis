@@ -2,15 +2,15 @@
   "status": "completed",
   "failure_message": {},
   "mode": "release",
-  "started_at": "2026-10-18 09:41:42 BST",
-  "finished_at": "2026-10-18 09:56:54 BST",
-  "elapsed_minutes": 15.2,
+  "started_at": "2026-10-18 12:15:41 BST",
+  "finished_at": "2026-10-18 12:32:28 BST",
+  "elapsed_minutes": 16.79,
   "git_start": {
-    "commit": "0c337f262f423453e734dc2a34ec48f0346aedb1",
+    "commit": "505b247986556aed8abddbb9d5082c98936d508d",
     "dirty": false
   },
   "git": {
-    "commit": "0c337f262f423453e734dc2a34ec48f0346aedb1",
+    "commit": "505b247986556aed8abddbb9d5082c98936d508d",
     "dirty": true
   },
   "input_hashes": {
@@ -19,15 +19,17 @@
     "data/review/population_eligibility.csv": "c64a782539857a0b81f20a1282c90256b34977bd64ba5982b384ccdd80e019bf",
     "data/review/release_construct_review.csv": "80b8d114006c8c8a2035e1e8dda9890dc01e46480b13c923edd4068baca4dfaf",
     "data/review/release_new_results.csv": "0da5c8e845e89f0e407d959259eeea8a84b9727e6d87694a4ae5d7ecc322e36e",
-    "data/review/amendment_dates.csv": "a35f671a5f5d5243ee87100893795e2a14cb87ebac71f1b11c0fe6483c2a7b46",
+    "data/review/release_vocational_exposure.csv": "9099e9266b54b047dc8aeb2c319e11da5605100b067c7e1704a6588472606260",
+    "data/review/review_disposition_2026-10-18.csv": "c5c636e820d8ff738f16ec0c50dbb1678d8db75a97ecc81e90437592da6761a8",
+    "data/review/amendment_dates.csv": "594ffd4462c79e5c29d11c22d7c386c64766b1215c0f316be2f631cb53ee93aa",
     "data/review/candidate_results.csv": "488d89f902d9e907a9d775a3fe642af5523ed2b55c9c4db64ea48193b7f18d50",
     "data/review/source_review_2026-09-23/results_draft.csv": "bca5c202daa1afd068df7c1e376f186429823aa402bd7897357e4c1a85a0a145",
     "data/review/source_review_2026-09-23/candidate_inventory_addendum_2026-10-16.csv": "03b3bc544f7dec81e90235439c10676dd4e6e394fa85fe04df0633deabbe3bc7",
     "data/review/source_review_2026-09-23/cohort_draft.csv": "178f8dc228caeef882042115d8f1fae57a212463163fc62cef6fdad6fd710d3c",
     "data/review/source_review_2026-09-23/signoff_2026-10-16.csv": "0e706e6a218df2a08904eaf9cde66998db17ffee9bf96087001b0c3c2f2f1fc3",
     "docs/amendment_2026-09-02.md": "5d478f80f7aff25829b6f922944cf8f4a052c6b8ac6c033382d4ba15faac361c",
-    "docs/amendment_2026-09-06.md": "20fbb5b6a955c233fcc788e3a5f15cc36372caf2c74f19b63803d495802bca88",
-    "data/registry/fit_registry.csv": "847a23bf213db9ead0664763f3e1271a7c49ec7c6dd08a3881930fb4fcb48eed",
+    "docs/amendment_2026-09-06.md": "8a3efda30e4ba884f289a0649174b0f3e283295a5859d01554023d64095fcff2",
+    "data/registry/fit_registry.csv": "25f14bf3564d5bb9ce754580eea116b3849bc60b918a2a3eb37644bc5f14130a",
     "data/schema/raw_extraction_schema_v1.csv": "202343e9743d3b2c8d648766307abe080ffacfce7532171619d063aaf5fcf032",
     "docs/analysis_specification_2026-09-01.txt": "d6928e505182cce9135b1ce6ecef3106f7d0550e36c932a275d90edc5e338fee",
     "data/external/frederick2019/competitive_employment_any.rds": "6bf5b2f78888e11b2b76d48af508ff2374036c431170ec61172e7e22c61ca9dd",
@@ -57,7 +59,7 @@
       "key": "80c4f35089e3090db2c0a9c2b4322e1a",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:41:58"
+      "cache_mtime": "2026-10-18 12:15:59"
     },
     {
       "model_id": "secondary_period_hn1",
@@ -65,7 +67,7 @@
       "key": "5aa6e95323b3593f87c12ba9f997c312",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:42:04"
+      "cache_mtime": "2026-10-18 12:16:07"
     },
     {
       "model_id": "sens_prior_hn05",
@@ -73,7 +75,7 @@
       "key": "b20699f894875c9d8368a837398e9352",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:42:17"
+      "cache_mtime": "2026-10-18 12:16:21"
     },
     {
       "model_id": "sens_prior_hn2",
@@ -81,7 +83,7 @@
       "key": "00ff4fafaf20f168046c87cdd4a759ec",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:42:34"
+      "cache_mtime": "2026-10-18 12:16:36"
     },
     {
       "model_id": "sens_point_relaxed_k14",
@@ -89,7 +91,7 @@
       "key": "14d9cacbfe9e58c2b2c65a3721d8d2e8",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:42:44"
+      "cache_mtime": "2026-10-18 12:16:44"
     },
     {
       "model_id": "sens_legacy_k23",
@@ -97,7 +99,7 @@
       "key": "f87e7bd1534e5eb15c403c8a017e0651",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:42:54"
+      "cache_mtime": "2026-10-18 12:16:55"
     },
     {
       "model_id": "sens_strict_excl_weak",
@@ -105,7 +107,7 @@
       "key": "95ac4a2540c0d248e19dce442eb8d421",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:00"
+      "cache_mtime": "2026-10-18 12:17:02"
     },
     {
       "model_id": "sens_strict_excl_exposed",
@@ -113,7 +115,7 @@
       "key": "c81d9399a8adc47ce13ef5af20b1b2f7",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:06"
+      "cache_mtime": "2026-10-18 12:17:07"
     },
     {
       "model_id": "sens_strict_missing_not_employed_bound",
@@ -121,7 +123,7 @@
       "key": "d388f8a7de0df1df3fa551534958652d",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:13"
+      "cache_mtime": "2026-10-18 12:17:13"
     },
     {
       "model_id": "sens_strict_normal_normal_hn1",
@@ -129,7 +131,7 @@
       "key": "33ce21cf73c77cc0cf711a3ab2c84929",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:28"
+      "cache_mtime": "2026-10-18 12:17:28"
     },
     {
       "model_id": "loo_ABDELBAKI_2013",
@@ -137,7 +139,7 @@
       "key": "09414ba019d67058de7b7226c7007882",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:34"
+      "cache_mtime": "2026-10-18 12:17:34"
     },
     {
       "model_id": "loo_ANDERSEN_2024",
@@ -145,7 +147,7 @@
       "key": "9be9d94f082178fb22051b6432fbcacd",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:41"
+      "cache_mtime": "2026-10-18 12:17:41"
     },
     {
       "model_id": "loo_CRAIG_2014",
@@ -153,7 +155,7 @@
       "key": "5871357a61c2fbdbab9360cd537e7fa3",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:49"
+      "cache_mtime": "2026-10-18 12:17:48"
     },
     {
       "model_id": "loo_DUDLEY_2014",
@@ -161,7 +163,7 @@
       "key": "6648ff9ed567ffd783a837b515262b79",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:43:55"
+      "cache_mtime": "2026-10-18 12:18:04"
     },
     {
       "model_id": "loo_EACK_2011",
@@ -169,7 +171,7 @@
       "key": "9a3d8fb3014f337852099aaab19e5c8e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:01"
+      "cache_mtime": "2026-10-18 12:18:12"
     },
     {
       "model_id": "loo_HEGELSTAD_2019",
@@ -177,7 +179,7 @@
       "key": "4fa943eea2c2ab25029516d58a621327",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:08"
+      "cache_mtime": "2026-10-18 12:18:18"
     },
     {
       "model_id": "loo_POTHIER_2019",
@@ -185,7 +187,7 @@
       "key": "f8204a0535310200953d1de926110804",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:15"
+      "cache_mtime": "2026-10-18 12:18:25"
     },
     {
       "model_id": "loo_RINALDI_2010",
@@ -193,7 +195,7 @@
       "key": "6394ab9a684bf6e68bc38aa3cb082d9e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:21"
+      "cache_mtime": "2026-10-18 12:18:33"
     },
     {
       "model_id": "loo_ROSENHECK_2017",
@@ -201,7 +203,7 @@
       "key": "f1f0dfcd6f0272b6d2082ce133f44eb8",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:28"
+      "cache_mtime": "2026-10-18 12:18:40"
     },
     {
       "model_id": "loo_VANDUIN_2021",
@@ -209,7 +211,7 @@
       "key": "2b733cf51e3f319520d4e1c910ccbe81",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:34"
+      "cache_mtime": "2026-10-18 12:18:47"
     },
     {
       "model_id": "primary_k3_hn05",
@@ -217,7 +219,7 @@
       "key": "493bf6364eeae8abcab86f02ca226de5",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:46"
+      "cache_mtime": "2026-10-18 12:19:00"
     },
     {
       "model_id": "sens_prior_hn025",
@@ -225,7 +227,7 @@
       "key": "93d5ec7eaa6e92c24f4534265113b703",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:44:56"
+      "cache_mtime": "2026-10-18 12:19:12"
     },
     {
       "model_id": "sens_prior_hn1",
@@ -233,7 +235,7 @@
       "key": "161958488769c7eee6c1eafb4d078c94",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:08"
+      "cache_mtime": "2026-10-18 12:19:26"
     },
     {
       "model_id": "sens_k4_hn05",
@@ -241,7 +243,7 @@
       "key": "830f4f5f2d073314c288b1447a9aa8f2",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:12"
+      "cache_mtime": "2026-10-18 12:19:30"
     },
     {
       "model_id": "sens_k3_missing_not_employed",
@@ -249,7 +251,7 @@
       "key": "75349df93d546b555141742048808830",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:15"
+      "cache_mtime": "2026-10-18 12:19:34"
     },
     {
       "model_id": "sens_k4_missing_not_employed",
@@ -257,7 +259,7 @@
       "key": "c8c281124f850ddada2d3574947ab44f",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:18"
+      "cache_mtime": "2026-10-18 12:19:38"
     },
     {
       "model_id": "loo_ERICKSON_2021",
@@ -265,7 +267,7 @@
       "key": "53337ca4167714bf7c9d6535e4318a46",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:22"
+      "cache_mtime": "2026-10-18 12:19:43"
     },
     {
       "model_id": "loo_KILLACKEY_2008",
@@ -273,7 +275,7 @@
       "key": "c228322546cc264f22ff8310bbde6539",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:25"
+      "cache_mtime": "2026-10-18 12:19:47"
     },
     {
       "model_id": "loo_KILLACKEY_2019",
@@ -281,7 +283,7 @@
       "key": "8edbdd0c1ea9415bf42a16da22042b3e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:29"
+      "cache_mtime": "2026-10-18 12:19:51"
     },
     {
       "model_id": "exact_binomial_k3",
@@ -289,7 +291,7 @@
       "key": "c01b1f8118f7052bc12fe367e2e46b99",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:42"
+      "cache_mtime": "2026-10-18 12:20:05"
     },
     {
       "model_id": "exact_binomial_k4",
@@ -297,7 +299,7 @@
       "key": "e25312d16f396d5c7985db62b0ab5541",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:45:56"
+      "cache_mtime": "2026-10-18 12:20:21"
     },
     {
       "model_id": "bf_h0_hn05",
@@ -305,7 +307,7 @@
       "key": "8d8ed3c4f94c932c8a6d017ce79a3963",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:46:05"
+      "cache_mtime": "2026-10-18 12:20:35"
     },
     {
       "model_id": "bf_h1_primary_log2",
@@ -313,7 +315,7 @@
       "key": "095b1e2981dfe83b1f60e01672385867",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:46:43"
+      "cache_mtime": "2026-10-18 12:21:20"
     },
     {
       "model_id": "bf_h1_frederick_published",
@@ -321,7 +323,7 @@
       "key": "80160dd95cda9799bc12a77d715112dc",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:47:20"
+      "cache_mtime": "2026-10-18 12:21:58"
     },
     {
       "model_id": "bf_h1_bond2015",
@@ -329,7 +331,7 @@
       "key": "1e8d0e8151932f6c4bd9387e849caf82",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:48:05"
+      "cache_mtime": "2026-10-18 12:22:35"
     },
     {
       "model_id": "bf_h1_bond2016",
@@ -337,7 +339,7 @@
       "key": "d99c9565983cad8418470dcc7dcd1fac",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:48:47"
+      "cache_mtime": "2026-10-18 12:23:12"
     },
     {
       "model_id": "bf_h1_modini2016",
@@ -345,7 +347,7 @@
       "key": "01263aa28ac7b9a9a57e40c96a249648",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:49:28"
+      "cache_mtime": "2026-10-18 12:23:50"
     },
     {
       "model_id": "mr_design",
@@ -353,7 +355,7 @@
       "key": "494374fbd0245b04793e63f6c3f6c43d",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:50:15"
+      "cache_mtime": "2026-10-18 12:24:37"
     },
     {
       "model_id": "mr_timepoint",
@@ -361,7 +363,7 @@
       "key": "e2fa25819a07fca92388b8906a021cc5",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:50:31"
+      "cache_mtime": "2026-10-18 12:24:53"
     },
     {
       "model_id": "mr_exposure",
@@ -369,7 +371,7 @@
       "key": "fa19680c1f0c273888ec8c0896b877ad",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:51:10"
+      "cache_mtime": "2026-10-18 12:25:29"
     },
     {
       "model_id": "mr_attrition",
@@ -377,7 +379,7 @@
       "key": "55a6081cd32c5ceed9373d9331fc651c",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:51:26"
+      "cache_mtime": "2026-10-18 12:25:45"
     },
     {
       "model_id": "mr_outcome_basis",
@@ -385,7 +387,7 @@
       "key": "9a8fa0e7a2d6329f71e4537e54be807f",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:51:46"
+      "cache_mtime": "2026-10-18 12:26:07"
     },
     {
       "model_id": "rc_a33_point_primary_hn1",
@@ -393,7 +395,7 @@
       "key": "a57fc9ccbe2cb3f7c39eec0fb4034851",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:51:54"
+      "cache_mtime": "2026-10-18 12:26:15"
     },
     {
       "model_id": "rc_a33_point_prior_hn05",
@@ -401,7 +403,7 @@
       "key": "e9ddf1c64d41d4c6014af83fb9c4619e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:01"
+      "cache_mtime": "2026-10-18 12:26:20"
     },
     {
       "model_id": "rc_a33_point_prior_hn2",
@@ -409,7 +411,7 @@
       "key": "5966316c75e62e15ebc0e60697758544",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:07"
+      "cache_mtime": "2026-10-18 12:26:25"
     },
     {
       "model_id": "rc_a33_point_duration_sens_hn1",
@@ -417,7 +419,7 @@
       "key": "6d70ffbe22d919a014a84fc2a42ca16e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:12"
+      "cache_mtime": "2026-10-18 12:26:30"
     },
     {
       "model_id": "rc_a33_period_hn1",
@@ -425,7 +427,7 @@
       "key": "aa907718751b7084abca17b6cd64f6ff",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:18"
+      "cache_mtime": "2026-10-18 12:26:36"
     },
     {
       "model_id": "rc_a33_point_excl_weak_hn1",
@@ -433,7 +435,7 @@
       "key": "748a2a0e271ae8180aaca37ca79f708a",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:22"
+      "cache_mtime": "2026-10-18 12:26:44"
     },
     {
       "model_id": "rc_a33_point_missing_bound_hn1",
@@ -441,7 +443,15 @@
       "key": "f890949e01e8e0906194ac7114dc8ae2",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:28"
+      "cache_mtime": "2026-10-18 12:26:53"
+    },
+    {
+      "model_id": "rc_a33_point_excl_all_offered_hn1",
+      "cache_file": "/Users/k1812261/claude_code/employment_vocational_functioning_meta/employment-early-psychosis/output/bayesian/fits/rc_a33_point_excl_all_offered_hn1_9ab1d9936756.rds",
+      "key": "9ab1d99367561f65b5a4673b6ff9a76a",
+      "cache_key_version": 1,
+      "from_cache": false,
+      "cache_mtime": "2026-10-18 12:26:58"
     },
     {
       "model_id": "rc_a33_point_normal_normal_hn1",
@@ -449,7 +459,7 @@
       "key": "d0e1cbd7314135e62f19720c590ae154",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:32"
+      "cache_mtime": "2026-10-18 12:27:03"
     },
     {
       "model_id": "rc_loo_prev_ABDELBAKI_2013",
@@ -457,7 +467,7 @@
       "key": "90f6d60db31ce76abcd86d613ba69d11",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:38"
+      "cache_mtime": "2026-10-18 12:27:10"
     },
     {
       "model_id": "rc_loo_prev_ANDERSEN_2024",
@@ -465,7 +475,7 @@
       "key": "56b798cae5b9ae9e3349dc5914761718",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:43"
+      "cache_mtime": "2026-10-18 12:27:17"
     },
     {
       "model_id": "rc_loo_prev_CRAIG_2014",
@@ -473,7 +483,7 @@
       "key": "89cd119c68bae4fc59e39bb7263f323f",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:48"
+      "cache_mtime": "2026-10-18 12:27:23"
     },
     {
       "model_id": "rc_loo_prev_DUDLEY_2014",
@@ -481,7 +491,7 @@
       "key": "3ef55280b74ef35c58e3dd38c7bfee7c",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:53"
+      "cache_mtime": "2026-10-18 12:27:30"
     },
     {
       "model_id": "rc_loo_prev_HEGELSTAD_2019",
@@ -489,7 +499,7 @@
       "key": "bebd6fdd2c89b43722a1fba82f3faa6e",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:52:59"
+      "cache_mtime": "2026-10-18 12:27:37"
     },
     {
       "model_id": "rc_loo_prev_RINALDI_2010",
@@ -497,7 +507,7 @@
       "key": "dc67d16523cdf89e74800c7526d6d707",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:05"
+      "cache_mtime": "2026-10-18 12:27:43"
     },
     {
       "model_id": "rc_loo_prev_DRAKE_2013",
@@ -505,7 +515,7 @@
       "key": "74aba251af9ea7202952ad328fd02ca7",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:10"
+      "cache_mtime": "2026-10-18 12:27:50"
     },
     {
       "model_id": "rc_loo_prev_CLARKE_2022",
@@ -513,7 +523,7 @@
       "key": "8fca3a9a5fb38c0363db0828ca589d38",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:15"
+      "cache_mtime": "2026-10-18 12:27:56"
     },
     {
       "model_id": "rc_trial_a33_k3_hn05",
@@ -521,7 +531,7 @@
       "key": "9b1f519d0ed2c030d1df7c893f516d04",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:20"
+      "cache_mtime": "2026-10-18 12:28:01"
     },
     {
       "model_id": "rc_trial_a33_k3_hn025",
@@ -529,7 +539,7 @@
       "key": "2453c0291fa9555be40a53a422fbe876",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:25"
+      "cache_mtime": "2026-10-18 12:28:05"
     },
     {
       "model_id": "rc_trial_a33_k3_hn1",
@@ -537,7 +547,7 @@
       "key": "0bca5d93ebf9e0c0c4a80e7a1bb47c7a",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:29"
+      "cache_mtime": "2026-10-18 12:28:10"
     },
     {
       "model_id": "rc_trial_a33_k3_missing_hn05",
@@ -545,7 +555,7 @@
       "key": "25d66fafd6dccec80a52867dfeea00fe",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:33"
+      "cache_mtime": "2026-10-18 12:28:15"
     },
     {
       "model_id": "rc_loo_trial_ERICKSON_2021",
@@ -553,7 +563,7 @@
       "key": "53337ca4167714bf7c9d6535e4318a46",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:40"
+      "cache_mtime": "2026-10-18 12:28:19"
     },
     {
       "model_id": "rc_loo_trial_KILLACKEY_2008",
@@ -561,7 +571,7 @@
       "key": "d50ee5309666bae0fd765fc2ce991a45",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:44"
+      "cache_mtime": "2026-10-18 12:28:25"
     },
     {
       "model_id": "rc_loo_trial_KILLACKEY_2019",
@@ -569,7 +579,7 @@
       "key": "c9652253cb0d6b965447b0c439eef06c",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:49"
+      "cache_mtime": "2026-10-18 12:28:29"
     },
     {
       "model_id": "rc_exact_binomial_a33_k3",
@@ -577,7 +587,7 @@
       "key": "9aeb6851a722eb61fb593bb237c39064",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:54"
+      "cache_mtime": "2026-10-18 12:28:35"
     },
     {
       "model_id": "rc_bf_h0_hn05",
@@ -585,7 +595,7 @@
       "key": "64203cafc2b30529624e292a83884b92",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:53:58"
+      "cache_mtime": "2026-10-18 12:28:40"
     },
     {
       "model_id": "rc_bf_h1_primary_log2",
@@ -593,7 +603,7 @@
       "key": "177412175b6060091dd89bd77fd92821",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:54:27"
+      "cache_mtime": "2026-10-18 12:29:10"
     },
     {
       "model_id": "rc_bf_h1_frederick_published",
@@ -601,7 +611,7 @@
       "key": "bcf660ca0312d85364ffd80ccf08aeb0",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:54:57"
+      "cache_mtime": "2026-10-18 12:29:39"
     },
     {
       "model_id": "rc_bf_h1_bond2015",
@@ -609,7 +619,7 @@
       "key": "3d6a4dc33c25cfc5aaf694ebdfa22838",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:55:24"
+      "cache_mtime": "2026-10-18 12:30:17"
     },
     {
       "model_id": "rc_bf_h1_bond2016",
@@ -617,7 +627,7 @@
       "key": "62a751a23edb8d81cb4940dc166051cb",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:55:52"
+      "cache_mtime": "2026-10-18 12:30:59"
     },
     {
       "model_id": "rc_bf_h1_modini2016",
@@ -625,7 +635,7 @@
       "key": "533367e4124a74fec6e95671329f9034",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:56:19"
+      "cache_mtime": "2026-10-18 12:31:43"
     },
     {
       "model_id": "rc_bf_h1_modini2016_ad999",
@@ -633,12 +643,12 @@
       "key": "d4488310f5d1199912c4c3c32f03bece",
       "cache_key_version": 1,
       "from_cache": false,
-      "cache_mtime": "2026-10-18 09:56:24"
+      "cache_mtime": "2026-10-18 12:31:50"
     }
   ],
-  "gate_attempts_n": 73,
+  "gate_attempts_n": 74,
   "output_hashes": {
-    "output/bayesian/gate_attempts.csv": "afe40ee7fc688f90208ffe0ebfc3da9d2714b868f01515594d84e70f52ab3686",
+    "output/bayesian/gate_attempts.csv": "7c84f1d0726fbe8ef8550b942598ef30d94bfa946bc7d592ac0145ad2b8ffc45",
     "output/bayesian/metaregression_contrasts.csv": "c38d276ee10a00c561c5d4601ead4e39980ca3368fa20615ae365074a1352ab6",
     "output/bayesian/metaregression_diagnostics.csv": "8a2fdb51c02dbb6fd1636a3e3c706aeda10cdaaf8f50ca70c01182869e5c3e4f",
     "output/bayesian/prevalence_diagnostics.csv": "d6b7832d10ed456595b4a5f3572a63bca8a127e73b171011fa57f5d219173162",
@@ -652,32 +662,32 @@
     "output/bayesian/trials_input_effects.csv": "86352d13227bf3621ee678854ede06f1e56a94d75434f6175bf65e9646c74889",
     "output/bayesian/trials_primary_draws.csv": "919c4ef305698ac550fddfe2f0c93973065deb66fe299a764cf8835d9dad744e",
     "output/bayesian/trials_summary.csv": "73dfe483e91b74d57318d3c43c70774c129769578f176465b5d7a96218b2ddea",
-    "output/figures/fig1_forest_prevalence.pdf": "8f2ab1077aea3d7e6a1f9370fde45df5b7bcdaf9baff843a340cc9742b63237c",
-    "output/figures/fig2_forest_trials.pdf": "5f0db1e436b987aa36e750171a52137be649b4e29a686382f580626d173a1964",
-    "output/figures/fig3_dienes.pdf": "6a140abee4b28dcdbaf555fbe892339107cb1596c1a6f86241acd4f6cd6ebb9a",
-    "output/figures/figS1_prior_sensitivity.pdf": "873d9b4e2307840f19f24521014117afd6b6ce12ac67e97893e73324aa3e0f58",
-    "output/figures/figS2_tau_posteriors.pdf": "c30c499b6003199204de683cc5a66e7e806d042ef78d765213faf41ce6f6b721",
-    "output/figures/ppc_prevalence_loo_ABDELBAKI_2013.pdf": "ffe74338d61fdd4637640fa00ac8902550963f636dc20362885d4c45117cadf8",
-    "output/figures/ppc_prevalence_loo_ANDERSEN_2024.pdf": "80436c1586f64fad727f56de7a8fbcd8666e454a77c2232f239f57c3d52520e6",
-    "output/figures/ppc_prevalence_loo_CRAIG_2014.pdf": "dadb3d93f90c4730de736adaaaf749e323bc1cb85cbb23ead0267166ddba6d8b",
-    "output/figures/ppc_prevalence_loo_DUDLEY_2014.pdf": "3f9574faff9c33beb0758a1998e675900ec17eaa5afc3b7da9c37ab1f963f84c",
-    "output/figures/ppc_prevalence_loo_EACK_2011.pdf": "453854b997e8b0c23a00d6429493d4d4b2b5bc6894e3b072ddda20a2e2675fe1",
-    "output/figures/ppc_prevalence_loo_HEGELSTAD_2019.pdf": "e1d5a10b012c078a62568232d22271e6e6e5226b6a03a396d37a8617fd44a551",
-    "output/figures/ppc_prevalence_loo_POTHIER_2019.pdf": "b60b01d3c18e840aa2477b2befd84df6d924b3d4fcf8f5839fd24978280f24e3",
-    "output/figures/ppc_prevalence_loo_RINALDI_2010.pdf": "d3ffaf2d6e0a88035e822a3baf3d1e48362dfcc03f68c3012803cb5a3b717223",
-    "output/figures/ppc_prevalence_loo_ROSENHECK_2017.pdf": "13c7959ca73175f9c012fec3e070145186f7b1783fcf53516bc6fb4c41aa3182",
-    "output/figures/ppc_prevalence_loo_VANDUIN_2021.pdf": "6dc9385df7fc27d0569983e84c6b79f4f9b5467fe0fc8ed3abbbe8cb0505b980",
-    "output/figures/ppc_prevalence_primary_strict_point_hn1.pdf": "9f948be428a01293422e00f38987a4eadb517b0c5c4a5b888e61613b098f4930",
-    "output/figures/ppc_prevalence_secondary_period_hn1.pdf": "91e5c9498ce82cc88de06dd4bd370b3bc2effbc2559247731de25000ade28608",
-    "output/figures/ppc_prevalence_sens_legacy_k23.pdf": "5122a0939828bc6614bba1aa0682aab77793dfe6f1a722ac8aaedb91bafc7e02",
-    "output/figures/ppc_prevalence_sens_point_relaxed_k14.pdf": "f6506a7c9ab9dc79e314a2e301303e5641a7bd82d07c9d06b1d641d926eb5ed4",
-    "output/figures/ppc_prevalence_sens_prior_hn05.pdf": "a2b36d715d0bd004f6b6f21b0cf007ed5d6e4b3a6fbbfdbb89e9d30103ff9acf",
-    "output/figures/ppc_prevalence_sens_prior_hn2.pdf": "a0f4fa931bbf60d8bde226d3494c97a264371879a9f58dd0be1fa5d7951441a3",
-    "output/figures/ppc_prevalence_sens_strict_excl_exposed.pdf": "9f0f04b100803a8552f66908c0fd2776b908ae777b052cb3bbf8a27e637864c1",
-    "output/figures/ppc_prevalence_sens_strict_excl_weak.pdf": "f474454fe23477fbcfcc736f0990130926d61456ef17a6d274012f32474b0774",
-    "output/figures/ppc_prevalence_sens_strict_missing_not_employed_bound.pdf": "9746918b81b445c84710c6151c5bebf3c40e88a30bd6988af01e4cb9098e3a7a",
-    "output/figures/ppc_trials_exact_binomial_k3.pdf": "2b682065dba931d46a4d6d6ca0bf1e028a1db33785ac6d396ba79ad85fcbee50",
-    "output/figures/ppc_trials_exact_binomial_k4.pdf": "571c86bf4e7b6f8537694c192dbb90604c4ce26b6776e47205d0a3eb6c762115",
+    "output/figures/fig1_forest_prevalence.pdf": "84e47eb55c0db2f275c4a2954c793b1f37e8a8a2c84654f78bfd8909cf47378a",
+    "output/figures/fig2_forest_trials.pdf": "cccaae48e4c2597a56e0a2709470ba1081d40a18e7a5e7f1cdcd9477a368628e",
+    "output/figures/fig3_dienes.pdf": "e6cc6a9fe6f02d563fb7cdd858a5c5d3451872dd06fd07b5054c6c462883654d",
+    "output/figures/figS1_prior_sensitivity.pdf": "fe3244f5be94c60f09daf3d87633c497e29a443e5dcf40052e9b378be1d15cf0",
+    "output/figures/figS2_tau_posteriors.pdf": "a142e3889bd907830424e7ec31e5d0121bd5be4d97a3e0eb533e18b744f9d9d1",
+    "output/figures/ppc_prevalence_loo_ABDELBAKI_2013.pdf": "8d4196ef5f47bf5ea47b03d49967456120b7a79de770341e32417a274f9c748b",
+    "output/figures/ppc_prevalence_loo_ANDERSEN_2024.pdf": "a816507ff1ccc19080bf7c2f1d81fa45a17361169cad8a2c343846f2c2de096d",
+    "output/figures/ppc_prevalence_loo_CRAIG_2014.pdf": "0766108f88dae0dbff66fd2547f15935092294840f9c1bdb743eeb708492cca7",
+    "output/figures/ppc_prevalence_loo_DUDLEY_2014.pdf": "2faed95566ddbc1c485832db1b3921bbc64c4194ee6401734e16a0704b1e7fa8",
+    "output/figures/ppc_prevalence_loo_EACK_2011.pdf": "0936e4b2e510e05dc9789f965818e28a48ac338fb706b2854b183cdcabeadd17",
+    "output/figures/ppc_prevalence_loo_HEGELSTAD_2019.pdf": "289eecb3424a90827002e1fcb5bb7b8cd6be202cd9d6288bd0fa13591f54773b",
+    "output/figures/ppc_prevalence_loo_POTHIER_2019.pdf": "853631ff49fde55b99afc265a151d230b5e4ea5ae64bb564a82acd1591ab41d5",
+    "output/figures/ppc_prevalence_loo_RINALDI_2010.pdf": "7cfac756a51701630afdac7308f20a73fd3ba3c1f55dc35221c0ba13a2792268",
+    "output/figures/ppc_prevalence_loo_ROSENHECK_2017.pdf": "05ecc28a30ab773966fdef449c17b094e4b0935264f438c7c5555e15a6635fc2",
+    "output/figures/ppc_prevalence_loo_VANDUIN_2021.pdf": "4932ce4b80be23e1e636f02d624069ee50f33ee1d34aa9eadefb6bd4e41aec6e",
+    "output/figures/ppc_prevalence_primary_strict_point_hn1.pdf": "000767d46ff8540846dbf77d6e85ed823ef6c5335083db8e30ad45d3797eddcf",
+    "output/figures/ppc_prevalence_secondary_period_hn1.pdf": "4d72aa78803805b900c7f894ad5e5753ca128f6ce6ada83aa1e17702d0e4baa1",
+    "output/figures/ppc_prevalence_sens_legacy_k23.pdf": "a073efda6fc105ccd7a29d0a996ab3670a1ed2b3798133499e50d3c835b0ff59",
+    "output/figures/ppc_prevalence_sens_point_relaxed_k14.pdf": "a83866cdd8ac366b61f0e51444a580435cf6c0dac34f386e550e455fc871478b",
+    "output/figures/ppc_prevalence_sens_prior_hn05.pdf": "270a835e3da27fa5ed44fbb9bfab629b71fc47703b4dc4bb4a1c97c062f7c7f6",
+    "output/figures/ppc_prevalence_sens_prior_hn2.pdf": "4c44959c339c13096be854f4aa8a1b7aa54f753fe40387db7e059887e699040d",
+    "output/figures/ppc_prevalence_sens_strict_excl_exposed.pdf": "79c4164a0f288b1b8a104f5cbf0e6adf6b2877d4d4709361fe1798ffc5590f24",
+    "output/figures/ppc_prevalence_sens_strict_excl_weak.pdf": "494a93b683c9b1d1797694ec149672d2c08d8c43339ab00f7f3db28aa4c5c43d",
+    "output/figures/ppc_prevalence_sens_strict_missing_not_employed_bound.pdf": "70d1d2f7aa1d1c8d28d6ee5435999eddb0726624667ad14d8acbeb80cec0c5ea",
+    "output/figures/ppc_trials_exact_binomial_k3.pdf": "6e5a85bac048c64e84ffb2d7879ad5de122080a6c8a58b91bdad6c7ebfd6db93",
+    "output/figures/ppc_trials_exact_binomial_k4.pdf": "02b519c74744c5c89b84fb3606a57a143937ed16dd5aeb161c09fdd63903c2f8",
     "output/frequentist/moderators_registered_coefficients.csv": "ab587e4fd8fbca2342b7ed110f134eab5cdec46f585fe5605e387e94c18e7501",
     "output/frequentist/moderators_registered_omnibus.csv": "ba8134590f6421467948aeefe73dc5837089f76812907b2ffeb7783e35742c12",
     "output/frequentist/prevalence_registered_models.csv": "001fa565bad183f785178e0607b27d5432d379059fa6e442e8da6dce1045ebc0",
@@ -688,12 +698,12 @@
     "output/frequentist/trials_registered_models.csv": "a9c2bdc52dacf7ad876019c5bd59cbe299165f0959a1e1033a9747aacea61c7a",
     "output/release/bayesian/rc_absolute_risk_scenarios.csv": "6040d1a2f3b27f64c4ffa69c5ffd0fd235846bc9ed349278806c507fc8ef5ac5",
     "output/release/bayesian/rc_exact_binomial_a33_k3_joint_draws.csv": "019df630b2b1f962773afdf7e5f1694a85e0c5f55c2fa062dd285109e04314ce",
-    "output/release/bayesian/rc_prevalence_diagnostics.csv": "3bd694b986a9e4652720f6555c528b1a351b42995c439523c170f320a410b52f",
+    "output/release/bayesian/rc_prevalence_diagnostics.csv": "75293e1a446998d1b6732279d0ce93de55dc6b07ae1cd86a6f44cb5c08f6449b",
     "output/release/bayesian/rc_prevalence_leave_one_out.csv": "2b8cb85941071f9f55dc0958e97c610a6f5d66ace658b4f07b849b7f4409e8e5",
     "output/release/bayesian/rc_prevalence_primary_draws.csv": "2927a4a6961a3c70010010ded44b50d57c5bd7f2405f096d18f423ce44da466b",
     "output/release/bayesian/rc_prevalence_primary_study_effects.csv": "1e811dd86d07b641095621c0d2daab98cb74809a1734a01863281b14d71ae206",
     "output/release/bayesian/rc_prevalence_strict_record.csv": "dfa216a8a3db9a92f53343451ba051e45d6c5b77b468c247f2b2a9f8a79edec3",
-    "output/release/bayesian/rc_prevalence_summary.csv": "b7473dad41d515ce206f4a2045d341075108da1650bc23ca6ec32e5605b8651e",
+    "output/release/bayesian/rc_prevalence_summary.csv": "8af4061c69f7a5ceb3b7fd65e934017c26403e6ef6ea2c3fd2eba3dfd3e6f7cd",
     "output/release/bayesian/rc_prevalence_variable_window.csv": "50f3a12009809838828b9bc0d6a33f9f5d27e99148ba810414ac65cb6febb73d",
     "output/release/bayesian/rc_trials_bayes_factors.csv": "9a50dd2d0906cff61f46315cfdd89f0b3b6342ea9eca2547a511eabe396e7136",
     "output/release/bayesian/rc_trials_bf_robustness_region.csv": "22db5ef61e607b6797bcda6f08912e784f9e26f2cbfb30a2cfa478a0b9911aa9",
@@ -704,45 +714,46 @@
     "output/release/bayesian/rc_trials_primary_draws.csv": "d5982a0e1f01e2b1bd4658342cd0703c3fd5099b9157cdb52b11e75d9680f30b",
     "output/release/bayesian/rc_trials_strict_record.csv": "98446126ce0139930ad2a0b7fa1bc5762e3eb23b0e2762b20c9e6d8669797243",
     "output/release/bayesian/rc_trials_summary.csv": "88227f24efd9966bd481449b08452e6be5755695ba642c20794ce2cb5088626a",
-    "output/release/figures/ppc_rc_a33_period_hn1.pdf": "52dbb13e3b55f11870253d3e3190681f1c862fdd4c093f4dc682b1cdb6206055",
-    "output/release/figures/ppc_rc_a33_point_duration_sens_hn1.pdf": "c227a0c002b688698de3aad9fce06d3219dd0dcc0c1e988685f4179e20a7c400",
-    "output/release/figures/ppc_rc_a33_point_excl_weak_hn1.pdf": "23ad89cf3ecb64d3818b7642741e5ba7ee1d7ea31b1ae7604e94a5bd3620b505",
-    "output/release/figures/ppc_rc_a33_point_missing_bound_hn1.pdf": "897c85352337241223621fa2db134a56cd97010aedd0a21c6892ee8ca09d9dd0",
-    "output/release/figures/ppc_rc_a33_point_primary_hn1.pdf": "0cd475670d44fdc4a686d952e3233804932dfb93047c33d4ae4fcbbf33e73e15",
-    "output/release/figures/ppc_rc_a33_point_prior_hn05.pdf": "1307bc332a1e1515fc1c24093fcb76082f0c8a972d6c5a076b0c6b3d998b5547",
-    "output/release/figures/ppc_rc_a33_point_prior_hn2.pdf": "995a872a5022d99bf07a674bd366cdf50126e304b9f8e0dc337f6d3d7f866dcb",
-    "output/release/figures/ppc_rc_exact_binomial_a33_k3.pdf": "6a4f163bd8fbf1cc43495905333605458c644497e9c7e8f1018cb4f68ae1b5c4",
-    "output/release/figures/ppc_rc_loo_prev_ABDELBAKI_2013.pdf": "9649d2bce6c9d229c994aaa47b2aee1ff046132d3b074b69b51daacd5f31de0b",
-    "output/release/figures/ppc_rc_loo_prev_ANDERSEN_2024.pdf": "729ddb6084e99d757f1bdebb51e0159ff95650c4d5f2d3b0ceb98fddcc0e4ce5",
-    "output/release/figures/ppc_rc_loo_prev_CLARKE_2022.pdf": "7d37e0e03516cd3344fbe65ec54243b76cbff1d322559fb4f1da823edccc62d2",
-    "output/release/figures/ppc_rc_loo_prev_CRAIG_2014.pdf": "4808fce4e8b3ade109692dc923f1b8eae4d28c6dd5e91d37a29f412cb1f443bc",
-    "output/release/figures/ppc_rc_loo_prev_DRAKE_2013.pdf": "9dd580870b43a4556e0156e15a7d307fdb937173a159da8db7c911bbf385436d",
-    "output/release/figures/ppc_rc_loo_prev_DUDLEY_2014.pdf": "ef2e95797eaacd92dbc59dc3cda6a2f32f4079c2d0194c0cfa286d479581577e",
-    "output/release/figures/ppc_rc_loo_prev_HEGELSTAD_2019.pdf": "ff74f5ca7e15e2c210ad8a307e2290eed137bd211886fe3a3cca5ad9499c8989",
-    "output/release/figures/ppc_rc_loo_prev_RINALDI_2010.pdf": "e6c7bb7ea19a73e05ade9d058a6dc40bd1c4051a75cf1cc97ef3428333af6424",
-    "output/release/figures/rc_fig1_forest_prevalence.pdf": "fd1d1b4e8df952df5a1c7b9cb7fcfc48bc037bcc0b93e6690a97217f2115b215",
-    "output/release/figures/rc_fig2_forest_trials.pdf": "cfb3b4dfa03553336de1cf2e1fcbe41d9abc4480f35aca20fab68f5101849533",
-    "output/release/tables/rc_numbers.tex": "905621077f8c301958d466d513c4fd26c2448e0075b80802a6f08183cd6f2508",
+    "output/release/figures/ppc_rc_a33_period_hn1.pdf": "f62ebb8c9dc79e9fd36477bfd80ecc8c705d193bd839eb55fdd8f8323839864e",
+    "output/release/figures/ppc_rc_a33_point_duration_sens_hn1.pdf": "33374ac8c2555864c63a2214cf973ba8080a7df5dc2dd412892189c59768ca0e",
+    "output/release/figures/ppc_rc_a33_point_excl_all_offered_hn1.pdf": "d1d3278da38c0d0d634e79259c664a2fe513b99c0cdb06006877e11ab312166d",
+    "output/release/figures/ppc_rc_a33_point_excl_weak_hn1.pdf": "f3ab7372e16780ae017899e3260871a68b4e71f6638eba57282ee7edcdb94c79",
+    "output/release/figures/ppc_rc_a33_point_missing_bound_hn1.pdf": "9a870d94c2de05ec8eb786206526649fea3e5116114909804588d19e6cd9fc0a",
+    "output/release/figures/ppc_rc_a33_point_primary_hn1.pdf": "b59d632692b6321fe04a9e1541c6863398bd6be516533a4c4464141c5ca11e26",
+    "output/release/figures/ppc_rc_a33_point_prior_hn05.pdf": "081d6c39cc2feae8aae0642139c2d8b412446f65ac0df59956a34da4027f7980",
+    "output/release/figures/ppc_rc_a33_point_prior_hn2.pdf": "7626ba5783f26e4cb36276f488922fdbf34ef9cdc94327fda134b9f01595ff58",
+    "output/release/figures/ppc_rc_exact_binomial_a33_k3.pdf": "5f4692388e456dec60e38346ccc6d335da5b22ce1e4003e96e2534ed929ac3f9",
+    "output/release/figures/ppc_rc_loo_prev_ABDELBAKI_2013.pdf": "de1bc6c8349ad6c428fa643bf370e962c41d57d2fc5b3a74e5b4de6af736dca9",
+    "output/release/figures/ppc_rc_loo_prev_ANDERSEN_2024.pdf": "a1a2f2cd3da439c3acfaf79254bce5b3ae9e6ef6d214ef1589f99031d0f8aaa1",
+    "output/release/figures/ppc_rc_loo_prev_CLARKE_2022.pdf": "20c0c83b63c5ead4036d2365033d7418dee6d38cf8422d75370c0bc3337a0576",
+    "output/release/figures/ppc_rc_loo_prev_CRAIG_2014.pdf": "b4f8ccdd977e96c97cad51cf3aa79294afde1286a8b81c965d45ca733d06ca74",
+    "output/release/figures/ppc_rc_loo_prev_DRAKE_2013.pdf": "d012911c5e11f98985e63b6c63fad970c809920cb2b0265454b5bbb46117d9b0",
+    "output/release/figures/ppc_rc_loo_prev_DUDLEY_2014.pdf": "00c6092a4e1a86670dac1044dfba6828067c9e95c4d55716dd9ff993ac0f1c6c",
+    "output/release/figures/ppc_rc_loo_prev_HEGELSTAD_2019.pdf": "241ff007c9aa0ffab48580ca3c26232b339269b471951397e0ea8e16bfb731ad",
+    "output/release/figures/ppc_rc_loo_prev_RINALDI_2010.pdf": "aeabddcd64e5cfe0d4d8100cf650afe7ef49c6fcc9d67a0f9fc67af108ee69bb",
+    "output/release/figures/rc_fig1_forest_prevalence.pdf": "3b8e9e5fdc95066397fa265cf6e9cd67851d8b020fb6f0a308831fba6d2eef06",
+    "output/release/figures/rc_fig2_forest_trials.pdf": "578ee31d41ce866a367042318ec292bfb5b8f3d3ff73375a5681447e627eb8b8",
+    "output/release/tables/rc_numbers.tex": "86525401c31c342b8f8cafb718c51a8a5bf27f2d2fa6abe8630db758dc55a476",
     "output/release/tables/rc_table_absolute_risk.csv": "df7cad9c5ae83a8e0275caf8aee8539f51ef39baa6c469279320c66d4dbff4ed",
     "output/release/tables/rc_table_absolute_risk.tex": "8fa4f0adb839ca1c70f741f860616909bf737a76cd3e6c108bc314495ece8405",
     "output/release/tables/rc_table_bayes_factors.csv": "d273567fdcc6a15b41acc4a267b1068ca6007a134b6a950539045fee10218af8",
     "output/release/tables/rc_table_bayes_factors.tex": "e45a5226db6a0f53bb50df06dfd7476adfe09af05fccb11c52248f61eac9e7a3",
     "output/release/tables/rc_table_leave_one_out.csv": "e9b0da0d0dbf5f9ea731a316d628566487953c898b7244354644ff1c27bfd4d2",
     "output/release/tables/rc_table_leave_one_out.tex": "7a3ddb011c78408039b0a03f4916376c4cad00efdf8a5c3486b2631c51da8425",
-    "output/release/tables/rc_table_mcmc_diagnostics.csv": "ca64f25dc5862802756f35b098d41c87f4d7a3a2d6fcb822024cc905f5f5a6b9",
-    "output/release/tables/rc_table_mcmc_diagnostics.tex": "b8f43523f36f80f064dac93fa18f5af1e0e677807ccfcf2237b1e2b55e711e97",
+    "output/release/tables/rc_table_mcmc_diagnostics.csv": "676cf8c8f0934022909ff4d595fe1e8a335e0ea8a629e823bfc66a6b51e2f9d4",
+    "output/release/tables/rc_table_mcmc_diagnostics.tex": "9dc89c07cbd396c897ec035f205814cd204f8c59c04bd66b6c1126fbb50ca575",
     "output/release/tables/rc_table_membership.csv": "6cca8735ff6baea9af645e051382c26b1bad4d9647695914269183581518a4d9",
     "output/release/tables/rc_table_membership.tex": "420c19180b1d747f016d314b4447eff38b777e0144ee023f945807e71b65e2ef",
-    "output/release/tables/rc_table_prevalence.csv": "16a78a084a2de648622d02d78011a3a9968cb770cce9965458fb180967549bc5",
-    "output/release/tables/rc_table_prevalence.tex": "6c0f5f793f9eadab99ca9afcb278104819d3fa1244a6a0aa2fdc2eee1147ac62",
+    "output/release/tables/rc_table_prevalence.csv": "0adb31031acacd8c35d9060ec87c636a206ef96ac53ee5ddf15ee0153f952428",
+    "output/release/tables/rc_table_prevalence.tex": "0592a8a98d50ee5f68a2675ac4a73900bfb9caaefe41e61f93ad60fc1122ec05",
     "output/release/tables/rc_table_standalone.csv": "0858bb8667e37684f68cf7de532ca226a1cdbcf20147f785af3edafb40b7f416",
     "output/release/tables/rc_table_standalone.tex": "af0d60f9a09d86d1dad4359469ba6315eb684816fb4932665db3b2def544f602",
     "output/release/tables/rc_table_trial_membership.csv": "ce39704e227ce7408ac8ea5d538672482f44afa0bfb6c691f03925b5b0537e28",
     "output/release/tables/rc_table_trial_membership.tex": "1c73913267b45f4ef9e3666607498d8dcce72235510a5a5fff27296b250fa412",
     "output/release/tables/rc_table_trials.csv": "5533c4c19eb83379bda3cd666ffbf112f3e7e641071ff6cf1b2bd79133d0c7d5",
     "output/release/tables/rc_table_trials.tex": "84857e6a298bb055871f86f35235ee98c05e49190c03475f98f4402b407270ab",
-    "output/run_manifest.json": "d68c422d871710ff3c001ef18a0539bf4eaa0428c41983b83d7f54c486f310ba",
-    "output/session_info.txt": "23ced4336e1df89832f5b64e4ad6d2e812dfbc444fb70dc2a5fbd13bf471b5b9",
+    "output/run_manifest.json": "a3f31c0b56e6980a84a110e6a21012f8c55e87438fc7b83cd81c708cd4673363",
+    "output/session_info.txt": "dabe29b85de3ed3cee2ce4dcba86e954ce3a9c826e11dc89aa343461001d1a1f",
     "output/tables/dienes_bayes_factors_fixed_and_approx.csv": "b8765a3aaa30439f66b4fb63520f4360070263769535b7e01be4e3ccccf5c528",
     "output/tables/dienes_bayes_factors_random_effects.csv": "adf8b8525f5ccbbc9606e22c5f87bd58a68593a4618043cd8e21fb73dc13e546",
     "output/tables/dienes_bf_grid_over_s.csv": "306bd9da34e1847173f870fa85500fff112180bac1309e8493aaf08266ba3ed3",

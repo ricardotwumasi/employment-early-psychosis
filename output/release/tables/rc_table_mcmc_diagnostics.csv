@@ -6,6 +6,7 @@ rc_a33_point_duration_sens_hn1,1.002,3374,4486,0,7,0.71,pass
 rc_a33_period_hn1,1.002,3023,4196,0,8,0.78,pass
 rc_a33_point_excl_weak_hn1,1.003,2771,3007,0,7,0.74,pass
 rc_a33_point_missing_bound_hn1,1.002,2969,3580,0,8,0.73,pass
+rc_a33_point_excl_all_offered_hn1,1.002,3264,3754,0,7,0.75,pass
 rc_a33_point_normal_normal_hn1,1.003,3171,3601,0,7,0.68,pass
 rc_loo_prev_ABDELBAKI_2013,1.002,3050,4391,0,7,0.75,pass
 rc_loo_prev_ANDERSEN_2024,1.001,3243,4290,0,7,0.75,pass
