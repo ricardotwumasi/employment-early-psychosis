@@ -126,3 +126,23 @@ RT explicitly adopted the three AI-prepared JBI appraisals. The supplied qualita
 | Handover with A45 addendum | `HANDOVER_2026-09-02.md` | `2245525da338596d60905aec0ab1b45178630ff7fb9e8d93c4256e14becda9b8` |
 
 Verification: all 27 approved categorical responses agree with the original draft; RT/date/A45 fields validated; Jones/Ørtenblad response CSV remains byte-identical (SHA-256 `aa5ad797e277d5519460f2e75b96a52bb38b044e75e193cc3c7e8ddfd89a8057`). The manuscript build passed; `texcount -inc -total` reports 4,999 text words. All 30 manuscript and 39 supplement pages were inspected on contact sheets, with Table S13 on supplement page 22 inspected at full size. No model was fitted, no release-number output changed and no independent reproduction was performed. The build retains existing unrelated layout warnings; this check establishes the added table is readable, not new publication-readiness approval.
+
+## 6. Release candidate 3 and manuscript draft 4, 18 October 2026 (A46, A47)
+
+Outer-workspace documents as left at the end of the session of 18 October 2026 (afternoon). The candidate 3 run is identified by its own manifest (`output/run_manifest.json`, SHA-256 `8ad78657c8c5a3e8b2d8ad9a88d579abc5aae3344c4791b0081c5392206da191`, freeze `505b247`, outputs `cbf2e34`).
+
+| Artefact | Location relative to outer workspace | SHA-256 |
+|---|---|---|
+| Plan revision 2.0 | `NEXT_VERSION_PLAN_v1.1.md` | `65be2c4b9ba9484486827f1970d8defcaa8f0a316771f391114ac1d0219c67e6` |
+| Handover (18 October, afternoon) | `HANDOVER_2026-09-02.md` | `eccab792e387b4cdd216be6213520b2142cbc6e8781d4568bf3b1a244be80f19` |
+| Manuscript draft 4 source | `manuscript/manuscript.tex` | `0f0f312cc76b4cdfa29580c24565f65a0284953f2c25659cd9e450552a90cf33` |
+| Supplement draft 4 source | `manuscript/supplement.tex` | `41601c912668855acfdc6d132eb2c4e9111de152bb94cc2840aa4947d9b723bd` |
+| Manuscript draft 4 PDF | `manuscript/manuscript.pdf` | `d555b0f48a1ea1d49ea03cb0f0505ea127aa54590c7f743e151f2afee59598c6` |
+| Supplement draft 4 PDF | `manuscript/supplement.pdf` | `9094fa576d2574abe8de55dd7722954430d630e6dd4a5cbca33dc70d8fd955bd` |
+| Review-table generator | `manuscript/make_sr_tables.R` | `9deef194a8d7c2b297d5564ce2adbb72481c39b1b98658c2d8c957ff4fe932fd` |
+| Correspondence drafts (not sent) | `manuscript/emails_2026-10-18.md` | `78a59c925bcc872c77e44eb3de2d3c32b875a4620b9b95e32ebc6809148326f9` |
+| Advice adopted in part by A46 | `REVIEW_FLOW_AND_SENSITIVITY_ADVICE_2026-10-18.md` | `44670e04396c31781c7cc7886d9bd3d4fd29acec6621417f957baf4d8b756a99` |
+| Original A45 draft appraisals | `DRAFT_APPRAISALS_FOR_RT_2026-10-18.md` | `1b13c82725692369ea58274d94e6b76ec7f97e26d94443f25c0bbc91f0085e3c` |
+| Consolidated JBI responses (unchanged since A45; Nossel not added) | `manuscript/responses/JBI_combined_responses_RT_2026-10-18.md` | `e71401ded5df16abf0a457db3222f4957e291888dae2e335850eba79abf95704` |
+
+Verification: `./build.sh` passed; `texcount -total manuscript.tex` 4,995 text words; every page inspected on contact sheets and the changed pages at full size; every release number from the generated macros; independent review by the statistical-manuscript-reviewer agent (no numerical error; 15 findings applied, including the corrected Nossel premise of A47). Not done: independent human rebuild, second human appraisal, coauthor approval.

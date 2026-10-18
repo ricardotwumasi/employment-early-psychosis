@@ -245,3 +245,9 @@ British English. Times are Europe/London local time.
   JBI prevalence appraisal of Nossel 2018 and the disclosure that its paid-work count
   includes noncompetitive work, self-employment and internships (81 of 124
   competitive); no input changed.
+
+[2026-10-18] Draft 4 review and record corrections. The manuscript reviewer found the
+  premise put to RT for A47 ("Nossel 2018 has no appraisal") wrong: it has a historical
+  five-component EPHPP rating (Weak). Same-day correction added to the A47 approval file
+  and register row; the decision and every model are unaffected. A46 row now names
+  Table 1 and Table S17 (not S18). Document hashes registered (register Section 6).
