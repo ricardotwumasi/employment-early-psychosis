@@ -1,0 +1,2 @@
+study_key,author_year_as_printed,study_id_clean,cohort_id,result_uids,tool,tool_version,adaptation,q1,q2,q3,q4,q5,q6,q7,q8,q9,approver,approval_date,amendment_ref,approval_process,rationale_file
+nossel2018,Nossel et al. (2018),NOSSEL_2018,ONTRACKNY,NU16_01,JBI prevalence,2017,None,No,Unclear,Unclear,Yes,Unclear,Unclear,Unclear,Yes,Unclear,RT,2026-10-18,A47,AI-prepared; explicitly approved by RT in chat; no second independent human appraisal documented,data/review/jbi_appraisal_nossel_rt_2026-10-18.md

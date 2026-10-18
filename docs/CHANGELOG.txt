@@ -236,3 +236,12 @@ British English. Times are Europe/London local time.
   rule and failure-path tests, and both new files hashed in the run manifest.
   Candidate 3 is fitted without search recovery by RT's decision; Gate 3 stays open.
   No existing rule, estimand, prior, count or pool changed.
+
+[2026-10-18] Release candidate 3 (cbf2e34) and A47.
+  Candidate 3 run from the freeze 505b247: 74 fits, none from cache, all gates and the
+  post-fit artefact check passed; every candidate 2 output unchanged apart from PDF
+  timestamps; one new fit, the vocational-exposure sensitivity (A46): 30.0% (19.7 to
+  43.7), k = 5 (docs/release_comparison_rc2_rc3.md). A47: RT adopted the AI-prepared
+  JBI prevalence appraisal of Nossel 2018 and the disclosure that its paid-work count
+  includes noncompetitive work, self-employment and internships (81 of 124
+  competitive); no input changed.

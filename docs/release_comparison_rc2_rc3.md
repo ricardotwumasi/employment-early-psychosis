@@ -10,7 +10,7 @@ Every file under `output/` was compared with the committed candidate 2 outputs (
 
 ## Result
 
-- **CSV outputs:** four files changed (`rc_prevalence_summary.csv`, `rc_prevalence_diagnostics.csv`, `rc_table_mcmc_diagnostics.csv`, `rc_table_prevalence.csv`, plus the historical `output/bayesian/gate_attempts.csv`), each by one added row for `rc_a33_point_excl_all_offered_hn1` and no other change. Every other CSV is byte-identical.
+- **CSV outputs:** five files changed (`rc_prevalence_summary.csv`, `rc_prevalence_diagnostics.csv`, `rc_table_mcmc_diagnostics.csv`, `rc_table_prevalence.csv`, plus the historical `output/bayesian/gate_attempts.csv`), each by one added row for `rc_a33_point_excl_all_offered_hn1` and no other change. Every other CSV is byte-identical.
 - **LaTeX outputs:** `rc_numbers.tex` gained nine macros (`\rcPrevExp*`) and no other line changed; `rc_table_prevalence.tex` and `rc_table_mcmc_diagnostics.tex` each gained one row.
 - **PDF outputs:** 49 changed files differ only in their creation and modification dates; one new file, `ppc_rc_a33_point_excl_all_offered_hn1.pdf`.
 - **Manifest and session information** changed as expected (new run).
