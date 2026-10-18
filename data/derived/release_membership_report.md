@@ -6,6 +6,7 @@ Rules: A33 population (docs/amendment_2026-09-06.md), A24 strict comparison, A25
 
 - A33 point-prevalence primary (k = 8): ABDELBAKI_2013, ANDERSEN_2024, CRAIG_2014, DUDLEY_2014, HEGELSTAD_2019, RINALDI_2010, DRAKE_2013, CLARKE_2022
 - A33 duration sensitivity (k = 9): ABDELBAKI_2013, ANDERSEN_2024, CRAIG_2014, DUDLEY_2014, EACK_2011, HEGELSTAD_2019, RINALDI_2010, DRAKE_2013, CLARKE_2022
+- A33 point primary excluding a confirmed universal vocational offer (A46; k = 5): ANDERSEN_2024, DUDLEY_2014, HEGELSTAD_2019, DRAKE_2013, CLARKE_2022
 - A33 period set (k = 9): ERICKSON_2021, FOWLER_2019, KILLACKEY_2008, KILLACKEY_2019, MAJOR_2010, NUECHTERLEIN_2020, TAPFUMANEYI_2015, VANDUIN_2021, NOSSEL_2018
 - Variable follow-up, reported one by one and never pooled (4 results): Humensky 2017 [R18_18], Turner 2019 [R22_01], Porteous 2007 (2002 to 2004) [NX18_01], Porteous 2007 (2004 to 2006) [NX18_02]
 - Strict A24 point set (k = 0): (none)

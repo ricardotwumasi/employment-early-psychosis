@@ -20,6 +20,10 @@
 #      row names a reviewer and a date on or after the decision date of the
 #      amendment it cites (data/review/amendment_dates.csv);
 #   6. one contribution per cohort in every pooled set.
+# Release candidate 3 (amendment A46, 18 October 2026) adds:
+#   7. the vocational-exposure classification of the point primary results
+#      (data/review/release_vocational_exposure.csv) for the pre-specified
+#      sensitivity excluding samples with a universal vocational offer.
 # Membership rules are mechanical: no set is defined by naming studies.
 # Outputs: data/derived/release_prevalence.csv, release_trials.csv,
 # release_trial_arms.csv and data/derived/release_membership_report.md.
@@ -287,6 +291,35 @@ check(all(release_trials$timepoint_months[release_trials$in_trial_a33_k3_0to6] =
       "an A33 trial result is not a six-month interval")
 
 # -------------------------------
+# 6b. Vocational-exposure classification (A46)
+# -------------------------------
+# The pre-specified sensitivity (specification of 1 September 2026) drops
+# samples in which every participant was offered a vocational intervention.
+# A46 applies it to the point primary set: only a universal offer confirmed in
+# the source (all_offered) excludes a cohort. Unknown is not none, so
+# no_offer_reported and unclear cohorts are retained, as are some_offered.
+# Every point primary result must be classified, so a change to the primary
+# set cannot pass without a dated classification. Run after the checks above,
+# so the set it restricts has already passed them.
+expo <- read_csv(root_path("data", "review", "release_vocational_exposure.csv"),
+                 col_types = cols(.default = col_character()), na = character(0))
+check(all(expo$exposure_class %in% c("all_offered", "some_offered", "no_offer_reported", "unclear")),
+      "release_vocational_exposure.csv: an exposure class outside the controlled vocabulary")
+check(!anyDuplicated(expo$result_uid), "release_vocational_exposure.csv: a result_uid is classified twice")
+check(all(dated_approval(expo$reviewer, expo$review_date, expo$amendment_ref) & nzchar(expo$source_page)),
+      "an exposure classification lacks a reviewer, a source page or a review date on or after its amendment")
+primary_uids <- release_prev$result_uid[release_prev$in_a33_point_primary]
+check(setequal(expo$result_uid, primary_uids),
+      paste("release_vocational_exposure.csv must classify exactly the point primary results; unclassified:",
+            paste(setdiff(primary_uids, expo$result_uid), collapse = ", "),
+            "; not in the primary set:", paste(setdiff(expo$result_uid, primary_uids), collapse = ", ")))
+check(all(expo$cohort_id == release_prev$cohort_id[match(expo$result_uid, release_prev$result_uid)]),
+      "release_vocational_exposure.csv: a cohort_id disagrees with the release prevalence table")
+release_prev <- release_prev %>%
+  left_join(expo %>% select(result_uid, exposure_class), by = "result_uid", relationship = "many-to-one") %>%
+  mutate(in_a33_point_excl_all_offered = in_a33_point_primary & exposure_class != "all_offered")
+
+# -------------------------------
 # 7. Write outputs
 # -------------------------------
 write_csv(release_prev %>% select(-decision_a33), file.path(derived_dir, "release_prevalence.csv"))
@@ -305,6 +338,9 @@ rep <- c(
          fmt_set(release_prev$study_id_clean[release_prev$in_a33_point_primary])),
   paste0("- A33 duration sensitivity (k = ", sum(release_prev$in_a33_point_duration_sens), "): ",
          fmt_set(release_prev$study_id_clean[release_prev$in_a33_point_duration_sens])),
+  paste0("- A33 point primary excluding a confirmed universal vocational offer (A46; k = ",
+         sum(release_prev$in_a33_point_excl_all_offered), "): ",
+         fmt_set(release_prev$study_id_clean[release_prev$in_a33_point_excl_all_offered])),
   paste0("- A33 period set (k = ", sum(release_prev$in_a33_period), "): ",
          fmt_set(release_prev$study_id_clean[release_prev$in_a33_period])),
   paste0("- Variable follow-up, reported one by one and never pooled (", sum(release_prev$in_a33_variable_window), " results): ",

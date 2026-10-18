@@ -88,6 +88,8 @@ manifest_inputs <- c(
   "data/review/population_eligibility.csv",
   "data/review/release_construct_review.csv",
   "data/review/release_new_results.csv",
+  "data/review/release_vocational_exposure.csv",
+  "data/review/review_disposition_2026-10-18.csv",
   "data/review/amendment_dates.csv",
   "data/review/candidate_results.csv",
   "data/review/source_review_2026-09-23/results_draft.csv",

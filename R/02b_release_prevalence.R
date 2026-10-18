@@ -12,6 +12,8 @@
 #   rc_a33_point_excl_weak_hn1      restricted to studies historically rated Moderate or
 #                                   Strong (A42; unrated studies excluded)
 #   rc_a33_point_missing_bound_hn1  n_total denominator (missing = not employed)
+#   rc_a33_point_excl_all_offered_hn1  excludes cohorts with a confirmed universal
+#                                   offer of a vocational intervention (A46)
 #   rc_a33_point_normal_normal_hn1  logit normal-normal approximation
 #   rc_loo_prev_<study>             leave-one-out on the primary set
 # The strict registered set (A24) is empty by construction (A35) and is
@@ -85,7 +87,12 @@ results <- list(
   # as higher quality, so unrated studies are excluded explicitly.
   rc_a33_point_excl_weak_hn1     = run_prev(filter(primary, quality_rating %in% c("Moderate", "Strong")),
                                             "rc_a33_point_excl_weak_hn1", 1),
-  rc_a33_point_missing_bound_hn1 = run_prev(primary, "rc_a33_point_missing_bound_hn1", 1, n_col = "n_total")
+  rc_a33_point_missing_bound_hn1 = run_prev(primary, "rc_a33_point_missing_bound_hn1", 1, n_col = "n_total"),
+  # A46: the pre-specified exclusion of samples in which every participant was
+  # offered a vocational intervention, on the classification in
+  # data/review/release_vocational_exposure.csv (R/00b).
+  rc_a33_point_excl_all_offered_hn1 = run_prev(filter(rp, in_a33_point_excl_all_offered),
+                                               "rc_a33_point_excl_all_offered_hn1", 1)
 )
 
 # Normal-normal logit approximation on the primary set

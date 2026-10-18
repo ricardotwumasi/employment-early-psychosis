@@ -145,6 +145,7 @@ model_labels <- c(
   rc_a33_period_hn1 = "A33 period prevalence (secondary estimand)",
   rc_a33_point_excl_weak_hn1 = "Historical EPHPP Moderate or Strong only (unrated excluded)",
   rc_a33_point_missing_bound_hn1 = "Missing counted as not employed (lower bound)",
+  rc_a33_point_excl_all_offered_hn1 = "Excluding samples with a confirmed universal vocational offer (A46)",
   rc_a33_point_normal_normal_hn1 = "Normal-normal logit approximation")
 t_prev <- prev_sum %>%
   mutate(Model = model_labels[model], k = k,
@@ -254,6 +255,7 @@ p05 <- prev_sum %>% filter(model == "rc_a33_point_prior_hn05")
 p2  <- prev_sum %>% filter(model == "rc_a33_point_prior_hn2")
 pmb <- prev_sum %>% filter(model == "rc_a33_point_missing_bound_hn1")
 pew <- prev_sum %>% filter(model == "rc_a33_point_excl_weak_hn1")
+pex <- prev_sum %>% filter(model == "rc_a33_point_excl_all_offered_hn1")
 tr  <- tr_sum %>% filter(model == "rc_trial_a33_k3_hn05")
 t025 <- tr_sum %>% filter(model == "rc_trial_a33_k3_hn025")
 t1  <- tr_sum %>% filter(model == "rc_trial_a33_k3_hn1")
@@ -276,6 +278,13 @@ macros <- c(
   mac("rcPeriodPiLo", pct(pp$pi_low)), mac("rcPeriodPiHi", pct(pp$pi_high)),
   mac("rcPrevMissEst", pct(pmb$estimate)), mac("rcPrevMissLo", pct(pmb$ci_low)), mac("rcPrevMissHi", pct(pmb$ci_high)),
   mac("rcPrevExclWeakK", pew$k), mac("rcPrevExclWeakEst", pct(pew$estimate)), mac("rcPrevExclWeakLo", pct(pew$ci_low)), mac("rcPrevExclWeakHi", pct(pew$ci_high)),
+  mac("rcPrevExpK", pex$k), mac("rcPrevExpN", pex$n_assessed_total), mac("rcPrevExpEst", pct(pex$estimate)),
+  mac("rcPrevExpLo", pct(pex$ci_low)), mac("rcPrevExpHi", pct(pex$ci_high)),
+  mac("rcPrevExpPiLo", pct(pex$pi_low)), mac("rcPrevExpPiHi", pct(pex$pi_high)),
+  mac("rcPrevExpTau", fmt(pex$tau_median)),
+  # Difference between the two posterior medians in percentage points; the
+  # models use different data, so this is descriptive, not a contrast.
+  mac("rcPrevExpDiff", fmt(100 * (pex$estimate - pr$estimate), 1)),
   mac("rcPrevLooMin", pct(min(loo_p$estimate))), mac("rcPrevLooMax", pct(max(loo_p$estimate))),
   mac("rcStrictPrevK", prev_strict$k),
   mac("rcTrialK", tr$k), mac("rcTrialNrand", sum(n_pool$n_intervention_full + n_pool$n_control_full)),

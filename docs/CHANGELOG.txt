@@ -221,3 +221,18 @@ British English. Times are Europe/London local time.
   responses. Table S13 separates qualitative and prevalence/attainment panels.
   No EPHPP category, model input, numerical result or fit changed. Independent
   second human appraisal and remaining release-wide appraisal remain outstanding.
+
+[2026-10-18] A46 and the release candidate 3 input freeze.
+  RT's decisions (docs/registration/approvals/A46_RT_2026-10-18.md): Drake 2013 and
+  Porteous 2007 are included studies and Clarke 2023 a companion report of Killackey
+  2019 in the current review flow (data/review/review_disposition_2026-10-18.csv:
+  48 included report entries, 46 studies by verified companion links, 22 current
+  exclusions, 2 unaccounted reports; the historical exclusion file is unchanged).
+  The pre-specified sensitivity excluding samples in which all were offered a
+  vocational intervention is completed on the point primary set, excluding only a
+  source-confirmed universal offer (data/review/release_vocational_exposure.csv);
+  new set in_a33_point_excl_all_offered (R/00b), fit
+  rc_a33_point_excl_all_offered_hn1 (R/02b, registry), label and macros (R/06b),
+  rule and failure-path tests, and both new files hashed in the run manifest.
+  Candidate 3 is fitted without search recovery by RT's decision; Gate 3 stays open.
+  No existing rule, estimand, prior, count or pool changed.

@@ -39,3 +39,9 @@ Check-date normalisation, 10 September 2026: `population_eligibility.csv` and `c
 ## JBI appraisals adopted on 18 October 2026 (A45)
 
 `jbi_prevalence_items_2026-10-18.csv` holds 27 RT-approved responses for Drake 2013, Clarke 2023 (CLARKE_2022) and Porteous 2007. `jbi_appraisals_rt_2026-10-18.md` retains the AI proposals, source rationales and approved responses; approval evidence is `docs/registration/approvals/A45_RT_2026-10-18.md`. These are reporting sidecars, not model inputs or EPHPP categories. Table S13 renders these nine-item assessments separately from the ten qualitative items preserved in `../manuscript/sr_data/jbi_items.csv`. The combined record is `../manuscript/responses/JBI_combined_responses_RT_2026-10-18.md`. Independent second human appraisal and remaining release-wide appraisal, including Nossel, remain outstanding.
+
+## Current review disposition and vocational exposure (A46, 18 October 2026)
+
+`review_disposition_2026-10-18.csv` is the current decision layer over the historical review record: one row per named report (the 45 included rows and the 25 full-text exclusions), with its current status (`included_study`, `included_companion_report` or `excluded`), the study it belongs to and the decision behind it. Drake 2013 (X03) and Porteous 2007 (X18) are included studies and Clarke 2023 (X02; `CLARKE_2022`) a companion of Killackey 2019; Baksheev 2012 is recorded as a companion of Killackey 2008 (A42). `full_text_exclusions.csv` and `../manuscript/sr_data/included_studies_45.csv` are unchanged. Cohort overlap (for example Rinaldi 2004 and 2010) is not a companion link.
+
+`release_vocational_exposure.csv` classifies every point primary result for the pre-specified vocational-exposure sensitivity: `all_offered` (excluded), `some_offered`, `no_offer_reported` or `unclear` (all retained), with source page, quotation, reviewer and date. The historical `vocational_exposure` column is not used for this set.

@@ -117,6 +117,24 @@ test_that("Craig 2014 enters with the day-of-interview point count (C15), not th
   expect_equal(row_of("CRAIG_2014")$events, 36)
 })
 
+test_that("the vocational-exposure sensitivity removes only a confirmed universal offer and keeps unknowns (A46)", {
+  # The pre-specified question is about samples in which everyone was offered
+  # a vocational intervention. Treating an unreported or unclear offer as
+  # universal, or as none, would answer a different question, so only
+  # all_offered leaves the set and every other class stays.
+  expo <- read_chr("data", "review", "release_vocational_exposure.csv")
+  expect_setequal(expo$result_uid, rp$result_uid[rp$in_a33_point_primary])
+  keep <- expo$result_uid[expo$exposure_class != "all_offered"]
+  expect_setequal(rp$result_uid[rp$in_a33_point_excl_all_offered], keep)
+  expect_true(all(rp$in_a33_point_primary[rp$in_a33_point_excl_all_offered]))
+  retained_classes <- expo$exposure_class[expo$result_uid %in% rp$result_uid[rp$in_a33_point_excl_all_offered]]
+  expect_false("all_offered" %in% retained_classes)
+  # Each class is source-linked and reviewed.
+  expect_true(all(nzchar(expo$source_page) & nzchar(expo$quotation) & nzchar(expo$reviewer)))
+  # The fit is registered.
+  expect_true("rc_a33_point_excl_all_offered_hn1" %in% registry$fit_tag[registry$layer == "release"])
+})
+
 test_that("verified new cells enter with the counts RT adopted (A42)", {
   # Drake: employment-classified denominator 102 + 193, not the 319 interviewed
   expect_equal(unlist(uid_row("NU23_01")[c("events", "n_assessed", "n_total")]), c(events = 102, n_assessed = 295, n_total = 385))
@@ -205,7 +223,7 @@ run_00b_with <- function(edit) {
   for (f in c("R/utils.R", "R/00b_release_inputs.R", "data/derived/prevalence.csv", "data/derived/trials.csv",
               "data/review/correction_ledger.csv", "data/review/population_eligibility.csv",
               "data/review/release_construct_review.csv", "data/review/release_new_results.csv",
-              "data/review/amendment_dates.csv")) {
+              "data/review/amendment_dates.csv", "data/review/release_vocational_exposure.csv")) {
     file.copy(root_path(f), file.path(tmp, f))
   }
   edit(tmp)
@@ -250,6 +268,23 @@ test_that("a duplicated result_uid is refused", {
   expect_false(is.null(r$status)); expect_match(r$text, "result_uid missing or duplicated")
 })
 
+edit_expo <- function(f) function(tmp) {
+  p <- file.path(tmp, "data/review/release_vocational_exposure.csv")
+  d <- readr::read_csv(p, col_types = readr::cols(.default = readr::col_character()), na = character(0))
+  readr::write_csv(f(d), p, na = "")
+}
+
+test_that("an exposure classification that is missing, unknown or undated cannot define the sensitivity (A46)", {
+  # Every point primary result must carry a dated, source-linked class, so a
+  # change to the primary set cannot silently leave a cohort unclassified.
+  r <- run_00b_with(edit_expo(function(d) d[-1, ]))
+  expect_false(is.null(r$status)); expect_match(r$text, "classify exactly the point primary results")
+  r <- run_00b_with(edit_expo(function(d) { d$exposure_class[1] <- "all"; d }))
+  expect_false(is.null(r$status)); expect_match(r$text, "controlled vocabulary")
+  r <- run_00b_with(edit_expo(function(d) { d$review_date[1] <- "2026-10-17"; d }))
+  expect_false(is.null(r$status)); expect_match(r$text, "on or after its amendment")
+})
+
 test_that("the release layer of the registry lists one leave-one-out fit per pooled study, one standalone interval per variable-window result, and the OR model with exported draws", {
   rel <- registry[registry$layer == "release", ]
   expect_setequal(sub("^rc_standalone_", "", rel$fit_tag[rel$role == "standalone_interval"]),
@@ -271,4 +306,26 @@ test_that("R/00b reproduces the committed release inputs from the committed deci
   after <- lapply(c("release_prevalence.csv", "release_trials.csv", "release_trial_arms.csv"),
                   function(f) file_sha256(root_path("data", "derived", f)))
   expect_identical(before, after)
+})
+
+test_that("a full-text exclusion that supplies a release result is reclassified as included, and the flow still adds up (A46)", {
+  # A report cannot be both a current exclusion from the review and a source
+  # of its results. The historical exclusions stay in full_text_exclusions.csv;
+  # the current layer reverses them with a dated decision.
+  disp <- read_chr("data", "review", "review_disposition_2026-10-18.csv")
+  excl <- read_chr("data", "review", "full_text_exclusions.csv")
+  overturned <- unique(c(sub("^N", "", newres$report_id[grepl("^NX[0-9]+$", newres$report_id)]),
+                         unlist(regmatches(newres$note, gregexpr("(?<=exclusion )X[0-9]+", newres$note, perl = TRUE)))))
+  expect_true(length(overturned) > 0)
+  cur <- disp[disp$historical_record == "full_text_exclusion", ]
+  expect_setequal(cur$historical_id, excl$exclusion_id)
+  expect_true(all(grepl("^included", cur$current_status[cur$historical_id %in% overturned])))
+  reversed <- cur[cur$current_status != "excluded", ]
+  expect_true(all(reversed$decision_ref == "A46" & reversed$approver == "RT" & reversed$decision_date >= "2026-10-18"))
+  # Companion reports point to an included study and add no study.
+  inc <- disp[grepl("^included", disp$current_status), ]
+  comp <- inc[inc$current_status == "included_companion_report", ]
+  expect_true(all(comp$study_key %in% inc$report_key[inc$current_status == "included_study"]))
+  # 72 reports were sought; two are unaccounted for (A44).
+  expect_equal(nrow(inc) + sum(disp$current_status == "excluded") + 2L, 72L)
 })
