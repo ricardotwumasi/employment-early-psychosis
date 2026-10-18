@@ -143,7 +143,7 @@ model_labels <- c(
   rc_a33_point_prior_hn2 = "Prior sensitivity, tau ~ HN(2)",
   rc_a33_point_duration_sens_hn1 = "Duration sensitivity (adds onset within eight years)",
   rc_a33_period_hn1 = "A33 period prevalence (secondary estimand)",
-  rc_a33_point_excl_weak_hn1 = "EPHPP Weak excluded",
+  rc_a33_point_excl_weak_hn1 = "Historical EPHPP Moderate or Strong only (unrated excluded)",
   rc_a33_point_missing_bound_hn1 = "Missing counted as not employed (lower bound)",
   rc_a33_point_normal_normal_hn1 = "Normal-normal logit approximation")
 t_prev <- prev_sum %>%

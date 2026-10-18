@@ -208,3 +208,10 @@ British English. Times are Europe/London local time.
     compared by R/08 (supply date 2026-09-24; the Analyses column is now optional): no count
     differs from the 15 September file. Nothing adopted; no release input changed. RT: nothing
     further is expected; the student record is closed.
+
+[2026-10-18 10:48:11 BST] Reporting label correction after the release candidate 2 run.
+  R/06b_release_tables.R: the model label of rc_a33_point_excl_weak_hn1 read "EPHPP Weak excluded";
+    it now reads "Historical EPHPP Moderate or Strong only (unrated excluded)" (A42 rule).
+    R/06b was re-run alone (no fitting). Only output/release/tables/rc_table_prevalence.csv and
+    .tex changed, in that label; their SHA-256 therefore differ from the values in
+    output/run_manifest.json, which records the run as executed. No number changed.
