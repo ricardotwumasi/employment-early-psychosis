@@ -189,3 +189,14 @@ British English. Times are Europe/London local time.
   Candidate-inventory addendum (lead-session extraction, not yet human-verified):
     data/review/source_review_2026-09-23/candidate_inventory_addendum_2026-10-16.csv
   No release input, ledger row, registry entry or output changed in this commit.
+
+[2026-10-18 10:45:14 BST] Release candidate 2 run (provisional; Gate 3 open).
+  Command: Rscript run_all.R --release, started 2026-10-18 09:41 BST from a clean tree at
+    0c337f2 (inputs approved by RT on 18 October 2026); completed in 15.2 minutes; 73 fits
+    logged (72 registered fitted models plus rc_bf_h1_modini2016_ad999, as in release
+    candidate 1), none from cache; every convergence gate and the post-fit artefact check passed.
+  Manifest: output/run_manifest.json, SHA-256 a3f31c0b56e6980a84a110e6a21012f8c55e87438fc7b83cd81c708cd4673363
+  Comparison with release candidate 1: docs/release_comparison_rc1_rc2.md. Trial, Bayes-factor
+    and absolute-risk outputs byte-identical to release candidate 1; prevalence changes traced to
+    A42 and A43 input rows. Point primary k = 8: 32.7% (24.3 to 42.3), prediction interval
+    12.5 to 62.0.
